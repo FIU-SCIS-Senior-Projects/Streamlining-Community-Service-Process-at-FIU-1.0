@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BBD529541EE48F6E00D45B6B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529531EE48F6E00D45B6B /* Event.swift */; };
+		BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529551EEA304E00D45B6B /* EventCalendar.swift */; };
 		E149CC1F1EDFA7BB002A3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */; };
 		E149CC211EDFA7BB002A3256 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC201EDFA7BB002A3256 /* FirstViewController.swift */; };
 		E149CC231EDFA7BB002A3256 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC221EDFA7BB002A3256 /* SecondViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		BBD529531EE48F6E00D45B6B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		BBD529551EEA304E00D45B6B /* EventCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCalendar.swift; sourceTree = "<group>"; };
 		E149CC1B1EDFA7BB002A3256 /* FIUGives.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FIUGives.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E149CC201EDFA7BB002A3256 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				E149CC201EDFA7BB002A3256 /* FirstViewController.swift */,
 				E149CC221EDFA7BB002A3256 /* SecondViewController.swift */,
 				BBD529531EE48F6E00D45B6B /* Event.swift */,
+				BBD529551EEA304E00D45B6B /* EventCalendar.swift */,
 				E149CC241EDFA7BB002A3256 /* Main.storyboard */,
 				E149CC271EDFA7BB002A3256 /* Assets.xcassets */,
 				E149CC291EDFA7BB002A3256 /* LaunchScreen.storyboard */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBD529541EE48F6E00D45B6B /* Event.swift in Sources */,
+				BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */,
 				E149CC231EDFA7BB002A3256 /* SecondViewController.swift in Sources */,
 				E149CC1F1EDFA7BB002A3256 /* AppDelegate.swift in Sources */,
 				E149CC211EDFA7BB002A3256 /* FirstViewController.swift in Sources */,

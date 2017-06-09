@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Event {
+class Event: Comparable {
     
     //MARK: properties
     var eventName: String
@@ -50,6 +50,23 @@ class Event {
         self.eventContactEmail = eventContactEmail
         self.eventRSVPEnabled = eventRSVPEnabled
         
+        
+    }
+    
+    //function to access eventStart property
+    func getStartDate() -> NSDate {
+        return self.eventStart
+    }
+    
+    static func < (lhs: Event, rhs: Event) -> Bool {
+        if (lhs.getStartDate().compare(rhs.getStartDate() as Date) == .orderedAscending) {
+        return true
+        }
+        return false
+    }
+    
+    static func == (lhs: Event, rhs: Event) -> Bool {
+        return lhs.getStartDate().isEqual(to: rhs.getStartDate() as Date)
         
     }
     
