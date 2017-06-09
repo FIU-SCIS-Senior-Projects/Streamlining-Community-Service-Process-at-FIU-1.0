@@ -70,9 +70,14 @@ class Event: Comparable {
         
     }
     
+    
     //add attendants to the eventAttendants array
     
     //remove attendant from the eventAttendants array
+    
+    // delete event method
+    
+    // 
     
     //update event information
     

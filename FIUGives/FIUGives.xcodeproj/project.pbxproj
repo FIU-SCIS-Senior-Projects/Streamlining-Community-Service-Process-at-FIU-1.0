@@ -17,6 +17,7 @@
 		E149CC2B1EDFA7BB002A3256 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E149CC291EDFA7BB002A3256 /* LaunchScreen.storyboard */; };
 		E149CC361EDFA7BB002A3256 /* FIUGivesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC351EDFA7BB002A3256 /* FIUGivesTests.swift */; };
 		E149CC411EDFA7BB002A3256 /* FIUGivesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC401EDFA7BB002A3256 /* FIUGivesUITests.swift */; };
+		E1629BD81EEB55E400B8926A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1629BD71EEB55E400B8926A /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		E149CC3C1EDFA7BB002A3256 /* FIUGivesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FIUGivesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E149CC401EDFA7BB002A3256 /* FIUGivesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIUGivesUITests.swift; sourceTree = "<group>"; };
 		E149CC421EDFA7BB002A3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1629BD71EEB55E400B8926A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */,
 				E149CC201EDFA7BB002A3256 /* FirstViewController.swift */,
 				E149CC221EDFA7BB002A3256 /* SecondViewController.swift */,
+				E1629BD71EEB55E400B8926A /* User.swift */,
 				BBD529531EE48F6E00D45B6B /* Event.swift */,
 				BBD529551EEA304E00D45B6B /* EventCalendar.swift */,
 				E149CC241EDFA7BB002A3256 /* Main.storyboard */,
@@ -270,6 +273,7 @@
 			files = (
 				BBD529541EE48F6E00D45B6B /* Event.swift in Sources */,
 				BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */,
+				E1629BD81EEB55E400B8926A /* User.swift in Sources */,
 				E149CC231EDFA7BB002A3256 /* SecondViewController.swift in Sources */,
 				E149CC1F1EDFA7BB002A3256 /* AppDelegate.swift in Sources */,
 				E149CC211EDFA7BB002A3256 /* FirstViewController.swift in Sources */,
