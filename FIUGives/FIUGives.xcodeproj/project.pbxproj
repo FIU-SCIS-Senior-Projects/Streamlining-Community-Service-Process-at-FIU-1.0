@@ -10,8 +10,10 @@
 		BBD529541EE48F6E00D45B6B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529531EE48F6E00D45B6B /* Event.swift */; };
 		BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529551EEA304E00D45B6B /* EventCalendar.swift */; };
 		BBD529D41EEDC25B00D45B6B /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */; };
+		BBD529D81EEDC8BB00D45B6B /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529D71EEDC8BB00D45B6B /* MyEventsViewController.swift */; };
+		BBD529DA1EEDCB8400D45B6B /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529D91EEDCB8400D45B6B /* MyProfileViewController.swift */; };
+		BBD529DC1EEDCB9E00D45B6B /* MyHoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DB1EEDCB9E00D45B6B /* MyHoursViewController.swift */; };
 		E149CC1F1EDFA7BB002A3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */; };
-		E149CC231EDFA7BB002A3256 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC221EDFA7BB002A3256 /* SecondViewController.swift */; };
 		E149CC261EDFA7BB002A3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E149CC241EDFA7BB002A3256 /* Main.storyboard */; };
 		E149CC281EDFA7BB002A3256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E149CC271EDFA7BB002A3256 /* Assets.xcassets */; };
 		E149CC2B1EDFA7BB002A3256 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E149CC291EDFA7BB002A3256 /* LaunchScreen.storyboard */; };
@@ -41,9 +43,11 @@
 		BBD529531EE48F6E00D45B6B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BBD529551EEA304E00D45B6B /* EventCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCalendar.swift; sourceTree = "<group>"; };
 		BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		BBD529D71EEDC8BB00D45B6B /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
+		BBD529D91EEDCB8400D45B6B /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		BBD529DB1EEDCB9E00D45B6B /* MyHoursViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHoursViewController.swift; sourceTree = "<group>"; };
 		E149CC1B1EDFA7BB002A3256 /* FIUGives.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FIUGives.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E149CC221EDFA7BB002A3256 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		E149CC251EDFA7BB002A3256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E149CC271EDFA7BB002A3256 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E149CC2A1EDFA7BB002A3256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,7 +111,9 @@
 			children = (
 				E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */,
 				BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */,
-				E149CC221EDFA7BB002A3256 /* SecondViewController.swift */,
+				BBD529D71EEDC8BB00D45B6B /* MyEventsViewController.swift */,
+				BBD529D91EEDCB8400D45B6B /* MyProfileViewController.swift */,
+				BBD529DB1EEDCB9E00D45B6B /* MyHoursViewController.swift */,
 				E1629BD71EEB55E400B8926A /* User.swift */,
 				BBD529531EE48F6E00D45B6B /* Event.swift */,
 				BBD529551EEA304E00D45B6B /* EventCalendar.swift */,
@@ -273,8 +279,10 @@
 			files = (
 				BBD529541EE48F6E00D45B6B /* Event.swift in Sources */,
 				BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */,
+				BBD529DA1EEDCB8400D45B6B /* MyProfileViewController.swift in Sources */,
+				BBD529D81EEDC8BB00D45B6B /* MyEventsViewController.swift in Sources */,
+				BBD529DC1EEDCB9E00D45B6B /* MyHoursViewController.swift in Sources */,
 				E1629BD81EEB55E400B8926A /* User.swift in Sources */,
-				E149CC231EDFA7BB002A3256 /* SecondViewController.swift in Sources */,
 				BBD529D41EEDC25B00D45B6B /* EventsViewController.swift in Sources */,
 				E149CC1F1EDFA7BB002A3256 /* AppDelegate.swift in Sources */,
 			);

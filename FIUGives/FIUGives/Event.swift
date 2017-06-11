@@ -19,6 +19,7 @@ class Event: Comparable {
     var eventDescription: String?
     var eventStart: NSDate
     var eventEnd: NSDate
+    var eventDuration = 0.0
     var eventType: String
     var eventLocationName: String
     //event clubs is an optional
@@ -49,6 +50,8 @@ class Event: Comparable {
         self.eventContactName = eventContactName
         self.eventContactEmail = eventContactEmail
         self.eventRSVPEnabled = eventRSVPEnabled
+        //calculates and stores the event duration
+        self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart as Date))
         
         
     }
