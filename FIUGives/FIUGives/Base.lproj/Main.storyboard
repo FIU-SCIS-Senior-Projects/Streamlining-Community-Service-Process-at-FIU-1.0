@@ -22,11 +22,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="WB7-yl-F4r"/>
+                    <navigationItem key="navigationItem" id="WB7-yl-F4r">
+                        <barButtonItem key="leftBarButtonItem" title="Filter" id="uMU-6n-lyj">
+                            <connections>
+                                <segue destination="T37-nn-CEA" kind="show" id="Qu5-RZ-7Ah"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add Event" id="11n-xG-lhZ">
+                            <connections>
+                                <segue destination="1jL-1W-vtQ" kind="show" id="Qzp-Nd-6fM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1688.8" y="-320.68965517241384"/>
+        </scene>
+        <!--Filter Events View Controller-->
+        <scene sceneID="Vzs-fw-lFz">
+            <objects>
+                <viewController id="T37-nn-CEA" customClass="FilterEventsViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pbb-5a-S2n"/>
+                        <viewControllerLayoutGuide type="bottom" id="pli-0o-1vU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9YI-rs-I6e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V10-63-EC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2562" y="-529"/>
+        </scene>
+        <!--Add Event View Controller-->
+        <scene sceneID="JL3-oD-Wgl">
+            <objects>
+                <viewController id="1jL-1W-vtQ" customClass="AddEventViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="emE-in-uKb"/>
+                        <viewControllerLayoutGuide type="bottom" id="E2W-OM-lj2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4MT-Kc-RRv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b2t-my-bTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2562" y="134"/>
         </scene>
         <!--MyEvents-->
         <scene sceneID="wg7-f3-ORb">
@@ -47,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--My Profile-->
+        <!--My Profile View Controller-->
         <scene sceneID="wTU-L4-80y">
             <objects>
                 <viewController id="678-Gq-P5D" customClass="MyProfileViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,13 +107,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Profile" image="first" id="IIQ-ZY-hYG"/>
+                    <navigationItem key="navigationItem" id="Qfy-Ts-WYj">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="4Hm-Of-Sq8">
+                            <connections>
+                                <segue destination="7CY-31-K9w" kind="show" id="kSM-iu-lU7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scv-Ui-4yo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="739" y="1025"/>
+            <point key="canvasLocation" x="1677.5999999999999" y="1024.1379310344828"/>
         </scene>
-        <!--My Hours-->
+        <!--Edit Profile View Controller-->
+        <scene sceneID="WPr-64-oW0">
+            <objects>
+                <viewController id="7CY-31-K9w" customClass="EditProfileViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mh7-Cv-hU9"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kym-Ve-34b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EWN-Or-2dR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dwx-7y-cDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2443" y="1028"/>
+        </scene>
+        <!--My Hours View Controller-->
         <scene sceneID="ZoH-8n-dKu">
             <objects>
                 <viewController id="hXf-di-nNO" customClass="MyHoursViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
@@ -79,11 +150,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Hours" image="first" id="Qvo-aJ-fr4"/>
+                    <navigationItem key="navigationItem" id="kag-3C-P79">
+                        <barButtonItem key="rightBarButtonItem" title="Add Hours" id="72H-1G-3f3">
+                            <connections>
+                                <segue destination="BdD-Ei-bgn" kind="show" id="oF0-3V-jSz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9r-f8-6AT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749" y="1683"/>
+            <point key="canvasLocation" x="1687.2" y="1682.608695652174"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="zEI-eU-1eP">
+            <objects>
+                <viewController id="BdD-Ei-bgn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EWQ-Vh-2a1"/>
+                        <viewControllerLayoutGuide type="bottom" id="2BA-G9-Zsi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gj3-px-klQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tDj-wv-Qu9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2428" y="1688"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -98,8 +193,8 @@
                     <connections>
                         <segue destination="IVj-YF-JVS" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="678-Gq-P5D" kind="relationship" relationship="viewControllers" id="LU5-t8-H7V"/>
-                        <segue destination="hXf-di-nNO" kind="relationship" relationship="viewControllers" id="uX8-1I-p8c"/>
+                        <segue destination="jIm-L2-52c" kind="relationship" relationship="viewControllers" id="LU5-t8-H7V"/>
+                        <segue destination="Pyk-hR-81T" kind="relationship" relationship="viewControllers" id="uX8-1I-p8c"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -124,6 +219,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVm-gm-mwj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+        </scene>
+        <!--My Profile-->
+        <scene sceneID="zhK-xR-LRs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jIm-L2-52c" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Profile" image="first" id="IIQ-ZY-hYG"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ic1-aX-bbF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="678-Gq-P5D" kind="relationship" relationship="rootViewController" id="Ngf-Mw-UvT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uJ7-1E-OJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="738.39999999999998" y="1024.1379310344828"/>
+        </scene>
+        <!--My Hours-->
+        <scene sceneID="Wwx-mR-dMd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pyk-hR-81T" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Hours" image="first" id="Qvo-aJ-fr4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bOx-La-QuP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hXf-di-nNO" kind="relationship" relationship="rootViewController" id="t5K-hs-WUv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aTB-gX-09s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="748" y="1682.608695652174"/>
         </scene>
     </scenes>
     <resources>
