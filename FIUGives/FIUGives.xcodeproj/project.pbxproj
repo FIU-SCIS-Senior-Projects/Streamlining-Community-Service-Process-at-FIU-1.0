@@ -17,6 +17,7 @@
 		BBD529E01EEDE32A00D45B6B /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */; };
 		BBD529E21EEDE47A00D45B6B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529E11EEDE47A00D45B6B /* EditProfileViewController.swift */; };
 		BBD529E41EEDE4E900D45B6B /* AddHoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529E31EEDE4E900D45B6B /* AddHoursViewController.swift */; };
+		E129E3D51EEDF4D800759B4D /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129E3D41EEDF4D800759B4D /* EventDetailsViewController.swift */; };
 		E149CC1F1EDFA7BB002A3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */; };
 		E149CC261EDFA7BB002A3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E149CC241EDFA7BB002A3256 /* Main.storyboard */; };
 		E149CC281EDFA7BB002A3256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E149CC271EDFA7BB002A3256 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		BBD529E11EEDE47A00D45B6B /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		BBD529E31EEDE4E900D45B6B /* AddHoursViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHoursViewController.swift; sourceTree = "<group>"; };
+		E129E3D41EEDF4D800759B4D /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		E149CC1B1EDFA7BB002A3256 /* FIUGives.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FIUGives.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E149CC251EDFA7BB002A3256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				BBD529E11EEDE47A00D45B6B /* EditProfileViewController.swift */,
 				BBD529DB1EEDCB9E00D45B6B /* MyHoursViewController.swift */,
 				BBD529E31EEDE4E900D45B6B /* AddHoursViewController.swift */,
+				E129E3D41EEDF4D800759B4D /* EventDetailsViewController.swift */,
 				E1629BD71EEB55E400B8926A /* User.swift */,
 				BBD529531EE48F6E00D45B6B /* Event.swift */,
 				BBD529551EEA304E00D45B6B /* EventCalendar.swift */,
@@ -291,6 +294,7 @@
 			files = (
 				BBD529E41EEDE4E900D45B6B /* AddHoursViewController.swift in Sources */,
 				BBD529E21EEDE47A00D45B6B /* EditProfileViewController.swift in Sources */,
+				E129E3D51EEDF4D800759B4D /* EventDetailsViewController.swift in Sources */,
 				BBD529541EE48F6E00D45B6B /* Event.swift in Sources */,
 				BBD529E01EEDE32A00D45B6B /* AddEventViewController.swift in Sources */,
 				BBD529DE1EEDE2BF00D45B6B /* FilterEventsViewController.swift in Sources */,
