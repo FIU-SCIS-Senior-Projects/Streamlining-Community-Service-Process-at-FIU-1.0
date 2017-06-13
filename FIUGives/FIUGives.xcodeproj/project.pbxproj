@@ -98,6 +98,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BBD529E51EEF869400D45B6B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1629BD71EEB55E400B8926A /* User.swift */,
+				BBD529551EEA304E00D45B6B /* EventCalendar.swift */,
+				BBD529531EE48F6E00D45B6B /* Event.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		BBD529E61EEF86DE00D45B6B /* EventsController */ = {
+			isa = PBXGroup;
+			children = (
+				BBD529E81EEF871D00D45B6B /* ProfileController */,
+				BBD529E71EEF870000D45B6B /* MyEventsController */,
+				BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */,
+				BBD529DD1EEDE2BF00D45B6B /* FilterEventsViewController.swift */,
+				BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */,
+			);
+			name = EventsController;
+			sourceTree = "<group>";
+		};
+		BBD529E71EEF870000D45B6B /* MyEventsController */ = {
+			isa = PBXGroup;
+			children = (
+				E129E3D41EEDF4D800759B4D /* EventDetailsViewController.swift */,
+				E141E59C1EEEEB63008C248E /* MyEventsTableViewController.swift */,
+				E141E59A1EEEE4EF008C248E /* MyEvents.swift */,
+			);
+			name = MyEventsController;
+			sourceTree = "<group>";
+		};
+		BBD529E81EEF871D00D45B6B /* ProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				BBD529D91EEDCB8400D45B6B /* MyProfileViewController.swift */,
+				BBD529E11EEDE47A00D45B6B /* EditProfileViewController.swift */,
+			);
+			name = ProfileController;
+			sourceTree = "<group>";
+		};
+		BBD529E91EEF874D00D45B6B /* MyHoursController */ = {
+			isa = PBXGroup;
+			children = (
+				BBD529DB1EEDCB9E00D45B6B /* MyHoursViewController.swift */,
+				BBD529E31EEDE4E900D45B6B /* AddHoursViewController.swift */,
+			);
+			name = MyHoursController;
+			sourceTree = "<group>";
+		};
 		E149CC121EDFA7BB002A3256 = {
 			isa = PBXGroup;
 			children = (
@@ -122,19 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */,
-				BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */,
-				BBD529DD1EEDE2BF00D45B6B /* FilterEventsViewController.swift */,
-				E141E59C1EEEEB63008C248E /* MyEventsTableViewController.swift */,
-				BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */,
-				BBD529D91EEDCB8400D45B6B /* MyProfileViewController.swift */,
-				BBD529E11EEDE47A00D45B6B /* EditProfileViewController.swift */,
-				BBD529DB1EEDCB9E00D45B6B /* MyHoursViewController.swift */,
-				BBD529E31EEDE4E900D45B6B /* AddHoursViewController.swift */,
-				E129E3D41EEDF4D800759B4D /* EventDetailsViewController.swift */,
-				E1629BD71EEB55E400B8926A /* User.swift */,
-				BBD529531EE48F6E00D45B6B /* Event.swift */,
-				E141E59A1EEEE4EF008C248E /* MyEvents.swift */,
-				BBD529551EEA304E00D45B6B /* EventCalendar.swift */,
+				BBD529E61EEF86DE00D45B6B /* EventsController */,
+				BBD529E91EEF874D00D45B6B /* MyHoursController */,
+				BBD529E51EEF869400D45B6B /* Model */,
 				E149CC241EDFA7BB002A3256 /* Main.storyboard */,
 				E149CC271EDFA7BB002A3256 /* Assets.xcassets */,
 				E149CC291EDFA7BB002A3256 /* LaunchScreen.storyboard */,

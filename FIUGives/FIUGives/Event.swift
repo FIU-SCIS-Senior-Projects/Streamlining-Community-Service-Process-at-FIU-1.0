@@ -50,7 +50,6 @@ class Event: Comparable {
         self.eventContactName = eventContactName
         self.eventContactEmail = eventContactEmail
         self.eventRSVPEnabled = eventRSVPEnabled
-        //calculates and stores the event duration
         self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart as Date))
         
         
