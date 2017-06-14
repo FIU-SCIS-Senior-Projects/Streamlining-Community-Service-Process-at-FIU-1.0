@@ -8,10 +8,28 @@
 
 import UIKit
 
-class EventsViewController: UIViewController {
+class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    //MARK: IBOutlets
+    @IBOutlet weak var eventsTableView: UITableView!
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+        
+        //return EventCalendar.shared.totalEvents()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let eventCell = tableView.dequeueReusableCell(withIdentifier: "eventsCalendarCell")!
+        return eventCell
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        eventsTableView.dataSource = self
+        eventsTableView.delegate = self
 
         // Do any additional setup after loading the view.
     }

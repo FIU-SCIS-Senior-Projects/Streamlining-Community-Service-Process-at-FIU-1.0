@@ -111,8 +111,6 @@
 		BBD529E61EEF86DE00D45B6B /* EventsController */ = {
 			isa = PBXGroup;
 			children = (
-				BBD529E81EEF871D00D45B6B /* ProfileController */,
-				BBD529E71EEF870000D45B6B /* MyEventsController */,
 				BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */,
 				BBD529DD1EEDE2BF00D45B6B /* FilterEventsViewController.swift */,
 				BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */,
@@ -173,6 +171,8 @@
 			children = (
 				E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */,
 				BBD529E61EEF86DE00D45B6B /* EventsController */,
+				BBD529E71EEF870000D45B6B /* MyEventsController */,
+				BBD529E81EEF871D00D45B6B /* ProfileController */,
 				BBD529E91EEF874D00D45B6B /* MyHoursController */,
 				BBD529E51EEF869400D45B6B /* Model */,
 				E149CC241EDFA7BB002A3256 /* Main.storyboard */,
@@ -505,6 +505,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Senior-Project.FIUGives";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -517,6 +518,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Senior-Project.FIUGives";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

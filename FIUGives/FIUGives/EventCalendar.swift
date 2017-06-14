@@ -10,20 +10,23 @@ import UIKit
 
 class EventCalendar {
     
-    //MARL: properties
-    var myCalendar: Array<Event>
-    var size: Int
+    
+    //MARK: properties
+    static let shared = EventCalendar()
+    var myCalendar: [Event]
     
     //MARK: initialization
-    init?() {
+    private init() {
         self.myCalendar = Array()
-        self.size = 0
     }
     
-    //
+    //MARK: methods
     func addEvent(newEvent: Event) {
         self.myCalendar.append(newEvent)
-        self.size += 1
+    }
+    
+    func totalEvents() -> Int {
+        return self.myCalendar.count
     }
     
     

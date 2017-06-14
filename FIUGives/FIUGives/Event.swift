@@ -55,6 +55,8 @@ class Event: Comparable {
         
     }
     
+    
+    
     //function to access eventStart property
     func getStartDate() -> NSDate {
         return self.eventStart

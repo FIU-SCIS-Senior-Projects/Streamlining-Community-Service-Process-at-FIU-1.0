@@ -10,6 +10,11 @@ import UIKit
 
 class AddEventViewController: UIViewController {
 
+    @IBOutlet weak var addEvent: UIBarButtonItem!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

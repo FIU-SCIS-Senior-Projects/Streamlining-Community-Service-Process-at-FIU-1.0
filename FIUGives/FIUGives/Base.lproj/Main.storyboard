@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Events View Controller-->
+        <!--Events Calendar-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="EventsViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,24 +20,54 @@
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vOF-8j-hdV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventsCalendarCell" id="xjY-4g-y9k">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xjY-4g-y9k" id="D0C-iT-KnE">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vOF-8j-hdV" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="EMG-MV-jtZ"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="vOF-8j-hdV" secondAttribute="bottom" id="FE9-13-CRM"/>
+                            <constraint firstItem="vOF-8j-hdV" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="Kwb-mJ-1PQ"/>
+                            <constraint firstAttribute="trailing" secondItem="vOF-8j-hdV" secondAttribute="trailing" id="RaY-hA-H4J"/>
+                            <constraint firstItem="vOF-8j-hdV" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="hq6-ac-vda"/>
+                            <constraint firstAttribute="trailing" secondItem="vOF-8j-hdV" secondAttribute="trailing" id="l24-86-2OF"/>
+                            <constraint firstItem="vOF-8j-hdV" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="q5X-Ib-Jnd"/>
+                            <constraint firstItem="vOF-8j-hdV" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="sdp-H3-jSD"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="WB7-yl-F4r">
+                    <navigationItem key="navigationItem" title="Events Calendar" id="WB7-yl-F4r">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="hZJ-P8-nZ7"/>
                         <barButtonItem key="leftBarButtonItem" title="Filter" id="uMU-6n-lyj">
                             <connections>
                                 <segue destination="T37-nn-CEA" kind="show" id="Qu5-RZ-7Ah"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add Event" id="11n-xG-lhZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="11n-xG-lhZ">
                             <connections>
                                 <segue destination="1jL-1W-vtQ" kind="show" id="Qzp-Nd-6fM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="eventsTableView" destination="vOF-8j-hdV" id="Klm-ou-LfL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1537" y="-1325"/>
+            <point key="canvasLocation" x="1536.8" y="-1325.4872563718143"/>
         </scene>
         <!--My Events-->
         <scene sceneID="3It-UA-XLb">
@@ -46,25 +79,25 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RsvpEventCell" rowHeight="90" id="DCU-9S-txG" customClass="MyEvents" customModule="FIUGives" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="120" width="375" height="90"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DCU-9S-txG" id="fsE-zg-qiz">
-                                    <frame key="frameInset" width="375" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yu-4h-m07">
-                                            <frame key="frameInset" minX="18" minY="8" width="93" height="21"/>
+                                            <rect key="frame" x="18" y="8" width="93" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAU-VK-ch1">
-                                            <frame key="frameInset" minX="18" minY="39" width="83" height="21"/>
+                                            <rect key="frame" x="18" y="39" width="83" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNa-9s-utU">
-                                            <frame key="frameInset" minX="278" minY="30" width="73" height="30"/>
+                                            <rect key="frame" x="278" y="30" width="73" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.0" green="0.15062917679999999" blue="0.47636065570000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
@@ -73,14 +106,14 @@
                                             </state>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKJ-qv-Ls3">
-                                            <frame key="frameInset" minX="18" minY="19" width="93" height="21"/>
+                                            <rect key="frame" x="18" y="19" width="93" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ff8-n8-wF3">
-                                            <frame key="frameInset" minX="18" minY="54" width="75" height="21"/>
+                                            <rect key="frame" x="18" y="54" width="75" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -141,25 +174,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V10-63-EC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318" y="-1918"/>
+            <point key="canvasLocation" x="2371" y="-2428"/>
         </scene>
-        <!--Add Event View Controller-->
+        <!--Add Event-->
         <scene sceneID="JL3-oD-Wgl">
             <objects>
-                <viewController id="1jL-1W-vtQ" customClass="AddEventViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="1jL-1W-vtQ" customClass="AddEventViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="emE-in-uKb"/>
                         <viewControllerLayoutGuide type="bottom" id="E2W-OM-lj2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4MT-Kc-RRv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dV-lp-aVs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="887"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1m-Xu-u4a">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1000" id="PQq-YO-1Ou"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="f1m-Xu-u4a" firstAttribute="top" secondItem="5dV-lp-aVs" secondAttribute="top" id="6TQ-Tz-DNF"/>
+                                    <constraint firstItem="f1m-Xu-u4a" firstAttribute="leading" secondItem="5dV-lp-aVs" secondAttribute="leading" id="7ez-UZ-8D8"/>
+                                    <constraint firstAttribute="bottom" secondItem="f1m-Xu-u4a" secondAttribute="bottom" id="BGy-nL-ojH"/>
+                                    <constraint firstAttribute="trailing" secondItem="f1m-Xu-u4a" secondAttribute="trailing" id="Yao-pP-Cvf"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5dV-lp-aVs" firstAttribute="leading" secondItem="4MT-Kc-RRv" secondAttribute="leading" id="73A-bx-u1T"/>
+                            <constraint firstItem="f1m-Xu-u4a" firstAttribute="width" secondItem="4MT-Kc-RRv" secondAttribute="width" id="TEn-b6-W6f"/>
+                            <constraint firstAttribute="trailing" secondItem="5dV-lp-aVs" secondAttribute="trailing" id="ZoX-py-bR7"/>
+                            <constraint firstItem="E2W-OM-lj2" firstAttribute="top" secondItem="5dV-lp-aVs" secondAttribute="bottom" id="k8M-k8-ohW"/>
+                            <constraint firstItem="5dV-lp-aVs" firstAttribute="top" secondItem="emE-in-uKb" secondAttribute="bottom" id="yR3-t8-zcv"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Event" id="OHR-5E-o2Y">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="bDY-wG-F2W"/>
+                    </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="1000"/>
+                    <connections>
+                        <outlet property="addEvent" destination="bDY-wG-F2W" id="pw6-2Y-4y9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2t-my-bTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318" y="-1238"/>
+            <point key="canvasLocation" x="2370.4000000000001" y="-1696.5517241379312"/>
         </scene>
         <!--Event Details-->
         <scene sceneID="YR8-ee-8Yx">
@@ -179,7 +247,7 @@
             </objects>
             <point key="canvasLocation" x="2399" y="-376"/>
         </scene>
-        <!--My Profile View Controller-->
+        <!--My Profile-->
         <scene sceneID="wTU-L4-80y">
             <objects>
                 <viewController id="678-Gq-P5D" customClass="MyProfileViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
@@ -192,8 +260,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Qfy-Ts-WYj">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="4Hm-Of-Sq8">
+                    <navigationItem key="navigationItem" title="My Profile" id="Qfy-Ts-WYj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="4Hm-Of-Sq8">
                             <connections>
                                 <segue destination="7CY-31-K9w" kind="show" id="kSM-iu-lU7"/>
                             </connections>
@@ -217,12 +285,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="j9v-ff-8Z0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xke-kC-nMe"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dwx-7y-cDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2282" y="1075"/>
         </scene>
-        <!--My Hours View Controller-->
+        <!--My Hours-->
         <scene sceneID="ZoH-8n-dKu">
             <objects>
                 <viewController id="hXf-di-nNO" customClass="MyHoursViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
@@ -235,8 +308,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="kag-3C-P79">
-                        <barButtonItem key="rightBarButtonItem" title="Add Hours" id="72H-1G-3f3">
+                    <navigationItem key="navigationItem" title="My Hours" id="kag-3C-P79">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="72H-1G-3f3">
                             <connections>
                                 <segue destination="BdD-Ei-bgn" kind="show" id="oF0-3V-jSz"/>
                             </connections>
