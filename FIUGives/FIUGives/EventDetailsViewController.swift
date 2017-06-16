@@ -17,7 +17,6 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var eventEnd: UILabel!
     @IBOutlet weak var eventDesc: UITextView!
     @IBOutlet weak var eventLoc: UITextView!
-    UIImageView!
     @IBOutlet weak var eventFlyer: UILabel!
     @IBOutlet weak var rsvpButton: UIButton!
     
