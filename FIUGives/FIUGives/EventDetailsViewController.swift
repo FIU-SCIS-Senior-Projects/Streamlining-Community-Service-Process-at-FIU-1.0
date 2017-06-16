@@ -10,6 +10,18 @@ import UIKit
 
 class EventDetailsViewController: UIViewController {
     
+    @IBOutlet weak var eventName: UILabel!
+    @IBOutlet weak var eventContactEmail: UILabel!
+    @IBOutlet weak var eventContact: UILabel!
+    @IBOutlet weak var eventStart: UILabel!
+    @IBOutlet weak var eventEnd: UILabel!
+    @IBOutlet weak var eventDesc: UITextView!
+    @IBOutlet weak var eventLoc: UITextView!
+    UIImageView!
+    @IBOutlet weak var eventFlyer: UILabel!
+    @IBOutlet weak var rsvpButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

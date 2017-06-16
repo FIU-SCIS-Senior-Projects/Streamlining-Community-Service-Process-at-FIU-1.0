@@ -22,10 +22,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventsCalendarCell" id="xjY-4g-y9k">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="92" width="1000" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xjY-4g-y9k" id="D0C-iT-KnE">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="1000" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -248,24 +248,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g3j-1r-G2d" id="M8S-Jv-fyk">
                                             <frame key="frameInset" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1496657376_linkedin_circle" translatesAutoresizingMaskIntoConstraints="NO" id="cFa-5R-kLp">
-                                                    <frame key="frameInset" minX="72" minY="18" width="25" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1496657382_twitter_circle" translatesAutoresizingMaskIntoConstraints="NO" id="I8u-Nf-Elt">
-                                                    <frame key="frameInset" minX="139" minY="18" width="25" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1497587580_mail" translatesAutoresizingMaskIntoConstraints="NO" id="TKl-cq-MAQ">
-                                                    <frame key="frameInset" minX="273" minY="18" width="25" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1496657388_facebook_circle" translatesAutoresizingMaskIntoConstraints="NO" id="KwW-ff-HSZ">
-                                                    <frame key="frameInset" minX="208" minY="18" width="25" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="WYQ-Pd-VUr">
@@ -291,6 +273,16 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g8h-yV-wdt" id="2DU-zW-3g2">
                                             <frame key="frameInset" width="375" height="153"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBs-Uh-vuK">
+                                                    <frame key="frameInset" minX="125" minY="17" width="124" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.06139354323" blue="0.35985576920000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="Rsvp">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -301,6 +293,17 @@
                             <outlet property="delegate" destination="70Y-mg-VM9" id="A68-C2-bmM"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="eventContact" destination="QVX-GY-jSY" id="l8V-5H-ZN6"/>
+                        <outlet property="eventContactEmail" destination="nvF-lc-aaA" id="mrm-V4-5yd"/>
+                        <outlet property="eventDesc" destination="BAm-Tz-nDG" id="WQd-Y6-sem"/>
+                        <outlet property="eventEnd" destination="FgB-cj-oOf" id="hfn-ab-qVY"/>
+                        <outlet property="eventFlyer" destination="sVr-Bx-541" id="uj9-ac-O2r"/>
+                        <outlet property="eventLoca" destination="O1s-Bx-h6b" id="N0O-js-xea"/>
+                        <outlet property="eventName" destination="TRm-T8-wkF" id="pRu-dl-EKi"/>
+                        <outlet property="eventStartDate" destination="1lk-Le-Ynw" id="6rB-Y3-LJe"/>
+                        <outlet property="rsvpButton" destination="gBs-Uh-vuK" id="lys-Hk-ygt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VH3-5y-6t9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -674,12 +677,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1496657376_linkedin_circle" width="64" height="64"/>
-        <image name="1496657382_twitter_circle" width="64" height="64"/>
-        <image name="1496657388_facebook_circle" width="64" height="64"/>
         <image name="1497587066_Account" width="64" height="64"/>
         <image name="1497587577_clock" width="64" height="64"/>
-        <image name="1497587580_mail" width="128" height="128"/>
         <image name="first" width="30" height="30"/>
     </resources>
 </document>
