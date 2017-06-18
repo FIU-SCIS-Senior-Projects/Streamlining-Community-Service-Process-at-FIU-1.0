@@ -52,8 +52,10 @@ class Event: Comparable {
         self.eventRSVPEnabled = eventRSVPEnabled
         self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart as Date))
         
-        
     }
+    
+        
+
     
     
     

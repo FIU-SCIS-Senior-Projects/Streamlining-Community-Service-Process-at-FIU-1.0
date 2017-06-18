@@ -8,9 +8,12 @@
 
 import UIKit
 
+//MARK: - Singleton
 class User {
+    //MARK: Shared Instance
+    static let sharedInstance = User()
     
-    //MARK: properties
+    //MARK: Properties
     var userName: String
     var userAbout: String?
     var userInterests: String?
@@ -22,31 +25,28 @@ class User {
     var userLinkedin: String?
     var userFacebook: String?
     var userTwitter: String?
+    var userEventsCreated = [Event]()
+    var userEventsRsvp = [Event]()
     
-    //MARK: initialization
-    init?(userName: String, userAbout: String?, userInterests: String?, userOrganizations: String?, userYear: String?, userTrack: String?, userPhone: String?, userEmail: String, userLinkedin: String?, userFacebook: String?, userTwitter: String?) {
-        //initialization should fail if no eventName/eventCategory/eventLocationName/eventContactName/eventContactEmail
-        if userName.isEmpty || userEmail.isEmpty {
-            return nil
-        }
-    
-    //initialize properties
-    self.userName = userName
-    self.userAbout = userAbout
-    self.userInterests = userInterests
-    self.userOrganizations = userOrganizations
-    self.userYear = userYear
-    self.userTrack = userTrack
-    self.userPhone = userPhone
-    self.userEmail = userEmail
-    self.userLinkedin = userLinkedin
-    self.userFacebook = userFacebook
-    self.userTwitter = userTwitter
-    
+    //MARK: Initialization
+    private init() {
+        //initialize properties
+        self.userName = String()
+        self.userAbout = String()
+        self.userInterests = String()
+        self.userOrganizations = String()
+        self.userYear = String()
+        self.userTrack = String()
+        self.userPhone = String()
+        self.userEmail = String()
+        self.userLinkedin = String()
+        self.userFacebook = String()
+        self.userTwitter = String()
+        self.userEventsCreated = Array()
+        self.userEventsRsvp = Array()
     }
     
-    
-    //get properties
+    //MARK: Get Methods
     func getUserName() -> String {
         return userName
     }
@@ -91,7 +91,15 @@ class User {
         return userFacebook
     }
     
-    //set properties
+    func getUserEventsCreated() -> Array<Event> {
+        return userEventsCreated
+    }
+    
+    func getUserEventsRSVP() -> Array<Event> {
+        return userEventsRsvp
+    }
+    
+    //MARK: Set Methods
     func setUserName(Name: String) {
         self.userName = Name
     }
@@ -135,5 +143,13 @@ class User {
     func setUserFacebook(Facebook: String) {
         self.userFacebook = Facebook
     }
-}
 
+    func addToUserEventCreated(Event: Event) {
+        self.userEventsCreated.append(Event)
+    }
+    
+    func addToUserEventRsvp(Event: Event) {
+        self.userEventsRsvp.append(Event)
+    }
+    
+}

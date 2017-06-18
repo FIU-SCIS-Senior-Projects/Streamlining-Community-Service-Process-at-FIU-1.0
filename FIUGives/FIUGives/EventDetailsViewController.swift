@@ -9,6 +9,22 @@
 import UIKit
 
 class EventDetailsViewController: UIViewController {
+    @IBOutlet weak var eventName: UILabel!
+    @IBOutlet weak var eventContactEmail: UILabel!
+    @IBOutlet weak var eventContact: UILabel!
+    @IBOutlet weak var eventStart: UILabel!
+    @IBOutlet weak var eventEnd: UILabel!
+    @IBOutlet weak var eventDesc: UITextView!
+    @IBOutlet weak var eventLoc: UITextView!
+    @IBOutlet weak var rsvpButton: UIButton!
+    @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var attendeesView: UITextView!
+    
+    @IBAction func goToRsvp(_ sender: AnyObject) {
+    }
+    
+    @IBAction func goToComments(_ sender: AnyObject) {
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

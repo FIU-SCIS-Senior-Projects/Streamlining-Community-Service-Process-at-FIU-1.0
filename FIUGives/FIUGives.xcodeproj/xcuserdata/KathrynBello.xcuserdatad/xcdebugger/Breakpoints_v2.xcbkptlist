@@ -6,17 +6,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FIUGives/User.swift"
-            timestampString = "518927703.501562"
+            filePath = "FIUGives/Event.swift"
+            timestampString = "519434749.114888"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "getUserOrganizations()"
-            landmarkType = "7">
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "Event"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FIUGives/User.swift"
-            timestampString = "518928490.037071"
+            timestampString = "519444006.667847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "getUserAbout()"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "getUserEventsRSVP()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
