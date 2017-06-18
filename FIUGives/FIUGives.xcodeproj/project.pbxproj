@@ -16,15 +16,15 @@
 		BBD529E01EEDE32A00D45B6B /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */; };
 		BBD529E21EEDE47A00D45B6B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529E11EEDE47A00D45B6B /* EditProfileViewController.swift */; };
 		BBD529E41EEDE4E900D45B6B /* AddHoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529E31EEDE4E900D45B6B /* AddHoursViewController.swift */; };
+		E11307A51EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11307A41EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift */; };
 		E129E3D51EEDF4D800759B4D /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129E3D41EEDF4D800759B4D /* EventDetailsViewController.swift */; };
-		E141E59B1EEEE4EF008C248E /* MyEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141E59A1EEEE4EF008C248E /* MyEvents.swift */; };
 		E141E59D1EEEEB63008C248E /* MyEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141E59C1EEEEB63008C248E /* MyEventsTableViewController.swift */; };
 		E149CC1F1EDFA7BB002A3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */; };
-		E149CC261EDFA7BB002A3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E149CC241EDFA7BB002A3256 /* Main.storyboard */; };
 		E149CC281EDFA7BB002A3256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E149CC271EDFA7BB002A3256 /* Assets.xcassets */; };
 		E149CC2B1EDFA7BB002A3256 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E149CC291EDFA7BB002A3256 /* LaunchScreen.storyboard */; };
 		E149CC361EDFA7BB002A3256 /* FIUGivesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC351EDFA7BB002A3256 /* FIUGivesTests.swift */; };
 		E149CC411EDFA7BB002A3256 /* FIUGivesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC401EDFA7BB002A3256 /* FIUGivesUITests.swift */; };
+		E15D6E611EF63C65006135E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15D6E5F1EF63C65006135E3 /* Main.storyboard */; };
 		E1629BD81EEB55E400B8926A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1629BD71EEB55E400B8926A /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,12 +55,11 @@
 		BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		BBD529E11EEDE47A00D45B6B /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		BBD529E31EEDE4E900D45B6B /* AddHoursViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHoursViewController.swift; sourceTree = "<group>"; };
+		E11307A41EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsTableViewCell.swift; sourceTree = "<group>"; };
 		E129E3D41EEDF4D800759B4D /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
-		E141E59A1EEEE4EF008C248E /* MyEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEvents.swift; sourceTree = "<group>"; };
 		E141E59C1EEEEB63008C248E /* MyEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsTableViewController.swift; sourceTree = "<group>"; };
 		E149CC1B1EDFA7BB002A3256 /* FIUGives.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FIUGives.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E149CC251EDFA7BB002A3256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E149CC271EDFA7BB002A3256 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E149CC2A1EDFA7BB002A3256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E149CC2C1EDFA7BB002A3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +69,7 @@
 		E149CC3C1EDFA7BB002A3256 /* FIUGivesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FIUGivesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E149CC401EDFA7BB002A3256 /* FIUGivesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIUGivesUITests.swift; sourceTree = "<group>"; };
 		E149CC421EDFA7BB002A3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E15D6E601EF63C65006135E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1629BD71EEB55E400B8926A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,7 +123,7 @@
 			children = (
 				E129E3D41EEDF4D800759B4D /* EventDetailsViewController.swift */,
 				E141E59C1EEEEB63008C248E /* MyEventsTableViewController.swift */,
-				E141E59A1EEEE4EF008C248E /* MyEvents.swift */,
+				E11307A41EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift */,
 			);
 			name = MyEventsController;
 			sourceTree = "<group>";
@@ -175,8 +175,8 @@
 				BBD529E81EEF871D00D45B6B /* ProfileController */,
 				BBD529E91EEF874D00D45B6B /* MyHoursController */,
 				BBD529E51EEF869400D45B6B /* Model */,
-				E149CC241EDFA7BB002A3256 /* Main.storyboard */,
 				E149CC271EDFA7BB002A3256 /* Assets.xcassets */,
+				E15D6E5F1EF63C65006135E3 /* Main.storyboard */,
 				E149CC291EDFA7BB002A3256 /* LaunchScreen.storyboard */,
 				E149CC2C1EDFA7BB002A3256 /* Info.plist */,
 			);
@@ -311,9 +311,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15D6E611EF63C65006135E3 /* Main.storyboard in Resources */,
 				E149CC2B1EDFA7BB002A3256 /* LaunchScreen.storyboard in Resources */,
 				E149CC281EDFA7BB002A3256 /* Assets.xcassets in Resources */,
-				E149CC261EDFA7BB002A3256 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +340,7 @@
 			files = (
 				BBD529E41EEDE4E900D45B6B /* AddHoursViewController.swift in Sources */,
 				BBD529E21EEDE47A00D45B6B /* EditProfileViewController.swift in Sources */,
+				E11307A51EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift in Sources */,
 				E129E3D51EEDF4D800759B4D /* EventDetailsViewController.swift in Sources */,
 				BBD529541EE48F6E00D45B6B /* Event.swift in Sources */,
 				BBD529E01EEDE32A00D45B6B /* AddEventViewController.swift in Sources */,
@@ -350,7 +351,6 @@
 				BBD529DC1EEDCB9E00D45B6B /* MyHoursViewController.swift in Sources */,
 				E1629BD81EEB55E400B8926A /* User.swift in Sources */,
 				BBD529D41EEDC25B00D45B6B /* EventsViewController.swift in Sources */,
-				E141E59B1EEEE4EF008C248E /* MyEvents.swift in Sources */,
 				E149CC1F1EDFA7BB002A3256 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,20 +387,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E149CC241EDFA7BB002A3256 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E149CC251EDFA7BB002A3256 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E149CC291EDFA7BB002A3256 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E149CC2A1EDFA7BB002A3256 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E15D6E5F1EF63C65006135E3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E15D6E601EF63C65006135E3 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -9,9 +9,6 @@
 import UIKit
 
 class MyEventsTableViewController: UITableViewController {
-
-    var event = [Event]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,23 +28,25 @@ class MyEventsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "rsvpCell", for: indexPath) as! MyEventsTableViewCell
+        
+        // Testing
+        cell.eventName?.setTitle("Fiu Volunteer Opportunity", for: UIControlState.normal)
+        cell.startDate?.text = "June 06, 2017 9:00 AM"
+        cell.endDate?.text = "June 06, 2017 11:00 AM"
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
