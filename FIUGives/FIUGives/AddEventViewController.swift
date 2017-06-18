@@ -19,7 +19,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     @IBOutlet weak var eventDescriptionTextView: UITextView!
     @IBOutlet weak var eventLocationTextField: UITextField!
     
-    //var eventCategory: String
     var eventName: String?
     var eventFlyerURL: String?
     var eventContactName: String?
@@ -41,6 +40,12 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         
         eventName = eventNameTextField.text!
         eventFlyerURL = eventFlyerURLTextField.text!
+        eventContactName = eventContactNameTextField.text!
+        eventDescription = eventDescriptionTextView.text!
+        eventLocationName = eventLocationTextField.text!
+        
+        
+        
         
     }
 
