@@ -18,17 +18,30 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     @IBOutlet weak var eventContactEmailTextField: UITextField!
     @IBOutlet weak var eventDescriptionTextView: UITextView!
     @IBOutlet weak var eventLocationTextField: UITextField!
+    @IBOutlet weak var eventStartDate: UIDatePicker!
+    @IBOutlet weak var eventEndDate: UIDatePicker!
+    @IBOutlet weak var rsvpEnabled: UILabel!
+    @IBOutlet weak var rsvpSwitch: UISwitch!
+    @IBOutlet weak var eventCapacity: UITextField!
+    
+    
     
     var eventName: String?
     var eventFlyerURL: String?
     var eventContactName: String?
+    var eventContactEmail: String?
     var eventDescription: String?
     var eventLocationName: String?
+ 
+    
+    @IBAction func rsvpEnabled(_ sender: Any) {
+        updateRSVPState()
+    }
     
     
     @IBAction func addEvent(_ sender: UIBarButtonItem) {
         
-        guard ((!(eventNameTextField.text?.isEmpty)!) && (!(eventContactNameTextField.text?.isEmpty)!) && (!(eventContactEmailTextField.text?.isEmpty)!) && (!(eventLocationTextField.text?.isEmpty)!)) else {
+        guard ((!(eventNameTextField.text?.isEmpty)!) && (!(eventFlyerURLTextField.text?.isEmpty)!) && (!(eventContactNameTextField.text?.isEmpty)!) && (!(eventContactEmailTextField.text?.isEmpty)!) && (!(eventDescriptionTextView.text?.isEmpty)!) && (!(eventLocationTextField.text?.isEmpty)!)) else {
             //present alert
             let alertController = UIAlertController(title: "Event Not Created", message: "All fields must be completed", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .destructive)
@@ -41,6 +54,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         eventName = eventNameTextField.text!
         eventFlyerURL = eventFlyerURLTextField.text!
         eventContactName = eventContactNameTextField.text!
+        eventContactEmail = eventContactNameTextField.text!
         eventDescription = eventDescriptionTextView.text!
         eventLocationName = eventLocationTextField.text!
         
@@ -66,6 +80,9 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         eventContactEmailTextField.delegate = self
         eventDescriptionTextView.delegate = self
         eventLocationTextField.delegate = self
+        
+        updateRSVPState()
+        
     
         
     }
@@ -81,7 +98,16 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         return true
     }
     
-
+    //function to update the rsvp state
+    func updateRSVPState() {
+        if rsvpSwitch.isOn {
+            rsvpEnabled.text = "RSVP enabled"
+        }
+        else {
+            rsvpEnabled.text = "RSVP disabled"
+            eventCapacity.text = "Event capacity unlimited"
+        }
+    }
     
 
     /*
