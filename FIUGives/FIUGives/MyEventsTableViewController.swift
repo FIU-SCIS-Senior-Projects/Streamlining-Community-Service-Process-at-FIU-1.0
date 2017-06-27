@@ -8,6 +8,12 @@
 
 import UIKit
 
+var myIndex = 0;
+
+// var eventsRsvp = User.sharedInstance.userEventsRsvp
+// Testing
+var eventsRsvp = ["Volunteer Event 1", "Volunteer Event 2", "Volunteer Event 3", "Volunteer Event 4"]
+
 class MyEventsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,19 +39,30 @@ class MyEventsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return eventsRsvp.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rsvpCell", for: indexPath) as! MyEventsTableViewCell
         
+        // let formatter = DateFormatter()
+        // formatter.dateFormat = "EEEE MMM d, h:mm a"
+        
         // Testing
-        cell.eventName?.setTitle("Fiu Volunteer Opportunity", for: UIControlState.normal)
-        cell.startDate?.text = "June 06, 2017 9:00 AM"
-        cell.endDate?.text = "June 06, 2017 11:00 AM"
+        cell.eventName.text = eventsRsvp[indexPath.row]
+        
+        // cell.eventName.text = eventsRsvp[indexPath.row].eventName
+        
+        // cell.startDate.text = formatter.string(from: eventsRsvp[indexPath.row].eventStart as Date)
+        // cell.endDate.text = formatter.string(from: eventsRsvp[indexPath.row].eventEnd as Date)
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myIndex = indexPath.row
+        performSegue(withIdentifier: "eventDetailsSegue", sender: self)
     }
 
     /*
@@ -71,7 +88,6 @@ class MyEventsTableViewController: UITableViewController {
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
     }
     */
 

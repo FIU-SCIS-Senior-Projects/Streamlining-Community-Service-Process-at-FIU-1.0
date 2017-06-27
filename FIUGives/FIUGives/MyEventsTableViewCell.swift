@@ -9,14 +9,21 @@
 import UIKit
 
 class MyEventsTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var eventName: UIButton!
+    
+    @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var startDate: UILabel!
     @IBOutlet weak var endDate: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // eventName.text = eventsRsvp[myIndex].eventName
+        
+        // Testing
+        eventName.text = eventsRsvp[myIndex]
+        
+        // startDate.text = formatter.string(from: eventsRsvp[indexPath.row].eventStart as Date)
+        // eventDate.text = formatter.string(from: eventsRsvp[indexPath.row].eventEnd as Date)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
