@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MapKit
 
-class FilterEventsViewController: UIViewController {
+class MapEventsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

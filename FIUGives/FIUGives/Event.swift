@@ -13,27 +13,23 @@ class Event: Comparable {
     //MARK: properties
     var eventName: String
     var eventCategory: String
-    //URL for an event is an optional
     var eventFlyerURL: String
-    //event discription is an optional
     var eventDescription: String
     var eventStart: NSDate
     var eventEnd: NSDate
     var eventDuration = 0.0
-    var eventType: String
-    var eventLocationName: String
-    //event clubs is an optional
-    var eventClubs: String
+    var eventAddress: Address
     var eventContactName: String
     var eventContactEmail: String
     var eventRSVPEnabled = true
     var eventCapacity = 0
+    var eventLatitude: Double?
+    var eventLongtitude: Double?
     
-    //array to hold the names of event attendants
     var eventAttendants = [String]()
     
     //MARK: initialization
-    init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: NSDate, eventEnd: NSDate, eventLocationName: String, eventClubs: String, eventContactName: String, eventContactEmail: String, eventRSVPEnabled: Bool) {
+    init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: NSDate, eventEnd: NSDate, eventAddress: Address, eventContactName: String, eventContactEmail: String, eventRSVPEnabled: Bool) {
         
         //initialize properties
         self.eventName = eventName
@@ -42,9 +38,9 @@ class Event: Comparable {
         self.eventDescription = eventDescription
         self.eventStart = eventStart
         self.eventEnd = eventEnd
-        self.eventType = "Volunteering"
-        self.eventLocationName = eventLocationName
-        self.eventClubs = eventClubs
+        //self.eventType = "Volunteering"
+        self.eventAddress = eventAddress
+        //self.eventClubs = eventClubs
         self.eventContactName = eventContactName
         self.eventContactEmail = eventContactEmail
         self.eventRSVPEnabled = eventRSVPEnabled
@@ -52,9 +48,9 @@ class Event: Comparable {
         
     }
      //init with capacity
-    convenience init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: NSDate, eventEnd: NSDate, eventLocationName: String, eventClubs: String, eventContactName: String, eventContactEmail: String, eventRSVPEnabled: Bool, eventCapacity: Int) {
+    convenience init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: NSDate, eventEnd: NSDate, eventAddress: Address, eventContactName: String, eventContactEmail: String, eventRSVPEnabled: Bool, eventCapacity: Int) {
     
-    self.init(eventName: eventName, eventCategory: eventCategory, eventFlyerURL: eventFlyerURL, eventDescription: eventDescription, eventStart: eventStart, eventEnd: eventEnd, eventLocationName: eventLocationName, eventClubs: eventClubs, eventContactName: eventContactName, eventContactEmail: eventContactEmail, eventRSVPEnabled: eventRSVPEnabled)
+        self.init(eventName: eventName, eventCategory: eventCategory, eventFlyerURL: eventFlyerURL, eventDescription: eventDescription, eventStart: eventStart, eventEnd: eventEnd, eventAddress:eventAddress, eventContactName: eventContactName, eventContactEmail: eventContactEmail, eventRSVPEnabled: eventRSVPEnabled)
     self.eventCapacity = eventCapacity
     }
         
