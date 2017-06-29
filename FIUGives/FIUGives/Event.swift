@@ -65,7 +65,7 @@ class Event: Comparable {
         self.eventLongitude = eventLongitude
     }
     
-    //function to access eventStart property
+    // Function to access eventStart property
     func getStartDate() -> NSDate {
         return self.eventStart
     }
@@ -83,19 +83,69 @@ class Event: Comparable {
     
 
     
-    //add attendants to the eventAttendants array
+    // Add attendants to the eventAttendants array
+    func addToEventAttendants(Attendant: String) {
+        self.eventAttendants.append(Attendant)
+    }
     
-    //remove attendant from the eventAttendants array
+    // Remove attendant from the eventAttendants array
+    func removeEventAttendant(Attendant: String) {
+        if let index = eventAttendants.index(of: Attendant) {
+            self.eventAttendants.remove(at: index)
+        }
+    }
     
-    // delete event method
+    // Delete event method
     
-    // 
     
-    //update event information
+    // Update event information
+    func setEventName(Name: String) {
+        self.eventName = Name
+    }
     
-    //format event start date
+    func setEventCategory(Category: String) {
+        self.eventName = Category
+    }
     
-    //format event end date
+    func setEventFlyerURL(Flyer: String) {
+        self.eventFlyerURL = Flyer
+    }
+    
+    func setEventDescription(Description: String) {
+        self.eventDescription = Description
+    }
+    
+    func setEventStartDate(StartDate: NSDate) {
+        self.eventStart = StartDate
+    }
+    
+    func setEventEndDate(EndDate: NSDate) {
+        self.eventEnd = EndDate
+    }
+    
+    func setEventAddress(EventAddress: Address) {
+        self.eventAddress = EventAddress
+    }
+    
+    func setEventContactName(ContactName: String) {
+        self.eventContactName = ContactName
+    }
+    
+    func setEventContactEmail(ContactEmail: String) {
+        self.eventContactEmail = ContactEmail
+    }
+    
+    func setEventRSVP(RsvpEnable: Bool) {
+        self.eventRSVPEnabled = RsvpEnable
+    }
+    
+    func setEventCapacity(Capacity: Int) {
+        self.eventCapacity = Capacity
+    }
+    
+    // Format event start date
+    
+    // Format event end date
     
     
     
