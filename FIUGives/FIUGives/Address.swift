@@ -12,13 +12,10 @@ struct Address {
     var city: String
     var state: String
     var zip: String
-    let space = " "
     
     func fullAddress() -> String {
-        return street + space + city + space + state + space + zip
+        return "\(street), \(city), \(state), \(zip), USA"
+  
     }
-    
-    
-    
     
 }

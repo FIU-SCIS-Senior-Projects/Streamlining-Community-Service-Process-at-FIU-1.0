@@ -67,7 +67,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Events Calendar" id="WB7-yl-F4r">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="hZJ-P8-nZ7"/>
-                        <barButtonItem key="leftBarButtonItem" title="Map" id="uMU-6n-lyj">
+                        <barButtonItem key="leftBarButtonItem" title="Filter" id="uMU-6n-lyj">
                             <connections>
                                 <segue destination="T37-nn-CEA" kind="show" id="Qu5-RZ-7Ah"/>
                             </connections>
@@ -387,10 +387,10 @@
             </objects>
             <point key="canvasLocation" x="777" y="-374"/>
         </scene>
-        <!--Map Events View Controller-->
+        <!--Filter Events View Controller-->
         <scene sceneID="Vzs-fw-lFz">
             <objects>
-                <viewController id="T37-nn-CEA" customClass="MapEventsViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="T37-nn-CEA" customClass="FilterEventsViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pbb-5a-S2n"/>
                         <viewControllerLayoutGuide type="bottom" id="pli-0o-1vU"/>
@@ -398,12 +398,6 @@
                     <view key="view" contentMode="scaleToFill" id="9YI-rs-I6e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ahD-r0-Hdd">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
@@ -668,10 +662,10 @@
             </objects>
             <point key="canvasLocation" x="2282" y="1075"/>
         </scene>
-        <!--My Hours-->
+        <!--Events Map-->
         <scene sceneID="ZoH-8n-dKu">
             <objects>
-                <viewController id="hXf-di-nNO" customClass="MyHoursViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hXf-di-nNO" customClass="EventsMapViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="o6K-1R-hny"/>
                         <viewControllerLayoutGuide type="bottom" id="8aM-Da-JdN"/>
@@ -681,35 +675,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Hours" id="kag-3C-P79">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="72H-1G-3f3">
-                            <connections>
-                                <segue destination="BdD-Ei-bgn" kind="show" id="oF0-3V-jSz"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Events Map" id="kag-3C-P79"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9r-f8-6AT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="722" y="1751"/>
-        </scene>
-        <!--Add Hours View Controller-->
-        <scene sceneID="zEI-eU-1eP">
-            <objects>
-                <viewController id="BdD-Ei-bgn" customClass="AddHoursViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EWQ-Vh-2a1"/>
-                        <viewControllerLayoutGuide type="bottom" id="2BA-G9-Zsi"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Gj3-px-klQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tDj-wv-Qu9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1463" y="1751"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -771,11 +741,11 @@
             </objects>
             <point key="canvasLocation" x="721" y="1075"/>
         </scene>
-        <!--My Hours-->
+        <!--Map-->
         <scene sceneID="Wwx-mR-dMd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pyk-hR-81T" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Hours" image="first" id="Qvo-aJ-fr4"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="first" id="Qvo-aJ-fr4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bOx-La-QuP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

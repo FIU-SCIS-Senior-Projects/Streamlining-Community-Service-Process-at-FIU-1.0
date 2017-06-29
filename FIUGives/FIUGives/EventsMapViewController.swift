@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyHoursViewController: UIViewController {
+class EventsMapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -5,12 +5,15 @@
 //  Created by Katya Gumnova on 6/11/17.
 //  Copyright © 2017 FIUGives. All rights reserved.
 //
+//verify network connection prior to adding the event
+
 
 import UIKit
 import CoreLocation
 
 class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
+
     //MARK: properties
     
     @IBOutlet weak var eventNameTextField: UITextField!
@@ -36,6 +39,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     var eventCapacity: Int?
     var eventAddress: Address?
     var newEvent: Event?
+
     
     @IBAction func rsvpEnabled(_ sender: Any) {
         updateRSVPState()
@@ -50,30 +54,86 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
 
     @IBAction func addEvent(_ sender: UIBarButtonItem) {
-        guard ((!(eventNameTextField.text?.isEmpty)!) && (!(eventFlyerURLTextField.text?.isEmpty)!) && (!(eventContactNameTextField.text?.isEmpty)!) && (!(eventContactEmailTextField.text?.isEmpty)!) && (!(eventDescriptionTextView.text?.isEmpty)!) && (!(eventCapacityTextField.text?.isEmpty)!))else {
+        
+        //Perform checks if all the fields are filled out
+        guard !(eventNameTextField.text?.isEmpty)! else {
             //present alert
-            let alertController = UIAlertController(title: "Event Not Created", message: "All fields must be completed", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .destructive)
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true)
+            presentAlert(alertMessage: "Event Name cannot be blank")
+            return
+        }
+        guard !(eventFlyerURLTextField.text?.isEmpty)! else {
+            //present alert
+            presentAlert(alertMessage: "Event Flyer URL cannot be blank")
+            return
+        }
+        guard !(eventContactNameTextField.text?.isEmpty)! else {
+            //present alert
+            presentAlert(alertMessage: "Event Contact Name cannot be blank")
+            return
+        }
+        guard !(eventContactEmailTextField.text?.isEmpty)! else {
+            //present alert
+            presentAlert(alertMessage: "Event Contact Email cannot be blank")
+            return
+        }
+        guard !(eventStreet.text?.isEmpty)! else {
+            //present alert
+            presentAlert(alertMessage: "Street Address cannot be blank")
+            return
+        }
+        guard !(eventCity.text?.isEmpty)! else {
+            //present alert
+            presentAlert(alertMessage: "City cannot be blank")
+            return
+        }
+        guard !(eventState.text?.isEmpty)! else {
+            //present alert
+            presentAlert(alertMessage: "State cannot be blank")
+            return
+        }
+        guard !(eventZip.text?.isEmpty)! else {
+            //present alert
+            presentAlert(alertMessage: "Zip cannot be blank")
+            return
+        }
+        guard !(eventDescriptionTextView.text?.isEmpty)! else {
+            //present alert
+            presentAlert(alertMessage: "Event Description cannot be blank")
             return
         }
         
+        eventAddress = Address(street: eventStreet.text!, city: eventCity.text!, state: eventState.text!, zip: eventZip.text!)
+        
         if rsvpSwitch.isOn {
+            guard !(eventCapacityTextField.text?.isEmpty)! else {
+                //present alert
+                presentAlert(alertMessage: "Event Capacity cannot be blank")
+                return
+            }
             eventCapacity = Int(eventCapacityTextField.text!)
-            eventAddress = Address(street: eventStreet.text!, city: eventCity.text!, state: eventState.text!, zip: eventZip.text!)
             newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text!, eventStart: startDate, eventEnd: endDate, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!, eventRSVPEnabled: true, eventCapacity: eventCapacity!)
-            EventCalendar.shared.addEvent(newEvent: newEvent!)
-            print("new event created")
-            EventCalendar.shared.printDates()
-            
         }
         else {
-            eventAddress = Address(street: eventStreet.text!, city: eventCity.text!, state: eventState.text!, zip: eventZip.text!)
             newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text, eventStart: startDate, eventEnd: endDate, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!, eventRSVPEnabled: false)
-            EventCalendar.shared.addEvent(newEvent: newEvent!)
-            print("new event created")
         }
+        
+        //forward geocoding to set latitude & longitude properties of newly created event using GLGeocoder/check network connection prior
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString((eventAddress?.fullAddress())!, completionHandler: {(placemarks, error) -> Void in
+            if ((error) != nil) {
+                print("Error")
+            }
+            if let placemark = placemarks?.first{
+                let coordinates: CLLocationCoordinate2D = placemark.location!.coordinate
+                self.newEvent?.setLatitude(eventLatitude: coordinates.latitude)
+                self.newEvent?.setLongitude(eventLongitude: coordinates.longitude)
+            }
+        })
+        
+        
+        User.sharedInstance.addToUserEventCreated(Event: newEvent!)
+        EventCalendar.shared.addEvent(newEvent: newEvent!)
+        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -107,18 +167,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         return true
     }
    
-    //function to update the rsvp state
-    func updateRSVPState() {
-        if rsvpSwitch.isOn {
-            rsvpEnabled.text = "RSVP enabled"
-            eventCapacityTextField.text = ""
-        }
-        else {
-            rsvpEnabled.text = "RSVP disabled"
-            eventCapacityTextField.text = "Event capacity unlimited"
-        }
-    }
-    
+
     //UIPickerView methods
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
             return eventCategories.count
@@ -137,7 +186,31 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         return 1
     }
     
-
+    
+    //helper methods
+    
+    //function to present alert message
+    func presentAlert(alertMessage: String) {
+        let alertController = UIAlertController(title: "Event Not Created", message: alertMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .destructive)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true)
+        
+    }
+    
+    //function to update the rsvp state
+    func updateRSVPState() {
+        if rsvpSwitch.isOn {
+            rsvpEnabled.text = "RSVP enabled"
+            eventCapacityTextField.text = ""
+        }
+        else {
+            rsvpEnabled.text = "RSVP disabled"
+            eventCapacityTextField.text = "Event capacity unlimited"
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 

@@ -23,8 +23,9 @@ class Event: Comparable {
     var eventContactEmail: String
     var eventRSVPEnabled = true
     var eventCapacity = 0
-    var eventLatitude: Double?
-    var eventLongtitude: Double?
+    var eventLatitude = 0.0
+    var eventLongitude = 0.0
+    var active = true
     
     var eventAttendants = [String]()
     
@@ -53,10 +54,16 @@ class Event: Comparable {
         self.init(eventName: eventName, eventCategory: eventCategory, eventFlyerURL: eventFlyerURL, eventDescription: eventDescription, eventStart: eventStart, eventEnd: eventEnd, eventAddress:eventAddress, eventContactName: eventContactName, eventContactEmail: eventContactEmail, eventRSVPEnabled: eventRSVPEnabled)
     self.eventCapacity = eventCapacity
     }
-        
-
     
+    //update latitude
+    func setLatitude (eventLatitude: Double) {
+    self.eventLatitude = eventLatitude
+    }
     
+    //update longitude
+    func setLongitude (eventLongitude: Double) {
+        self.eventLongitude = eventLongitude
+    }
     
     //function to access eventStart property
     func getStartDate() -> NSDate {
@@ -69,12 +76,12 @@ class Event: Comparable {
         }
         return false
     }
-    
     static func == (lhs: Event, rhs: Event) -> Bool {
         return lhs.getStartDate().isEqual(to: rhs.getStartDate() as Date)
         
     }
     
+
     
     //add attendants to the eventAttendants array
     

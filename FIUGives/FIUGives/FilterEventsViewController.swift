@@ -1,5 +1,5 @@
 //
-//  AddHoursViewController.swift
+//  FilterEventsViewController.swift
 //  FIUGives
 //
 //  Created by Katya Gumnova on 6/11/17.
@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MapKit
 
-class AddHoursViewController: UIViewController {
+class FilterEventsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

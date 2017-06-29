@@ -12,11 +12,10 @@
 		BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529551EEA304E00D45B6B /* EventCalendar.swift */; };
 		BBD529D41EEDC25B00D45B6B /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */; };
 		BBD529DA1EEDCB8400D45B6B /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529D91EEDCB8400D45B6B /* MyProfileViewController.swift */; };
-		BBD529DC1EEDCB9E00D45B6B /* MyHoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DB1EEDCB9E00D45B6B /* MyHoursViewController.swift */; };
-		BBD529DE1EEDE2BF00D45B6B /* MapEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DD1EEDE2BF00D45B6B /* MapEventsViewController.swift */; };
+		BBD529DC1EEDCB9E00D45B6B /* EventsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DB1EEDCB9E00D45B6B /* EventsMapViewController.swift */; };
+		BBD529DE1EEDE2BF00D45B6B /* FilterEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DD1EEDE2BF00D45B6B /* FilterEventsViewController.swift */; };
 		BBD529E01EEDE32A00D45B6B /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */; };
 		BBD529E21EEDE47A00D45B6B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529E11EEDE47A00D45B6B /* EditProfileViewController.swift */; };
-		BBD529E41EEDE4E900D45B6B /* AddHoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529E31EEDE4E900D45B6B /* AddHoursViewController.swift */; };
 		E11307A51EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11307A41EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift */; };
 		E129E3D51EEDF4D800759B4D /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129E3D41EEDF4D800759B4D /* EventDetailsViewController.swift */; };
 		E141E59D1EEEEB63008C248E /* MyEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141E59C1EEEEB63008C248E /* MyEventsTableViewController.swift */; };
@@ -52,11 +51,10 @@
 		BBD529551EEA304E00D45B6B /* EventCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCalendar.swift; sourceTree = "<group>"; };
 		BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		BBD529D91EEDCB8400D45B6B /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
-		BBD529DB1EEDCB9E00D45B6B /* MyHoursViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHoursViewController.swift; sourceTree = "<group>"; };
-		BBD529DD1EEDE2BF00D45B6B /* MapEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapEventsViewController.swift; sourceTree = "<group>"; };
+		BBD529DB1EEDCB9E00D45B6B /* EventsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsMapViewController.swift; sourceTree = "<group>"; };
+		BBD529DD1EEDE2BF00D45B6B /* FilterEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterEventsViewController.swift; sourceTree = "<group>"; };
 		BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		BBD529E11EEDE47A00D45B6B /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		BBD529E31EEDE4E900D45B6B /* AddHoursViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHoursViewController.swift; sourceTree = "<group>"; };
 		E11307A41EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsTableViewCell.swift; sourceTree = "<group>"; };
 		E129E3D41EEDF4D800759B4D /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		E141E59C1EEEEB63008C248E /* MyEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsTableViewController.swift; sourceTree = "<group>"; };
@@ -115,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */,
-				BBD529DD1EEDE2BF00D45B6B /* MapEventsViewController.swift */,
+				BBD529DD1EEDE2BF00D45B6B /* FilterEventsViewController.swift */,
 				BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */,
 			);
 			name = EventsController;
@@ -140,13 +138,12 @@
 			name = ProfileController;
 			sourceTree = "<group>";
 		};
-		BBD529E91EEF874D00D45B6B /* MyHoursController */ = {
+		BBD529E91EEF874D00D45B6B /* EventsMapController */ = {
 			isa = PBXGroup;
 			children = (
-				BBD529DB1EEDCB9E00D45B6B /* MyHoursViewController.swift */,
-				BBD529E31EEDE4E900D45B6B /* AddHoursViewController.swift */,
+				BBD529DB1EEDCB9E00D45B6B /* EventsMapViewController.swift */,
 			);
-			name = MyHoursController;
+			name = EventsMapController;
 			sourceTree = "<group>";
 		};
 		E149CC121EDFA7BB002A3256 = {
@@ -176,7 +173,7 @@
 				BBD529E61EEF86DE00D45B6B /* EventsController */,
 				BBD529E71EEF870000D45B6B /* MyEventsController */,
 				BBD529E81EEF871D00D45B6B /* ProfileController */,
-				BBD529E91EEF874D00D45B6B /* MyHoursController */,
+				BBD529E91EEF874D00D45B6B /* EventsMapController */,
 				BBD529E51EEF869400D45B6B /* Model */,
 				E149CC271EDFA7BB002A3256 /* Assets.xcassets */,
 				E15D6E5F1EF63C65006135E3 /* Main.storyboard */,
@@ -341,18 +338,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBD529E41EEDE4E900D45B6B /* AddHoursViewController.swift in Sources */,
 				BBD529E21EEDE47A00D45B6B /* EditProfileViewController.swift in Sources */,
 				E11307A51EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift in Sources */,
 				E129E3D51EEDF4D800759B4D /* EventDetailsViewController.swift in Sources */,
 				BBD529541EE48F6E00D45B6B /* Event.swift in Sources */,
 				BBD529E01EEDE32A00D45B6B /* AddEventViewController.swift in Sources */,
-				BBD529DE1EEDE2BF00D45B6B /* MapEventsViewController.swift in Sources */,
+				BBD529DE1EEDE2BF00D45B6B /* FilterEventsViewController.swift in Sources */,
 				BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */,
 				BBD529DA1EEDCB8400D45B6B /* MyProfileViewController.swift in Sources */,
 				BBAA37B01F02109200D3B853 /* Address.swift in Sources */,
 				E141E59D1EEEEB63008C248E /* MyEventsTableViewController.swift in Sources */,
-				BBD529DC1EEDCB9E00D45B6B /* MyHoursViewController.swift in Sources */,
+				BBD529DC1EEDCB9E00D45B6B /* EventsMapViewController.swift in Sources */,
 				E1629BD81EEB55E400B8926A /* User.swift in Sources */,
 				BBD529D41EEDC25B00D45B6B /* EventsViewController.swift in Sources */,
 				E149CC1F1EDFA7BB002A3256 /* AppDelegate.swift in Sources */,
