@@ -9,7 +9,7 @@
 import UIKit
 
 class EventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    //test
     //MARK: IBOutlets
    
     @IBOutlet weak var eventsTable: UITableView!
