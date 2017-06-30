@@ -15,8 +15,8 @@ class Event: Comparable {
     var eventCategory: String
     var eventFlyerURL: String
     var eventDescription: String
-    var eventStart: NSDate
-    var eventEnd: NSDate
+    var eventStart: Date
+    var eventEnd: Date
     var eventDuration = 0.0
     var eventAddress: Address
     var eventContactName: String
@@ -30,7 +30,7 @@ class Event: Comparable {
     var eventAttendants = [String]()
     
     //MARK: initialization
-    init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: NSDate, eventEnd: NSDate, eventAddress: Address, eventContactName: String, eventContactEmail: String, eventRSVPEnabled: Bool) {
+    init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: Date, eventEnd: Date, eventAddress: Address, eventContactName: String, eventContactEmail: String, eventRSVPEnabled: Bool) {
         
         //initialize properties
         self.eventName = eventName
@@ -45,11 +45,11 @@ class Event: Comparable {
         self.eventContactName = eventContactName
         self.eventContactEmail = eventContactEmail
         self.eventRSVPEnabled = eventRSVPEnabled
-        self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart as Date))
+        self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart))
         
     }
      //init with capacity
-    convenience init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: NSDate, eventEnd: NSDate, eventAddress: Address, eventContactName: String, eventContactEmail: String, eventRSVPEnabled: Bool, eventCapacity: Int) {
+    convenience init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: Date, eventEnd: Date, eventAddress: Address, eventContactName: String, eventContactEmail: String, eventRSVPEnabled: Bool, eventCapacity: Int) {
     
         self.init(eventName: eventName, eventCategory: eventCategory, eventFlyerURL: eventFlyerURL, eventDescription: eventDescription, eventStart: eventStart, eventEnd: eventEnd, eventAddress:eventAddress, eventContactName: eventContactName, eventContactEmail: eventContactEmail, eventRSVPEnabled: eventRSVPEnabled)
     self.eventCapacity = eventCapacity
@@ -66,18 +66,18 @@ class Event: Comparable {
     }
     
     // Function to access eventStart property
-    func getStartDate() -> NSDate {
+    func getStartDate() -> Date {
         return self.eventStart
     }
     
     static func < (lhs: Event, rhs: Event) -> Bool {
-        if (lhs.getStartDate().compare(rhs.getStartDate() as Date) == .orderedAscending) {
+        if (lhs.getStartDate().compare(rhs.getStartDate()) == .orderedAscending) {
         return true
         }
         return false
     }
     static func == (lhs: Event, rhs: Event) -> Bool {
-        return lhs.getStartDate().isEqual(to: rhs.getStartDate() as Date)
+        return lhs.getStartDate() == rhs.getStartDate()
         
     }
     
@@ -115,11 +115,11 @@ class Event: Comparable {
         self.eventDescription = Description
     }
     
-    func setEventStartDate(StartDate: NSDate) {
+    func setEventStartDate(StartDate: Date) {
         self.eventStart = StartDate
     }
     
-    func setEventEndDate(EndDate: NSDate) {
+    func setEventEndDate(EndDate: Date) {
         self.eventEnd = EndDate
     }
     

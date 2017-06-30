@@ -51,7 +51,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         formatter.dateFormat = "EEEE MMM d, h:mm a"
         
         
-        cell.textLabel?.text = formatter.string(from: EventCalendar.shared.myCalendar[indexPath.row].eventStart as Date)
+        cell.textLabel?.text = formatter.string(from: EventCalendar.shared.myCalendar[indexPath.row].eventStart)
         cell.detailTextLabel?.text = EventCalendar.shared.myCalendar[indexPath.row].eventName
         return cell
         

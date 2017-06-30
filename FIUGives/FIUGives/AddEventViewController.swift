@@ -33,8 +33,8 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     @IBOutlet weak var eventCategoryPickerView: UIPickerView!
     
     var eventCategories = ["Animal Rights", "Arts", "Children", "Homeless", "Hospitals", "Tutoring", "Other" ]
-    var startDate = Date() as NSDate
-    var endDate = Date() as NSDate
+    var startDate = Date()
+    var endDate = Date()
     var eventCategory = ""
     var eventCapacity: Int?
     var eventAddress: Address?
@@ -46,11 +46,11 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
     
     @IBAction func startDateChanged(_ sender: Any) {
-        startDate = eventStartDate.date as NSDate
+        startDate = eventStartDate.date
     }
     
     @IBAction func endDateChanged(_ sender: Any) {
-        endDate = eventEndDate.date as NSDate
+        endDate = eventEndDate.date
     }
 
     @IBAction func addEvent(_ sender: UIBarButtonItem) {
