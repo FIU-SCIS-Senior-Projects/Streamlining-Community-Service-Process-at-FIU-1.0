@@ -21,7 +21,6 @@ class Event: Comparable {
     var eventAddress: Address
     var eventContactName: String
     var eventContactEmail: String
-    var eventRSVPEnabled = true
     var eventCapacity = 0
     var eventLatitude = 0.0
     var eventLongitude = 0.0
@@ -31,7 +30,7 @@ class Event: Comparable {
     var eventAttendants = [String]()
     
     //MARK: initialization
-    init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: Date, eventEnd: Date, eventAddress: Address, eventContactName: String, eventContactEmail: String, eventRSVPEnabled: Bool) {
+    init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: Date, eventEnd: Date, eventAddress: Address, eventContactName: String, eventContactEmail: String) {
         
         //initialize properties
         self.eventName = eventName
@@ -45,15 +44,14 @@ class Event: Comparable {
         //self.eventClubs = eventClubs
         self.eventContactName = eventContactName
         self.eventContactEmail = eventContactEmail
-        self.eventRSVPEnabled = eventRSVPEnabled
         self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart))
         self.eventDate = EventDate.init(myEventDate: eventStart)
         
     }
      //init with capacity
-    convenience init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: Date, eventEnd: Date, eventAddress: Address, eventContactName: String, eventContactEmail: String, eventRSVPEnabled: Bool, eventCapacity: Int) {
+    convenience init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: Date, eventEnd: Date, eventAddress: Address, eventContactName: String, eventContactEmail: String, eventCapacity: Int) {
     
-        self.init(eventName: eventName, eventCategory: eventCategory, eventFlyerURL: eventFlyerURL, eventDescription: eventDescription, eventStart: eventStart, eventEnd: eventEnd, eventAddress:eventAddress, eventContactName: eventContactName, eventContactEmail: eventContactEmail, eventRSVPEnabled: eventRSVPEnabled)
+        self.init(eventName: eventName, eventCategory: eventCategory, eventFlyerURL: eventFlyerURL, eventDescription: eventDescription, eventStart: eventStart, eventEnd: eventEnd, eventAddress:eventAddress, eventContactName: eventContactName, eventContactEmail: eventContactEmail)
     self.eventCapacity = eventCapacity
     }
     
@@ -135,10 +133,6 @@ class Event: Comparable {
     
     func setEventContactEmail(ContactEmail: String) {
         self.eventContactEmail = ContactEmail
-    }
-    
-    func setEventRSVP(RsvpEnable: Bool) {
-        self.eventRSVPEnabled = RsvpEnable
     }
     
     func setEventCapacity(Capacity: Int) {

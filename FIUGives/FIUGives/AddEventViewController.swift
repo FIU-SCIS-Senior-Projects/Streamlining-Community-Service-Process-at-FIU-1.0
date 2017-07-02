@@ -111,10 +111,10 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
                 return
             }
             eventCapacity = Int(eventCapacityTextField.text!)
-            newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text!, eventStart: startDate, eventEnd: endDate, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!, eventRSVPEnabled: true, eventCapacity: eventCapacity!)
+            newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text!, eventStart: startDate, eventEnd: endDate, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!, eventCapacity: eventCapacity!)
         }
         else {
-            newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text, eventStart: startDate, eventEnd: endDate, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!, eventRSVPEnabled: false)
+            newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text, eventStart: startDate, eventEnd: endDate, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!)
         }
         
         //forward geocoding to set latitude & longitude properties of newly created event using GLGeocoder/check network connection prior
@@ -200,12 +200,12 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     //function to update the rsvp state
     func updateRSVPState() {
         if rsvpSwitch.isOn {
-            rsvpEnabled.text = "RSVP enabled"
+            rsvpEnabled.text = "Set event capacity"
             eventCapacityTextField.text = ""
         }
         else {
-            rsvpEnabled.text = "RSVP disabled"
-            eventCapacityTextField.text = "Event capacity unlimited"
+            rsvpEnabled.text = "Unlimited capacity"
+            eventCapacityTextField.text = "UNLIMITED"
         }
     }
     
