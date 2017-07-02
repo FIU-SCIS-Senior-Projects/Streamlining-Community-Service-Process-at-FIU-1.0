@@ -26,6 +26,7 @@ class Event: Comparable {
     var eventLatitude = 0.0
     var eventLongitude = 0.0
     var active = true
+    var eventDate: EventDate
     
     var eventAttendants = [String]()
     
@@ -46,6 +47,7 @@ class Event: Comparable {
         self.eventContactEmail = eventContactEmail
         self.eventRSVPEnabled = eventRSVPEnabled
         self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart))
+        self.eventDate = EventDate.init(myEventDate: eventStart)
         
     }
      //init with capacity

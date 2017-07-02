@@ -11,63 +11,46 @@ import UIKit
 class EventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     //test
     //MARK: IBOutlets
-   
     @IBOutlet weak var eventsTable: UITableView!
+    //get the keys from the EventCalendar dictionary & sort them
+    var eventDates = Array(EventCalendar.shared.myCalendar.keys)
 
     
-    override func viewDidLoad() {
-
-     
+   override func viewDidLoad() {
    super.viewDidLoad()
-    
-        
-        //eventsTableView.dataSource = self
-        //eventsTableView.delegate = self
-
-        // Do any additional setup after loading the view.
     }
     
-  
     override func viewWillAppear(_ animated: Bool) {
+        eventDates = Array(EventCalendar.shared.myCalendar.keys)
+        eventDates.sort()
         self.eventsTable.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return eventDates.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return EventCalendar.shared.totalEvents()
+        return (EventCalendar.shared.myCalendar[eventDates[section]]?.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return eventDates[section].dateComponent()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE MMM d, h:mm a"
-        
-        
-        cell.textLabel?.text = formatter.string(from: EventCalendar.shared.myCalendar[indexPath.row].eventStart)
-        cell.detailTextLabel?.text = EventCalendar.shared.myCalendar[indexPath.row].eventName
+        let event = EventCalendar.shared.myCalendar[eventDates[indexPath.section]]?[indexPath.row]
+        formatter.dateFormat = "h:mm a"
+        cell.textLabel?.text = formatter.string(from: (event?.eventStart)!)
+        cell.detailTextLabel?.text = event?.eventName
         return cell
         
     }
-
-  
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

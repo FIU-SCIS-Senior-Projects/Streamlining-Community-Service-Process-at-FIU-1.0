@@ -133,7 +133,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         
         User.sharedInstance.addToUserEventCreated(Event: newEvent!)
         EventCalendar.shared.addEvent(newEvent: newEvent!)
-        
         self.navigationController?.popViewController(animated: true)
     }
     

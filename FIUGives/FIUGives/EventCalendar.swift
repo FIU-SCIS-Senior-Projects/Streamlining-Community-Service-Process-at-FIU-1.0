@@ -13,32 +13,34 @@ class EventCalendar {
     
     //MARK: properties
     static let shared = EventCalendar()
-    var myCalendar: [Event]
+    var myCalendar: [EventDate:[Event]]
+    
     
     //MARK: initialization
     private init() {
-        self.myCalendar = Array()
+        self.myCalendar = [EventDate:[Event]]()
         
     }
     
     //MARK: methods
     func addEvent(newEvent: Event) {
-        self.myCalendar.append(newEvent)
-        myCalendar.sort()
+        if self.myCalendar.keys.contains(newEvent.eventDate) {
+            self.myCalendar[newEvent.eventDate]?.append(newEvent)
+            self.myCalendar[newEvent.eventDate]?.sort()
+        }
+        else {
+            self.myCalendar[newEvent.eventDate] = [newEvent]
+        }
+        
+        //self.myCalendar.append(newEvent)
+        //myCalendar.sort()
     }
     
     func totalEvents() -> Int {
         return self.myCalendar.count
     }
     
-    func printDates() {
-    
-        for event in myCalendar {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM dd, YYYY"
-            print(formatter.string(from: event.eventStart as Date))
-        }
-    }
+
     
   
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A29FDB0FA0068FBCA1825BB2 /* Pods_FIUGivesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB71F858A0B81C08C6A25CE7 /* Pods_FIUGivesTests.framework */; };
 		AEA6865F9AC7F309FEDD0A3D /* Pods_FIUGivesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347DAF7C451B713646892CAB /* Pods_FIUGivesUITests.framework */; };
+		BB9677361F0880B60089CA82 /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9677351F0880B60089CA82 /* EventDate.swift */; };
 		BBAA37B01F02109200D3B853 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAA37AF1F02109200D3B853 /* Address.swift */; };
 		BBD529541EE48F6E00D45B6B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529531EE48F6E00D45B6B /* Event.swift */; };
 		BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529551EEA304E00D45B6B /* EventCalendar.swift */; };
@@ -60,6 +61,7 @@
 		6229D8352D4B8EB0C48F0EC7 /* Pods-FIUGivesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIUGivesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FIUGivesUITests/Pods-FIUGivesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A12576441EFEB0779218271F /* Pods-FIUGives.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIUGives.release.xcconfig"; path = "Pods/Target Support Files/Pods-FIUGives/Pods-FIUGives.release.xcconfig"; sourceTree = "<group>"; };
 		AB71F858A0B81C08C6A25CE7 /* Pods_FIUGivesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FIUGivesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB9677351F0880B60089CA82 /* EventDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate.swift; sourceTree = "<group>"; };
 		BBAA37AF1F02109200D3B853 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		BBD529531EE48F6E00D45B6B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BBD529551EEA304E00D45B6B /* EventCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCalendar.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				E1629BD71EEB55E400B8926A /* User.swift */,
 				BBD529551EEA304E00D45B6B /* EventCalendar.swift */,
+				BB9677351F0880B60089CA82 /* EventDate.swift */,
 				BBD529531EE48F6E00D45B6B /* Event.swift */,
 				BBAA37AF1F02109200D3B853 /* Address.swift */,
 			);
@@ -534,6 +537,7 @@
 				BBD529E21EEDE47A00D45B6B /* EditProfileViewController.swift in Sources */,
 				E1077F251F059A3B000FF85B /* MyEventsViewController.swift in Sources */,
 				E11307A51EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift in Sources */,
+				BB9677361F0880B60089CA82 /* EventDate.swift in Sources */,
 				E129E3D51EEDF4D800759B4D /* EventDetailsViewController.swift in Sources */,
 				BBD529541EE48F6E00D45B6B /* Event.swift in Sources */,
 				BBD529E01EEDE32A00D45B6B /* AddEventViewController.swift in Sources */,
