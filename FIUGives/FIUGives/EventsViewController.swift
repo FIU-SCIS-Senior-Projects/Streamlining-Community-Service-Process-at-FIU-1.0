@@ -52,5 +52,21 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
         
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let event = EventCalendar.shared.myCalendar[eventDates[indexPath.section]]?[indexPath.row]
+        performSegue(withIdentifier: "detailedViewSegue", sender: event)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailedViewSegue" {
+        let destination = segue.destination as! DetailedViewController
+        destination.detailedEvent = sender as? Event
+        }
+    }
+
+    
+    
 
 }

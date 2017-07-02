@@ -10,6 +10,7 @@
 		A29FDB0FA0068FBCA1825BB2 /* Pods_FIUGivesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB71F858A0B81C08C6A25CE7 /* Pods_FIUGivesTests.framework */; };
 		AEA6865F9AC7F309FEDD0A3D /* Pods_FIUGivesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347DAF7C451B713646892CAB /* Pods_FIUGivesUITests.framework */; };
 		BB9677361F0880B60089CA82 /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9677351F0880B60089CA82 /* EventDate.swift */; };
+		BB9677381F0988A30089CA82 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9677371F0988A30089CA82 /* DetailedViewController.swift */; };
 		BBAA37B01F02109200D3B853 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAA37AF1F02109200D3B853 /* Address.swift */; };
 		BBD529541EE48F6E00D45B6B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529531EE48F6E00D45B6B /* Event.swift */; };
 		BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529551EEA304E00D45B6B /* EventCalendar.swift */; };
@@ -62,6 +63,7 @@
 		A12576441EFEB0779218271F /* Pods-FIUGives.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIUGives.release.xcconfig"; path = "Pods/Target Support Files/Pods-FIUGives/Pods-FIUGives.release.xcconfig"; sourceTree = "<group>"; };
 		AB71F858A0B81C08C6A25CE7 /* Pods_FIUGivesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FIUGivesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9677351F0880B60089CA82 /* EventDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate.swift; sourceTree = "<group>"; };
+		BB9677371F0988A30089CA82 /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		BBAA37AF1F02109200D3B853 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		BBD529531EE48F6E00D45B6B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BBD529551EEA304E00D45B6B /* EventCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCalendar.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */,
+				BB9677371F0988A30089CA82 /* DetailedViewController.swift */,
 				BBD529DD1EEDE2BF00D45B6B /* FilterEventsViewController.swift */,
 				BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */,
 			);
@@ -536,6 +539,7 @@
 			files = (
 				BBD529E21EEDE47A00D45B6B /* EditProfileViewController.swift in Sources */,
 				E1077F251F059A3B000FF85B /* MyEventsViewController.swift in Sources */,
+				BB9677381F0988A30089CA82 /* DetailedViewController.swift in Sources */,
 				E11307A51EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift in Sources */,
 				BB9677361F0880B60089CA82 /* EventDate.swift in Sources */,
 				E129E3D51EEDF4D800759B4D /* EventDetailsViewController.swift in Sources */,

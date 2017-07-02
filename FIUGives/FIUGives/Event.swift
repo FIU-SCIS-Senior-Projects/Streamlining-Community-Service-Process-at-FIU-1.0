@@ -65,21 +65,20 @@ class Event: Comparable {
         self.eventLongitude = eventLongitude
     }
     
-    // Function to access eventStart property
-    func getStartDate() -> Date {
-        return self.eventStart
-    }
-    
     static func < (lhs: Event, rhs: Event) -> Bool {
-        if (lhs.getStartDate().compare(rhs.getStartDate()) == .orderedAscending) {
+        if (lhs.eventStart.compare(rhs.eventStart) == .orderedAscending) {
         return true
         }
         return false
     }
+    
+    //compare events for equality based on their start date & time
     static func == (lhs: Event, rhs: Event) -> Bool {
-        return lhs.getStartDate() == rhs.getStartDate()
+        return lhs.eventStart == rhs.eventStart
         
     }
+    
+    //compare 
     
 
     
@@ -96,6 +95,12 @@ class Event: Comparable {
     }
     
     // Delete event method
+    
+    
+    
+    
+    
+    
     
     
     // Update event information
