@@ -89,4 +89,8 @@ class User {
         self.userEventsRsvp.append(Event)
     }
     
+    func getUserFullName(First: String, Last: String) -> String {
+        return "\(userFirstName) \(userLastName)"
+    }
+    
 }

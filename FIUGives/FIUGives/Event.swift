@@ -82,7 +82,7 @@ class Event: Comparable {
     
 
     
-    // Add attendants to the eventAttendants array
+    /* Add attendants to the eventAttendants array
     func addToEventAttendants(Attendant: String) {
         self.eventAttendants.append(Attendant)
     }
@@ -93,7 +93,7 @@ class Event: Comparable {
             self.eventAttendants.remove(at: index)
         }
     }
-    
+    */
     // Delete event method
     
     
