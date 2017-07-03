@@ -80,7 +80,35 @@ class Event: Comparable {
     
     //compare 
     
-
+    //returns the start date in the format "EEEE,   MMM d, yyyy" as a string
+    func returnStartDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE,   MMM d, yyyy"
+        return formatter.string(from: self.eventStart)
+    }
+    
+    //returns the start time in the format h:mm a" as a string
+    func returnStartTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter.string(from: self.eventStart)
+    }
+    
+    //returns the end time in the format h:mm a" as a string
+    func returnEndTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter.string(from: self.eventEnd)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     /* Add attendants to the eventAttendants array
     func addToEventAttendants(Attendant: String) {
