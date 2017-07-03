@@ -46,7 +46,13 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
     
     @IBAction func startDateChanged(_ sender: Any) {
+        let cal = Calendar.current
+        var comp = DateComponents()
+        comp.day = 1
+        comp.minute = -1
         startDate = eventStartDate.date
+        eventEndDate.minimumDate = eventStartDate.date
+        eventEndDate.maximumDate = cal.date(byAdding: comp, to: cal.startOfDay(for: eventStartDate.date))
     }
     
     @IBAction func endDateChanged(_ sender: Any) {
