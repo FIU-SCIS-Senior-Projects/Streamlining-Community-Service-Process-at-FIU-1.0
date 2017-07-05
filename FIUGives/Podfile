@@ -7,7 +7,12 @@ target 'FIUGives' do
 
   # Pods for FIUGives
   pod 'JTAppleCalendar', '~> 7.0'
-
+  pod 'Firebase'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Crash'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  
   target 'FIUGivesTests' do
     inherit! :search_paths
     # Pods for testing

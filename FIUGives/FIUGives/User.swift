@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 //MARK: - Singleton
 class User {
@@ -16,32 +17,26 @@ class User {
     //MARK: Properties
     var userFirstName: String
     var userLastName: String
-    // var userPassword: String
+    var userPassword: String
     var userAbout: String?
-    var userInterests: String?
+    var userPreferences: String?
     var userPhone: String?
     var userEmail: String
-    var userLinkedin: String?
-    var userFacebook: String?
-    var userTwitter: String?
-    var userEventsCreated = [Event]()
-    var userEventsRsvp = [Event]()
-    
+    var userRsvpEvents: [Event]
+    var userEventCreated: [Event]
     
     //MARK: Initialization
     private init() {
         //initialize properties
         self.userFirstName = String()
         self.userLastName = String()
+        self.userPassword = String()
         self.userAbout = String()
-        self.userInterests = String()
+        self.userPreferences = String()
         self.userPhone = String()
         self.userEmail = String()
-        self.userLinkedin = String()
-        self.userFacebook = String()
-        self.userTwitter = String()
-        self.userEventsRsvp = Array()
-        self.userEventsCreated = Array()
+        self.userRsvpEvents = Array()
+        self.userEventCreated = Array()
     }
     
     //MARK: Set Methods
@@ -53,12 +48,16 @@ class User {
         self.userLastName = LastName
     }
     
+    func setUserPassword(Password: String) {
+        self.userPassword = Password
+    }
+    
     func setUserAbout(About: String) {
         self.userAbout = About
     }
     
-    func setUserInterests(Interests: String) {
-        self.userInterests = Interests
+    func setUserInterests(Preferences: String) {
+        self.userPreferences = Preferences
     }
     
     func setUserPhone(Phone: String) {
@@ -69,24 +68,12 @@ class User {
         self.userEmail = Email
     }
     
-    func setUserLinkedin(Linkedin: String) {
-        self.userLinkedin = Linkedin
-    }
-    
-    func setUserTwitter(Twitter: String) {
-        self.userTwitter = Twitter
-    }
-    
-    func setUserFacebook(Facebook: String) {
-        self.userFacebook = Facebook
-    }
-
     func addToUserEventCreated(Event: Event) {
-        self.userEventsCreated.append(Event)
+        userEventCreated.append(Event)
     }
     
-    func addToUserEventRsvp(Event: Event) {
-        self.userEventsRsvp.append(Event)
+    func addToUserRsvpEvents(Event: Event) {
+        userRsvpEvents.append(Event)
     }
     
     func getUserFullName(First: String, Last: String) -> String {
