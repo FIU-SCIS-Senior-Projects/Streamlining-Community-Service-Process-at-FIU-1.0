@@ -23,6 +23,7 @@ class UserLoginController: UIViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
+        passwordField.isSecureTextEntry = true
         guard !(emailField.text!.isEmpty) || !(passwordField.text?.isEmpty)! else {
             self.presentAlert(message: "Please enter an email or password")
             return

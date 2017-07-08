@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FIUGives/User.swift"
-            timestampString = "520896747.7785"
+            timestampString = "521240189.373906"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89">
+            startingLineNumber = "72"
+            endingLineNumber = "72">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -15,6 +15,7 @@ class UserSignUpController: UIViewController {
     @IBOutlet weak var passwordConfirm: UITextField!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    var ref: DatabaseReference!
     
     
     @IBAction func loginButtonPressed(_ sender: AnyObject) {

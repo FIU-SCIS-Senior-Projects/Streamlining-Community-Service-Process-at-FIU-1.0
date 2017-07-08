@@ -26,6 +26,7 @@ class DetailedViewController: UITableViewController {
     @IBOutlet weak var eventDescription: UITextView!
     @IBOutlet weak var eventAttendees: UITextView!
     @IBOutlet weak var rsvpButton: UIButton!
+    @IBOutlet weak var eventAddress: UITextView!
     
     @IBAction func rsvpButtonPressed(sender: UIButton) {
         ref = Database.database().reference(withPath: "rsvp-list")
@@ -102,8 +103,8 @@ class DetailedViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        formatter.dateFormat = "EEEE, MMM dd YYYY, h:mm a"
         checkIfUserRsvp(event: detailedEvent!)
-        formatter.dateFormat = "YYYY MM dd h:mm a"
         eventName.text = detailedEvent?.eventName
         eventContactName.text = detailedEvent?.eventContactName
         eventContactEmail.text = detailedEvent?.eventContactEmail
@@ -111,6 +112,7 @@ class DetailedViewController: UITableViewController {
         eventStartDate.text = formatter.string(from: (detailedEvent?.eventStart)!)
         eventEndDate.text = formatter.string(from: (detailedEvent?.eventEnd)!)
         eventDescription.text = detailedEvent?.eventDescription
+        eventAddress.text = detailedEvent?.eventAddress.fullAddress()
         // Do any additional setup after loading the view.
     }
  
