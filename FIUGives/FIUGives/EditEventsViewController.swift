@@ -24,13 +24,13 @@ class EditEventsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return User.sharedInstance.userEventsCreated.count
+        return User.sharedInstance.userEventCreated.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editEventCell", for: indexPath)
         let formatter = DateFormatter()
-        let event = User.sharedInstance.userEventsCreated[indexPath.row]
+        let event = User.sharedInstance.userEventCreated[indexPath.row]
         formatter.dateFormat = "MMM d, h:mm a"
         cell.textLabel?.text = event.eventName
         cell.detailTextLabel?.text = formatter.string(from: event.eventStart)
