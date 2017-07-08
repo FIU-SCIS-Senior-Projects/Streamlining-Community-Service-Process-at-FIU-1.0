@@ -14,7 +14,7 @@ struct Address {
     var zip: String
     
     func fullAddress() -> String {
-        return "\(street), \(city), \(state), \(zip), USA"
+        return "\(street) \n\(city), \(state), \(zip), USA"
   
     }
     
