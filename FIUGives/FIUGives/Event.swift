@@ -83,7 +83,7 @@ class Event: Comparable {
     //returns the start date in the format "EEEE,   MMM d, yyyy" as a string
     func returnStartDate() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE,   MMM d, yyyy"
+        formatter.dateFormat = "EEEE, MMM d, yyyy"
         return formatter.string(from: self.eventStart)
     }
     

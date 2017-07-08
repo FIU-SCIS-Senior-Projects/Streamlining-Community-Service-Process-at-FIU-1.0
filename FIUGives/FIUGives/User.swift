@@ -83,6 +83,7 @@ class User {
 
     func addToUserEventCreated(Event: Event) {
         self.userEventsCreated.append(Event)
+        self.userEventsCreated.sort()
     }
     
     func addToUserEventRsvp(Event: Event) {

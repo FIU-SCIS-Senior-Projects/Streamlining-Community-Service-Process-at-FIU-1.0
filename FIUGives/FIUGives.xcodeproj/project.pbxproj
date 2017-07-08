@@ -12,12 +12,14 @@
 		BB9677361F0880B60089CA82 /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9677351F0880B60089CA82 /* EventDate.swift */; };
 		BB9677381F0988A30089CA82 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9677371F0988A30089CA82 /* DetailedViewController.swift */; };
 		BBAA37B01F02109200D3B853 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAA37AF1F02109200D3B853 /* Address.swift */; };
+		BBCBBAE71F0DC29E0083A8A2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBCBBAE61F0DC29E0083A8A2 /* MapKit.framework */; };
+		BBCBBAE91F0DC2FD0083A8A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBCBBAE81F0DC2FD0083A8A2 /* CoreLocation.framework */; };
 		BBD529541EE48F6E00D45B6B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529531EE48F6E00D45B6B /* Event.swift */; };
 		BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529551EEA304E00D45B6B /* EventCalendar.swift */; };
 		BBD529D41EEDC25B00D45B6B /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */; };
 		BBD529DA1EEDCB8400D45B6B /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529D91EEDCB8400D45B6B /* MyProfileViewController.swift */; };
 		BBD529DC1EEDCB9E00D45B6B /* EventsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DB1EEDCB9E00D45B6B /* EventsMapViewController.swift */; };
-		BBD529DE1EEDE2BF00D45B6B /* FilterEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DD1EEDE2BF00D45B6B /* FilterEventsViewController.swift */; };
+		BBD529DE1EEDE2BF00D45B6B /* EditEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DD1EEDE2BF00D45B6B /* EditEventsViewController.swift */; };
 		BBD529E01EEDE32A00D45B6B /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */; };
 		BBD529E21EEDE47A00D45B6B /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529E11EEDE47A00D45B6B /* EditProfileViewController.swift */; };
 		E1077F251F059A3B000FF85B /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1077F241F059A3B000FF85B /* MyEventsViewController.swift */; };
@@ -63,12 +65,14 @@
 		BB9677351F0880B60089CA82 /* EventDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate.swift; sourceTree = "<group>"; };
 		BB9677371F0988A30089CA82 /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		BBAA37AF1F02109200D3B853 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		BBCBBAE61F0DC29E0083A8A2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BBCBBAE81F0DC2FD0083A8A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BBD529531EE48F6E00D45B6B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BBD529551EEA304E00D45B6B /* EventCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCalendar.swift; sourceTree = "<group>"; };
 		BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		BBD529D91EEDCB8400D45B6B /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		BBD529DB1EEDCB9E00D45B6B /* EventsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsMapViewController.swift; sourceTree = "<group>"; };
-		BBD529DD1EEDE2BF00D45B6B /* FilterEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterEventsViewController.swift; sourceTree = "<group>"; };
+		BBD529DD1EEDE2BF00D45B6B /* EditEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventsViewController.swift; sourceTree = "<group>"; };
 		BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		BBD529E11EEDE47A00D45B6B /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		E1077F241F059A3B000FF85B /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBCBBAE91F0DC2FD0083A8A2 /* CoreLocation.framework in Frameworks */,
+				BBCBBAE71F0DC29E0083A8A2 /* MapKit.framework in Frameworks */,
 				E244C3952C3196031C4B772A /* Pods_FIUGives.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +139,8 @@
 		6454505809B18B7856593859 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BBCBBAE81F0DC2FD0083A8A2 /* CoreLocation.framework */,
+				BBCBBAE61F0DC29E0083A8A2 /* MapKit.framework */,
 				14F21434323CCCB7A555A7C3 /* Pods_FIUGives.framework */,
 				AB71F858A0B81C08C6A25CE7 /* Pods_FIUGivesTests.framework */,
 				347DAF7C451B713646892CAB /* Pods_FIUGivesUITests.framework */,
@@ -157,7 +165,7 @@
 			children = (
 				BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */,
 				BB9677371F0988A30089CA82 /* DetailedViewController.swift */,
-				BBD529DD1EEDE2BF00D45B6B /* FilterEventsViewController.swift */,
+				BBD529DD1EEDE2BF00D45B6B /* EditEventsViewController.swift */,
 				BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */,
 			);
 			name = EventsController;
@@ -326,6 +334,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = RSA5D4R88M;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					E149CC301EDFA7BB002A3256 = {
 						CreatedOnToolsVersion = 8.0;
@@ -538,7 +551,7 @@
 				BB9677361F0880B60089CA82 /* EventDate.swift in Sources */,
 				BBD529541EE48F6E00D45B6B /* Event.swift in Sources */,
 				BBD529E01EEDE32A00D45B6B /* AddEventViewController.swift in Sources */,
-				BBD529DE1EEDE2BF00D45B6B /* FilterEventsViewController.swift in Sources */,
+				BBD529DE1EEDE2BF00D45B6B /* EditEventsViewController.swift in Sources */,
 				E11CD2DB1F05A6500071D001 /* CalendarCell.swift in Sources */,
 				BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */,
 				BBD529DA1EEDCB8400D45B6B /* MyProfileViewController.swift in Sources */,
