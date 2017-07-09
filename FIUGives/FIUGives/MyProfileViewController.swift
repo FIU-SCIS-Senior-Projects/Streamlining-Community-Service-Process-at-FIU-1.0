@@ -7,11 +7,39 @@
 //
 
 import UIKit
+import Firebase
 
-class MyProfileViewController: UIViewController {
+class MyProfileViewController: UITableViewController {
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userPhone: UILabel!
+    @IBOutlet weak var userDob: UILabel!
+    @IBOutlet weak var userLocation: UILabel!
 
+    var ref: DatabaseReference!
+    var handle: AuthStateDidChangeListenerHandle? = nil
+    var currentUser = User.sharedInstance
+    
+    // Get currently logged in user.
+    func getUserAndCreateProfile() {
+        var userUID = String()
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            userUID = Auth.auth().currentUser!.uid
+            print("MY UID: \(userUID)")
+        }
+        
+        /*ref = Database.database().reference()
+        let userRef = ref.child("users").child(userUID)
+        userRef.setValue(currentUser.dictionaryObject())
+        print("THE CURRENT USER INFO: \(currentUser.dictionaryObject())")*/
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserAndCreateProfile()
+        userName.text = currentUser.getUserFullName()
+        userPhone.text = currentUser.userPhoneNumber
+        userDob.text = currentUser.userDOB
+        userLocation.text = currentUser.userLocation
 
         // Do any additional setup after loading the view.
     }

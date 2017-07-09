@@ -29,6 +29,11 @@ class UserLoginController: UIViewController {
             return
         }
         
+        self.emailField.resignFirstResponder()
+        self.passwordField.resignFirstResponder()
+        
+        passwordField.isSecureTextEntry = true
+        
         Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
             if let error = error {
                 self.presentAlert(message: error.localizedDescription)
@@ -39,6 +44,10 @@ class UserLoginController: UIViewController {
                 self.present(vc!, animated: true, completion: nil)
             }
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     // Alert controller
