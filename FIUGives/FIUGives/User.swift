@@ -17,12 +17,9 @@ class User {
     //MARK: Properties
     var userFirstName: String
     var userLastName: String
-    // var userPassword: String
-    var userAbout: String
-    var userPreferences: String
-    var userPhone: String
-    // var userEmail: String
-    var userOccupation: String
+    var userDOB: String
+    var userLocation: String
+    var userPhoneNumber: String
     var userRsvpEvents: [Event]
     var userEventCreated: [Event]
     
@@ -31,17 +28,14 @@ class User {
         //initialize properties
         self.userFirstName = String()
         self.userLastName = String()
-        // self.userPassword = String()
-        self.userAbout = String()
-        self.userPreferences = String()
-        self.userPhone = String()
-        // self.userEmail = String()
-        self.userOccupation = String()
+        self.userDOB = String()
+        self.userLocation = String()
+        self.userPhoneNumber = String()
         self.userRsvpEvents = Array()
         self.userEventCreated = Array()
     }
     
-    func getUserFullName(First: String, Last: String) -> String {
+    func getUserFullName() -> String {
         return "\(userFirstName) \(userLastName)"
     }
     
@@ -58,9 +52,9 @@ class User {
         return [
             "Firstname": userFirstName,
             "Lastname": userLastName,
-            "Occupation": userOccupation,
-            "About": userAbout,
-            "Phone": userPhone
+            "DOB": userDOB,
+            "Location": userLocation,
+            "Phone": userPhoneNumber
         ]
     }
     
