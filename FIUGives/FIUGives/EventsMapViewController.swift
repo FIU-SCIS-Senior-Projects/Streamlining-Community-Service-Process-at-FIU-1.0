@@ -11,8 +11,9 @@ import MapKit
 import CoreLocation
 
 class EventsMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
-    var allEvents: [Event]!
     var locationManager:CLLocationManager!
+    let selectDatePicker = UIDatePicker()
+    
     @IBOutlet weak var eventsMapView: MKMapView!
     @IBOutlet weak var dateSelectionTextField: UITextField!
 
@@ -25,9 +26,9 @@ class EventsMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        dateSelectionTextField.text = ""
         for eventArray in EventCalendar.shared.myCalendar.values {
             for eachEvent in eventArray {
-                //allEvents.append(eachEvent)
                 let annotation = MKPointAnnotation()
                 annotation.title = eachEvent.eventName
                 annotation.subtitle = eachEvent.returnStartDate()
@@ -42,7 +43,6 @@ class EventsMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //function to determine user's current location
@@ -62,10 +62,6 @@ class EventsMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
         eventsMapView.setRegion(region, animated: true)
-        /*let userLocationAnnotation = MKPointAnnotation()
-        userLocationAnnotation.coordinate = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude)
-        userLocationAnnotation.title = "My Location"
-        eventsMapView.addAnnotation(userLocationAnnotation)*/
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -73,7 +69,6 @@ class EventsMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        let selectDatePicker = UIDatePicker()
         selectDatePicker.datePickerMode = UIDatePickerMode.date
         selectDatePicker.backgroundColor = UIColor.white
         textField.inputView = selectDatePicker
@@ -91,17 +86,35 @@ class EventsMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         toolBar.setItems([cancelButton, spaceButton, mapButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         textField.inputAccessoryView = toolBar
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMM d, yyyy"
+        dateSelectionTextField.text =  formatter.string(from: selectDatePicker.date)
+        
     }
     
     func datePickerValueChanged (sender: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMM d, yyyy"
         dateSelectionTextField.text =  formatter.string(from: sender.date)
+        print(selectDatePicker.date)
 
     }
     
     func mapResults() {
-        
+        dateSelectionTextField.resignFirstResponder()
+        eventsMapView.removeAnnotations(eventsMapView.annotations)
+        for eventArray in EventCalendar.shared.myCalendar.values {
+            for eachEvent in eventArray {
+                let order = Calendar.current.compare(eachEvent.eventDate.myEventDate, to: selectDatePicker.date, toGranularity: .day)
+                if order  == ComparisonResult.orderedSame {
+                let annotation = MKPointAnnotation()
+                annotation.title = eachEvent.eventName
+                annotation.subtitle = eachEvent.returnStartDate()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: eachEvent.eventLatitude, longitude: eachEvent.eventLongitude)
+                eventsMapView.addAnnotation(annotation)
+                }
+            }
+        }
     }
     
     func cancelSearch() {
