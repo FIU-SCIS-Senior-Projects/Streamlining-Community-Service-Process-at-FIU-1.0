@@ -32,7 +32,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     @IBOutlet weak var eventCapacityTextField: UITextField!
     @IBOutlet weak var eventCategoryPickerView: UIPickerView!
     
-    var eventCategories = ["Animal Rights", "Arts", "Children", "Homeless", "Hospitals", "Tutoring", "Other" ]
+    var eventCategories = ["Animals", "Art", "Children at Risk", "Environment", "Health", "Homeless", "Hunger", "Research Labs", "Other" ]
     var startDate = Date()
     var endDate = Date()
     var eventCategory = ""
@@ -137,7 +137,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         })
         
         
-        // User.sharedInstance.addToUserEventCreated(Event: newEvent!)
+        User.sharedInstance.addToUserEventCreated(Event: newEvent!)
         EventCalendar.shared.addEvent(newEvent: newEvent!)
         self.navigationController?.popViewController(animated: true)
     }
@@ -206,11 +206,11 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     //function to update the rsvp state
     func updateRSVPState() {
         if rsvpSwitch.isOn {
-            rsvpEnabled.text = "Set event capacity"
+            rsvpEnabled.text = "Set Event Capacity"
             eventCapacityTextField.text = ""
         }
         else {
-            rsvpEnabled.text = "Unlimited capacity"
+            rsvpEnabled.text = "Unlimited Capacity"
             eventCapacityTextField.text = "UNLIMITED"
         }
     }

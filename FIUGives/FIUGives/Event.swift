@@ -108,6 +108,20 @@ class Event: Comparable {
         return formatter.string(from: self.eventEnd)
     }
     
+    //returns the start date in the format "MMM d, yyyy h:mm a" as a string
+    func returnStartDateTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy h:mm a"
+        return formatter.string(from: self.eventStart)
+    }
+    
+    //returns the end date in the format "MMM d, yyyy h:mm a" as a string
+    func returnEndDateTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy h:mm a"
+        return formatter.string(from: self.eventEnd)
+    }
+    
     func dictionaryObject() -> Any {
         return [
             "eventName": eventName,

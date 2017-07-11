@@ -122,7 +122,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         let userRef = ref.child("users").child(userUID)
             userRef.observeSingleEvent(of: .value, with: { snapshot in
                 if !snapshot.exists() { return }
-                print(snapshot.value)
+                print(snapshot.value as Any)
                 let value = snapshot.value as? NSDictionary
                 
                 let firstname = value?["Firstname"] as? String ?? ""
