@@ -524,7 +524,7 @@
             </objects>
             <point key="canvasLocation" x="1536.8" y="-378.26086956521743"/>
         </scene>
-        <!--Edit Events View Controller-->
+        <!--Edit Events-->
         <scene sceneID="Vzs-fw-lFz">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="T37-nn-CEA" customClass="EditEventsViewController" customModule="FIUGives" customModuleProvider="target" sceneMemberID="viewController">
@@ -579,6 +579,9 @@
                             <constraint firstItem="r6v-MH-dog" firstAttribute="leading" secondItem="9YI-rs-I6e" secondAttribute="leading" id="c7c-Pe-Bih"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Edit Events" id="cZB-wW-cmM">
+                        <barButtonItem key="backBarButtonItem" title="Edit Events" id="UBD-uI-rzw"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="userEventsCreatedTable" destination="r6v-MH-dog" id="obG-Xt-VYT"/>
                         <segue destination="iQk-Ch-V3Z" kind="show" identifier="editEventSegue" id="KOv-b6-RsO"/>
@@ -1103,14 +1106,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gjI-1e-kvT">
-                                                    <rect key="frame" x="15" y="9" width="100.5" height="17"/>
+                                                    <rect key="frame" x="16" y="9" width="100.5" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <color key="textColor" red="0.022385674540000001" green="0.27802213910000001" blue="0.5982810958" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qSh-HY-G0Y">
-                                                    <rect key="frame" x="15" y="26" width="44" height="14.5"/>
+                                                    <rect key="frame" x="16" y="26" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
@@ -1127,14 +1130,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NtF-I0-e1z">
-                                                    <rect key="frame" x="15" y="9" width="85.5" height="17"/>
+                                                    <rect key="frame" x="16" y="9" width="85.5" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <color key="textColor" red="0.022385674540000001" green="0.27802213910000001" blue="0.5982810958" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lp9-tv-sFL">
-                                                    <rect key="frame" x="15" y="26" width="44" height="14.5"/>
+                                                    <rect key="frame" x="16" y="26" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
@@ -1151,14 +1154,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sXz-uz-ZeD">
-                                                    <rect key="frame" x="15" y="9" width="58" height="17"/>
+                                                    <rect key="frame" x="16" y="9" width="58" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                     <color key="textColor" red="0.022385674540000001" green="0.27802213910000001" blue="0.5982810958" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f8n-Wa-JUe">
-                                                    <rect key="frame" x="15" y="26" width="44" height="14.5"/>
+                                                    <rect key="frame" x="16" y="26" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
