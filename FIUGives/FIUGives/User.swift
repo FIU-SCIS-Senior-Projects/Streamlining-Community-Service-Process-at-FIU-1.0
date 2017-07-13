@@ -22,7 +22,7 @@ class User {
     var userPhoneNumber: String
     var userOccupation: String
     var userRsvpEvents: [EventDate:[Event]]
-    var userCreatedEvents: [Event]
+    var userEventCreated: [Event]
     
     //MARK: Initialization
     private init() {
@@ -34,7 +34,7 @@ class User {
         self.userPhoneNumber = String()
         self.userOccupation = String()
         self.userRsvpEvents = [EventDate:[Event]]()
-        self.userCreatedEvents = Array()
+        self.userEventCreated = Array()
     }
     
     func getUserFullName() -> String {
@@ -51,8 +51,8 @@ class User {
         }
     }
     
-    func addCreatedEvent(Event: Event) {
-        userCreatedEvents.append(Event)
+    func addToUserEventCreated(Event: Event) {
+        userEventCreated.append(Event)
     }
     
     func setUserFirstName(First: String) {

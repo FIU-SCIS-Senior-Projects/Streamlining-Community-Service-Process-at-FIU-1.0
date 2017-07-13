@@ -78,7 +78,6 @@ class Event: Comparable {
         
     }
     
-    //compare 
     
     //returns the start date in the format "EEEE,   MMM d, yyyy" as a string
     func returnStartDate() -> String {
@@ -86,36 +85,24 @@ class Event: Comparable {
         formatter.dateFormat = "EEEE, MMM d, yyyy"
         return formatter.string(from: self.eventStart)
     }
-    
     //returns the end date in the format "EEEE,   MMM d, yyyy" as a string
     func returnEndDate() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE,   MMM d, yyyy"
         return formatter.string(from: self.eventEnd)
     }
-    
     //returns the start time in the format h:mm a" as a string
     func returnStartTime() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
         return formatter.string(from: self.eventStart)
     }
-    
     //returns the end time in the format h:mm a" as a string
     func returnEndTime() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
         return formatter.string(from: self.eventEnd)
     }
-    
-    func dictionaryObject() -> Any {
-        return [
-            "eventName": eventName,
-            "eventStart": returnStartDate(),
-            "eventEnd": returnEndDate()
-        ]
-    }
-    
     
     
     
@@ -153,50 +140,34 @@ class Event: Comparable {
     func setEventCategory(Category: String) {
         self.eventName = Category
     }
-    
-    func setEventFlyerURL(Flyer: String) {
-        self.eventFlyerURL = Flyer
+    //returns the start date in the format "MMM d, yyyy h:mm a" as a string
+    func returnStartDateTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy h:mm a"
+        return formatter.string(from: self.eventStart)
+    }
+    //returns the end date in the format "MMM d, yyyy h:mm a" as a string
+    func returnEndDateTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy h:mm a"
+        return formatter.string(from: self.eventEnd)
     }
     
-    func setEventDescription(Description: String) {
-        self.eventDescription = Description
+    
+    
+    
+    
+    
+    
+    func dictionaryObject() -> Any {
+        return [
+            "eventName": eventName,
+            "eventStart": returnStartDate(),
+            "eventEnd": returnEndDate()
+        ]
     }
     
-    func setEventStartDate(StartDate: Date) {
-        self.eventStart = StartDate
-    }
-    
-    func setEventEndDate(EndDate: Date) {
-        self.eventEnd = EndDate
-    }
-    
-    func setEventAddress(EventAddress: Address) {
-        self.eventAddress = EventAddress
-    }
-    
-    func setEventContactName(ContactName: String) {
-        self.eventContactName = ContactName
-    }
-    
-    func setEventContactEmail(ContactEmail: String) {
-        self.eventContactEmail = ContactEmail
-    }
-    
-    func setEventCapacity(Capacity: Int) {
-        self.eventCapacity = Capacity
-    }
-    
-    // Format event start date
-    
-    // Format event end date
-    
-    
-    
-    
-    
-    
-    
-    deinit {
+       deinit {
         
     }
     

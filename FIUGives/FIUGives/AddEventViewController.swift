@@ -32,10 +32,10 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     @IBOutlet weak var eventCapacityTextField: UITextField!
     @IBOutlet weak var eventCategoryPickerView: UIPickerView!
     
-    var eventCategories = ["Animal Rights", "Arts", "Children", "Homeless", "Hospitals", "Tutoring", "Other" ]
-    var startDate = Date()
-    var endDate = Date()
-    var eventCategory = ""
+    var eventCategories = ["Animals", "Art", "Children at Risk", "Environment", "Health", "Homeless", "Hunger", "Research Labs", "Other"]
+    //var startDate = Date()
+    //var endDate = Date()
+    var eventCategory = "Animals"
     var eventCapacity: Int?
     var eventAddress: Address?
     var newEvent: Event?
@@ -50,13 +50,19 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         var comp = DateComponents()
         comp.day = 1
         comp.minute = -1
-        startDate = eventStartDate.date
+        //startDate = eventStartDate.date
         eventEndDate.minimumDate = eventStartDate.date
         eventEndDate.maximumDate = cal.date(byAdding: comp, to: cal.startOfDay(for: eventStartDate.date))
     }
     
     @IBAction func endDateChanged(_ sender: Any) {
-        endDate = eventEndDate.date
+        let cal = Calendar.current
+        var comp = DateComponents()
+        comp.day = 1
+        comp.minute = -1
+        //startDate = eventStartDate.date
+        eventEndDate.minimumDate = eventStartDate.date
+        eventEndDate.maximumDate = cal.date(byAdding: comp, to: cal.startOfDay(for: eventStartDate.date))
     }
 
     @IBAction func addEvent(_ sender: UIBarButtonItem) {
@@ -117,10 +123,10 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
                 return
             }
             eventCapacity = Int(eventCapacityTextField.text!)
-            newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text!, eventStart: startDate, eventEnd: endDate, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!, eventCapacity: eventCapacity!)
+            newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text!, eventStart: eventStartDate.date, eventEnd: eventEndDate.date, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!, eventCapacity: eventCapacity!)
         }
         else {
-            newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text, eventStart: startDate, eventEnd: endDate, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!)
+            newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text, eventStart: eventStartDate.date, eventEnd: eventEndDate.date, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!)
         }
         
         //forward geocoding to set latitude & longitude properties of newly created event using GLGeocoder/check network connection prior
@@ -137,7 +143,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         })
         
         
-        // User.sharedInstance.addToUserEventCreated(Event: newEvent!)
+        User.sharedInstance.addToUserEventCreated(Event: newEvent!)
         EventCalendar.shared.addEvent(newEvent: newEvent!)
         self.navigationController?.popViewController(animated: true)
     }
@@ -206,11 +212,11 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     //function to update the rsvp state
     func updateRSVPState() {
         if rsvpSwitch.isOn {
-            rsvpEnabled.text = "Set event capacity"
+            rsvpEnabled.text = "Set Event Capacity"
             eventCapacityTextField.text = ""
         }
         else {
-            rsvpEnabled.text = "Unlimited capacity"
+            rsvpEnabled.text = "Unlimited Capacity"
             eventCapacityTextField.text = "UNLIMITED"
         }
     }

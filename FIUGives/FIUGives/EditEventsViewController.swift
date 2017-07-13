@@ -37,6 +37,18 @@ class EditEventsViewController: UIViewController, UITableViewDataSource, UITable
         return cell
 
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let event = User.sharedInstance.userEventCreated[indexPath.row]
+        performSegue(withIdentifier: "editEventSegue", sender: event)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editEventSegue" {
+            let destination = segue.destination as! EditEventDetailsViewController
+            destination.detailedEvent = sender as? Event
+        }
+    }
 
   
 
