@@ -20,8 +20,9 @@ class User {
     var userDOB: String
     var userLocation: String
     var userPhoneNumber: String
-    var userRsvpEvents: [Event]
-    var userEventCreated: [Event]
+    var userOccupation: String
+    var userRsvpEvents: [EventDate:[Event]]
+    var userCreatedEvents: [Event]
     
     //MARK: Initialization
     private init() {
@@ -31,21 +32,51 @@ class User {
         self.userDOB = String()
         self.userLocation = String()
         self.userPhoneNumber = String()
-        self.userRsvpEvents = Array()
-        self.userEventCreated = Array()
+        self.userOccupation = String()
+        self.userRsvpEvents = [EventDate:[Event]]()
+        self.userCreatedEvents = Array()
     }
     
     func getUserFullName() -> String {
         return "\(userFirstName) \(userLastName)"
     }
     
-    func addToUserEventCreated(Event: Event) {
-        self.userEventCreated.append(Event)
-        self.userEventCreated.sort()
+    func addRsvpEvent(newEvent: Event) {
+        if self.userRsvpEvents.keys.contains(newEvent.eventDate) {
+            self.userRsvpEvents[newEvent.eventDate]?.append(newEvent)
+            self.userRsvpEvents[newEvent.eventDate]?.sort()
+        }
+        else {
+            self.userRsvpEvents[newEvent.eventDate] = [newEvent]
+        }
     }
     
-    func addToUserRsvpEvents(Event: Event) {
-        userRsvpEvents.append(Event)
+    func addCreatedEvent(Event: Event) {
+        userCreatedEvents.append(Event)
+    }
+    
+    func setUserFirstName(First: String) {
+        userFirstName = First
+    }
+    
+    func setUserLastName(Last: String) {
+        userLastName = Last
+    }
+    
+    func setUserPhoneNumber(Phone: String) {
+        userPhoneNumber = Phone
+    }
+    
+    func setUserLocation(Location: String) {
+        userLocation = Location
+    }
+    
+    func setUserDateOfBirth(Birth: String) {
+        userDOB = Birth
+    }
+    
+    func setUserOccupation(Occupation: String) {
+        userOccupation = Occupation
     }
     
     func dictionaryObject() -> Any {

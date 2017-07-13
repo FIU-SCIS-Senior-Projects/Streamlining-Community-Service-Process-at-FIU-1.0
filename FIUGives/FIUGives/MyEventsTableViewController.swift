@@ -2,19 +2,14 @@
 //  MyEventsTableViewController.swift
 //  FIUGives
 //
-//  Created by Kathryn Bello on 6/12/17.
+//  Created by Kathryn Bello on 7/11/17.
 //  Copyright © 2017 FIUGives. All rights reserved.
 //
 
 import UIKit
 
-var myIndex = 0;
-
-// var eventsRsvp = User.sharedInstance.userEventsRsvp
-// Testing
-var eventsRsvp = ["Volunteer Event 1", "Volunteer Event 2", "Volunteer Event 3", "Volunteer Event 4"]
-
 class MyEventsTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,36 +29,23 @@ class MyEventsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return eventsRsvp.count
+        return 0
     }
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "rsvpCell", for: indexPath) as! MyEventsTableViewCell
-        
-        // let formatter = DateFormatter()
-        // formatter.dateFormat = "EEEE MMM d, h:mm a"
-        
-        // Testing
-        cell.eventName.text = eventsRsvp[indexPath.row]
-        
-        // cell.eventName.text = eventsRsvp[indexPath.row].eventName
-        
-        // cell.startDate.text = formatter.string(from: eventsRsvp[indexPath.row].eventStart as Date)
-        // cell.endDate.text = formatter.string(from: eventsRsvp[indexPath.row].eventEnd as Date)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        myIndex = indexPath.row
-        performSegue(withIdentifier: "eventDetailsSegue", sender: self)
-    }
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -88,6 +70,7 @@ class MyEventsTableViewController: UITableViewController {
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
     }
     */
 

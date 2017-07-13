@@ -230,10 +230,10 @@
 			isa = PBXGroup;
 			children = (
 				E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */,
-				E1B5C6A91F0C05C900A43A47 /* UserLoginControllers */,
-				BBD529E61EEF86DE00D45B6B /* EventsController */,
-				BBD529E71EEF870000D45B6B /* MyEventsController */,
 				BBD529E81EEF871D00D45B6B /* ProfileController */,
+				BBD529E61EEF86DE00D45B6B /* EventsController */,
+				E1B5C6A91F0C05C900A43A47 /* UserLoginControllers */,
+				BBD529E71EEF870000D45B6B /* MyEventsController */,
 				BBD529E91EEF874D00D45B6B /* EventsMapController */,
 				BBD529E51EEF869400D45B6B /* Model */,
 				E149CC271EDFA7BB002A3256 /* Assets.xcassets */,

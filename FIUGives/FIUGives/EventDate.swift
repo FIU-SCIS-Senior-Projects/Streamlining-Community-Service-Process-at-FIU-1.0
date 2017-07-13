@@ -28,7 +28,7 @@ class EventDate: Hashable, Comparable {
     }
     func dateComponent() -> String{
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE   MMM d, yyyy"
+        formatter.dateFormat = "EEEE MMM d, yyyy"
         return formatter.string(from: self.myEventDate)
     }
     

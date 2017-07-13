@@ -125,18 +125,17 @@ class Event: Comparable {
     
     
     
-    /* Add attendants to the eventAttendants array
     func addToEventAttendants(Attendant: String) {
         self.eventAttendants.append(Attendant)
     }
     
-    // Remove attendant from the eventAttendants array
+
     func removeEventAttendant(Attendant: String) {
         if let index = eventAttendants.index(of: Attendant) {
             self.eventAttendants.remove(at: index)
         }
     }
-    */
+    
     // Delete event method
     
     
