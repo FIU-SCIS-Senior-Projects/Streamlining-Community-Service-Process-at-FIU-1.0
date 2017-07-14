@@ -31,9 +31,10 @@ class EventCalendar {
         else {
             self.myCalendar[newEvent.eventDate] = [newEvent]
         }
-        
-        //self.myCalendar.append(newEvent)
-        //myCalendar.sort()
+    }
+    
+    func sortValueForKey(key: EventDate) {
+        self.myCalendar[key]?.sort()
     }
     
     func totalEvents() -> Int {

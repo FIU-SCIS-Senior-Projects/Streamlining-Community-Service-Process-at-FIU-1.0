@@ -17,6 +17,10 @@ class EditEventsViewController: UIViewController, UITableViewDataSource, UITable
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.userEventsCreatedTable.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,8 +49,8 @@ class EditEventsViewController: UIViewController, UITableViewDataSource, UITable
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editEventSegue" {
-            let destination = segue.destination as! EditEventDetailsViewController
-            destination.detailedEvent = sender as? Event
+            let destination = segue.destination as! EditEventDetailsTableViewController
+            destination.detailedEvent = (sender as? Event)!
         }
     }
 

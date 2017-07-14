@@ -26,12 +26,13 @@ class EventsMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        eventsMapView.removeAnnotations(eventsMapView.annotations)
         dateSelectionTextField.text = ""
         for eventArray in EventCalendar.shared.myCalendar.values {
             for eachEvent in eventArray {
                 let annotation = MKPointAnnotation()
                 annotation.title = eachEvent.eventName
-                annotation.subtitle = eachEvent.returnStartDate()
+                annotation.subtitle = eachEvent.returnStartDateTime()
                 annotation.coordinate = CLLocationCoordinate2D(latitude: eachEvent.eventLatitude, longitude: eachEvent.eventLongitude)
                 eventsMapView.addAnnotation(annotation)
                 
@@ -109,7 +110,7 @@ class EventsMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
                 if order  == ComparisonResult.orderedSame {
                 let annotation = MKPointAnnotation()
                 annotation.title = eachEvent.eventName
-                annotation.subtitle = eachEvent.returnStartDate()
+                annotation.subtitle = eachEvent.returnStartDateTime()
                 annotation.coordinate = CLLocationCoordinate2D(latitude: eachEvent.eventLatitude, longitude: eachEvent.eventLongitude)
                 eventsMapView.addAnnotation(annotation)
                 }

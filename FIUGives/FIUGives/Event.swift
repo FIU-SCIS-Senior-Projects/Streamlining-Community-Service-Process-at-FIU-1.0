@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class Event: Comparable {
     
@@ -39,13 +40,26 @@ class Event: Comparable {
         self.eventDescription = eventDescription
         self.eventStart = eventStart
         self.eventEnd = eventEnd
-        //self.eventType = "Volunteering"
         self.eventAddress = eventAddress
-        //self.eventClubs = eventClubs
         self.eventContactName = eventContactName
         self.eventContactEmail = eventContactEmail
         self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart))
         self.eventDate = EventDate.init(myEventDate: eventStart)
+        //forward geocoding to set latitude & longitude properties of newly created event using GLGeocoder/check network connection prior
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(eventAddress.fullAddress(), completionHandler: {(placemarks, error) -> Void in
+            if ((error) != nil) {
+                print("Error")
+            }
+            if let placemark = placemarks?.first{
+                let coordinates: CLLocationCoordinate2D = placemark.location!.coordinate
+                self.eventLatitude = coordinates.latitude
+                self.eventLongitude = coordinates.longitude
+            }
+        })
+        
+        
+        
         
     }
      //init with capacity
@@ -54,30 +68,18 @@ class Event: Comparable {
         self.init(eventName: eventName, eventCategory: eventCategory, eventFlyerURL: eventFlyerURL, eventDescription: eventDescription, eventStart: eventStart, eventEnd: eventEnd, eventAddress:eventAddress, eventContactName: eventContactName, eventContactEmail: eventContactEmail)
     self.eventCapacity = eventCapacity
     }
-    
-    //update latitude
-    func setLatitude (eventLatitude: Double) {
-    self.eventLatitude = eventLatitude
-    }
-    
-    //update longitude
-    func setLongitude (eventLongitude: Double) {
-        self.eventLongitude = eventLongitude
-    }
-    
+
     static func < (lhs: Event, rhs: Event) -> Bool {
         if (lhs.eventStart.compare(rhs.eventStart) == .orderedAscending) {
         return true
         }
         return false
     }
-    
     //compare events for equality based on their start date & time
     static func == (lhs: Event, rhs: Event) -> Bool {
         return lhs.eventStart == rhs.eventStart
         
     }
-    
     
     //returns the start date in the format "EEEE,   MMM d, yyyy" as a string
     func returnStartDate() -> String {
@@ -115,6 +117,58 @@ class Event: Comparable {
         formatter.dateFormat = "MMM d, yyyy h:mm a"
         return formatter.string(from: self.eventEnd)
     }
+    
+    func updateName (eventName: String) {
+        self.eventName = eventName
+    }
+    func updateFlyerURL (eventFlyerURL: String) {
+        self.eventFlyerURL = eventFlyerURL
+    }
+    func updateContactName (eventContactName: String) {
+        self.eventContactName = eventContactName
+    }
+    func updateContactEmail (eventContactEmail: String) {
+        self.eventContactEmail = eventContactEmail
+    }
+    func updateAddress (eventAddress: Address) {
+        self.eventAddress = eventAddress
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(eventAddress.fullAddress(), completionHandler: {(placemarks, error) -> Void in
+            if ((error) != nil) {
+                print("Error")
+            }
+            if let placemark = placemarks?.first{
+                let coordinates: CLLocationCoordinate2D = placemark.location!.coordinate
+                self.eventLatitude = coordinates.latitude
+                self.eventLongitude = coordinates.longitude
+            }
+        })
+    }
+    func updateCapacity (eventCapacity: Int) {
+        self.eventCapacity = eventCapacity
+    }
+    func updateDescription (eventDescription: String) {
+        self.eventDescription = eventDescription
+    }
+    func updateStartDate (eventStartDate: Date) {
+        self.eventStart = eventStartDate
+        self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart))
+        EventCalendar.shared.sortValueForKey(key: self.eventDate)
+        User.sharedInstance.userEventCreated.sort()
+    }
+    func updateEndDate (eventEndDate: Date) {
+        self.eventEnd = eventEndDate
+        self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart))
+    }
+    func updateCategory (eventCategory: String) {
+        self.eventCategory = eventCategory
+    }
+    func deactivateEvent() {
+        self.active = false
+    }
+    
+    
+    
     
     
     

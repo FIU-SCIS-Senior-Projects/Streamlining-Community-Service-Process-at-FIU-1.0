@@ -14,7 +14,7 @@
 		BBAA37B01F02109200D3B853 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAA37AF1F02109200D3B853 /* Address.swift */; };
 		BBCBBAE71F0DC29E0083A8A2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBCBBAE61F0DC29E0083A8A2 /* MapKit.framework */; };
 		BBCBBAE91F0DC2FD0083A8A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBCBBAE81F0DC2FD0083A8A2 /* CoreLocation.framework */; };
-		BBCBBAEB1F131BAC0083A8A2 /* EditEventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCBBAEA1F131BAC0083A8A2 /* EditEventDetailsViewController.swift */; };
+		BBD111691F1705050073896A /* EditEventDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD111681F1705050073896A /* EditEventDetailsTableViewController.swift */; };
 		BBD529541EE48F6E00D45B6B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529531EE48F6E00D45B6B /* Event.swift */; };
 		BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529551EEA304E00D45B6B /* EventCalendar.swift */; };
 		BBD529D41EEDC25B00D45B6B /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */; };
@@ -71,7 +71,7 @@
 		BBAA37AF1F02109200D3B853 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		BBCBBAE61F0DC29E0083A8A2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BBCBBAE81F0DC2FD0083A8A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		BBCBBAEA1F131BAC0083A8A2 /* EditEventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventDetailsViewController.swift; sourceTree = "<group>"; };
+		BBD111681F1705050073896A /* EditEventDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventDetailsTableViewController.swift; sourceTree = "<group>"; };
 		BBD529531EE48F6E00D45B6B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BBD529551EEA304E00D45B6B /* EventCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCalendar.swift; sourceTree = "<group>"; };
 		BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -171,10 +171,10 @@
 		BBD529E61EEF86DE00D45B6B /* EventsController */ = {
 			isa = PBXGroup;
 			children = (
+				BBD111681F1705050073896A /* EditEventDetailsTableViewController.swift */,
 				BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */,
 				BB9677371F0988A30089CA82 /* DetailedViewController.swift */,
 				BBD529DD1EEDE2BF00D45B6B /* EditEventsViewController.swift */,
-				BBCBBAEA1F131BAC0083A8A2 /* EditEventDetailsViewController.swift */,
 				BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */,
 			);
 			name = EventsController;
@@ -578,12 +578,12 @@
 				E11CD2DB1F05A6500071D001 /* CalendarCell.swift in Sources */,
 				BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */,
 				BBD529DA1EEDCB8400D45B6B /* MyProfileViewController.swift in Sources */,
-				BBCBBAEB1F131BAC0083A8A2 /* EditEventDetailsViewController.swift in Sources */,
 				BBAA37B01F02109200D3B853 /* Address.swift in Sources */,
 				BBD529DC1EEDCB9E00D45B6B /* EventsMapViewController.swift in Sources */,
 				E1629BD81EEB55E400B8926A /* User.swift in Sources */,
 				BBD529D41EEDC25B00D45B6B /* EventsViewController.swift in Sources */,
 				E149CC1F1EDFA7BB002A3256 /* AppDelegate.swift in Sources */,
+				BBD111691F1705050073896A /* EditEventDetailsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
