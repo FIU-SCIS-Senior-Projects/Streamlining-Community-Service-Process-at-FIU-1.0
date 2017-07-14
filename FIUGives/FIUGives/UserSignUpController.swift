@@ -15,11 +15,13 @@ class UserSignUpController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordConfirm: UITextField!
     @IBOutlet weak var userFirstName: UITextField!
     @IBOutlet weak var userLastName: UITextField!
-    @IBOutlet weak var userPhoneNumber: UITextField?
-    @IBOutlet weak var userDOB: UITextField?
-    @IBOutlet weak var userLocation: UITextField?
+    @IBOutlet weak var userPhoneNumber: UITextField!
+    @IBOutlet weak var userDOB: UITextField!
+    @IBOutlet weak var userLocation: UITextField!
+    @IBOutlet weak var userOccupation: UITextField!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    let selectDatePicker = UIDatePicker()
     var rootRef = Database.database().reference()
     var handle: AuthStateDidChangeListenerHandle? = nil
     var currentUser = User.sharedInstance
@@ -56,27 +58,23 @@ class UserSignUpController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        /* Validation for numbers in telephone and dob fields.
+        // Validation for numbers in telephone.
         if !((userPhoneNumber?.text!.isEmpty)!) || !((userDOB?.text?.isEmpty)!) {
             guard (Int((userPhoneNumber?.text!)!) != nil) else {
                 presentAlert(message: "Please enter a valid phone number.")
                 return
             }
-            
-            guard (Int((userDOB?.text!)!) != nil) else {
-                presentAlert(message: "Please enter a valid date of birth.")
-                return
-            }
-        } */
+        }
         
         self.userEmail.resignFirstResponder()
         self.userPassword.resignFirstResponder()
         self.passwordConfirm.resignFirstResponder()
-        self.userDOB?.resignFirstResponder()
-        self.userLocation?.resignFirstResponder()
+        self.userDOB.resignFirstResponder()
+        self.userLocation.resignFirstResponder()
         self.userFirstName.resignFirstResponder()
         self.userLastName.resignFirstResponder()
-        self.userPhoneNumber?.resignFirstResponder()
+        self.userPhoneNumber.resignFirstResponder()
+        self.userOccupation.resignFirstResponder()
         
         self.userPassword.isSecureTextEntry = true
         self.passwordConfirm.isSecureTextEntry = true
@@ -99,28 +97,54 @@ class UserSignUpController: UIViewController, UITextFieldDelegate {
         currentUser.userDOB = (userDOB?.text)!
         currentUser.userPhoneNumber = (userPhoneNumber?.text)!
         currentUser.userLocation = (userLocation?.text)!
-        print("THE CURRENT USER OBJECT: \(currentUser.userFirstName) \(currentUser.userLastName) \(currentUser.userPhoneNumber) \(currentUser.userDOB) \(currentUser.userLocation)")
+        currentUser.userOccupation = (userOccupation.text)!
+        print("THE CURRENT USER OBJECT: \(currentUser.userFirstName) \(currentUser.userLastName) \(currentUser.userPhoneNumber) \(currentUser.userDOB) \(currentUser.userLocation) \(currentUser.userOccupation)")
     }
     
-    // Textfield formatting for dob and phone number.
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == userDOB {
-            if (userDOB?.text?.characters.count == 2) || (userDOB?.text?.characters.count == 5) {
-                if !(string == "") {
-                    userDOB?.text = (userDOB?.text)! + "-"
-                }
-            }
-            return !(textField.text!.characters.count > 9 && (string.characters.count ) > range.length)
-        } else if textField == userPhoneNumber {
-            if (userPhoneNumber?.text?.characters.count == 3) || (userPhoneNumber?.text?.characters.count == 7) {
-                if !(string == "") {
-                    userPhoneNumber?.text = (userPhoneNumber?.text)! + "-"
-                }
-            }
-                return !(textField.text!.characters.count > 11 && (string.characters.count ) > range.length)
-        } else {
-            return true
-        }
+    // Date picker for user date of birth.
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        selectDatePicker.datePickerMode = UIDatePickerMode.date
+        selectDatePicker.backgroundColor = UIColor.white
+        textField.inputView = selectDatePicker
+        selectDatePicker.addTarget(self, action: #selector(UserSignUpController.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = false
+        toolBar.sizeToFit()
+        toolBar.tintColor = UIColor.black
+
+        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(UserSignUpController.saveDob))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(UserSignUpController.cancelSearch))
+        toolBar.setItems([cancelButton, spaceButton, saveButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        textField.inputAccessoryView = toolBar
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/YYYY"
+        userDOB?.text =  formatter.string(from: selectDatePicker.date)
+    }
+    
+    func datePickerValueChanged (sender: UIDatePicker) {
+        var components = DateComponents()
+        components.year = -100
+        let min = Calendar.current.date(byAdding: components, to: Date())
+        let max = Date()
+        sender.minimumDate = min
+        sender.maximumDate = max
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/YYYY"
+        userDOB?.text =  formatter.string(from: sender.date)
+        print(selectDatePicker.date)
+    }
+    
+    func saveDob() {
+        userDOB?.resignFirstResponder()
+    }
+    
+    func cancelSearch() {
+        userDOB?.text = ""
+        userDOB?.resignFirstResponder()
     }
     
     // Alert controller
@@ -139,8 +163,6 @@ class UserSignUpController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         userDOB?.delegate = self
-        userPhoneNumber?.delegate = self
-        // getUser()
         // Do any additional setup after loading the view.
     }
     

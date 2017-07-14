@@ -105,6 +105,43 @@ class Event: Comparable {
         formatter.dateFormat = "h:mm a"
         return formatter.string(from: self.eventEnd)
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    func addToEventAttendants(Attendant: String) {
+        self.eventAttendants.append(Attendant)
+    }
+    
+
+    func removeEventAttendant(Attendant: String) {
+        if let index = eventAttendants.index(of: Attendant) {
+            self.eventAttendants.remove(at: index)
+        }
+    }
+    
+    // Delete event method
+    
+    
+    
+    
+    
+    
+    
+    
+    // Update event information
+    func setEventName(Name: String) {
+        self.eventName = Name
+    }
+    
+    func setEventCategory(Category: String) {
+        self.eventName = Category
+    }
     //returns the start date in the format "MMM d, yyyy h:mm a" as a string
     func returnStartDateTime() -> String {
         let formatter = DateFormatter()

@@ -14,13 +14,14 @@ class MyProfileViewController: UITableViewController {
     @IBOutlet weak var userPhone: UILabel!
     @IBOutlet weak var userDob: UILabel!
     @IBOutlet weak var userLocation: UILabel!
-
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userOccupation: UILabel!
     var ref: DatabaseReference!
     var handle: AuthStateDidChangeListenerHandle? = nil
     var currentUser = User.sharedInstance
     
     // Get currently logged in user.
-    func getUserAndCreateProfile() {
+    func getUser() {
         var userUID = String()
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             userUID = Auth.auth().currentUser!.uid
@@ -35,12 +36,14 @@ class MyProfileViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUserAndCreateProfile()
-        userName.text = currentUser.getUserFullName()
-        userPhone.text = currentUser.userPhoneNumber
-        userDob.text = currentUser.userDOB
-        userLocation.text = currentUser.userLocation
-
+        getUser()
+        
+        self.userName.text = currentUser.getUserFullName().capitalized
+        self.userPhone.text = currentUser.userPhoneNumber
+        self.userDob.text = currentUser.userDOB
+        self.userLocation.text = currentUser.userLocation
+        self.userOccupation.text = currentUser.userOccupation
+        print("THE USER LABELS: \(userName.text) \(userPhone.text) \(userDob.text) \(userLocation.text) \(userOccupation.text)")
         // Do any additional setup after loading the view.
     }
 

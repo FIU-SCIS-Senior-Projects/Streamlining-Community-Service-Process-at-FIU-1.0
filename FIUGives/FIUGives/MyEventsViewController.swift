@@ -9,25 +9,27 @@
 import UIKit
 import JTAppleCalendar
 
-class MyEventsViewController: UIViewController {
+class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var tableView: UITableView!
     let formatter = DateFormatter()
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
-    var calendarOfEvents = EventCalendar.shared.myCalendar
+    var rsvpEvents = User.sharedInstance.userRsvpEvents
     var eventsForDate = [Event]()
+    var noEvents = [Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCalendarView()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        calendarOfEvents = EventCalendar.shared.myCalendar
+        rsvpEvents = User.sharedInstance.userRsvpEvents
         calendarView.reloadData()
     }
-
 
     // Calendar spacing
     func setUpCalendarView() {
@@ -37,21 +39,29 @@ class MyEventsViewController: UIViewController {
         calendarView.minimumInteritemSpacing = 0
     }
     
-    // Fetch Events from Calendar
-    func getEventsForDate(cellState: CellState) {
-        for item in calendarOfEvents {
-            if item.key == EventDate.init(myEventDate: cellState.date) {
-                for item in item.value {
-                    eventsForDate.append(item)
-                    print(eventsForDate)
-                }
+    // Fetch Events from eventDates array
+    func getEventsForDate(view: JTAppleCell?, cellState: CellState) {
+        if !(rsvpEvents.isEmpty) {
+            for item in rsvpEvents {
+                if item.key == EventDate.init(myEventDate: cellState.date) {
+                    print("THE CELL DATE IS: \(cellState.date)")
+                    eventsForDate = item.value
+                    for index in eventsForDate {
+                        print("EVENTS! \(index.eventName)")
+                    }
+                } else {return}
             }
-        }
+        } else {
+            print("NO EVENT CELL DATE: \(cellState.date)")
+            eventsForDate = noEvents as! [Event]
+            for index in eventsForDate {
+                print("NO EVENTS! \(index.eventName)")
+            }
+ }
     }
     
     func setUpCellSelected(view: JTAppleCell?, cellState: CellState) {
         guard let trueCell = view as? CalendarCell else { return }
-        
         // Logic for selecting the cell
         if cellState.isSelected {
             trueCell.selectedView.isHidden = false
@@ -71,7 +81,6 @@ class MyEventsViewController: UIViewController {
     
     func setUpCellTextColor(view: JTAppleCell?, cellState: CellState) {
         guard let trueCell = view as? CalendarCell else { return }
-        
         // Logic for color of days
         if cellState.dateBelongsTo == .thisMonth {
             if cellState.isSelected {
@@ -87,14 +96,12 @@ class MyEventsViewController: UIViewController {
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-}
 
-extension MyEventsViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         formatter.dateFormat = "YYYY MM dd"
         formatter.timeZone = Calendar.current.timeZone
@@ -119,22 +126,27 @@ extension MyEventsViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         setUpCellSelected(view: cell, cellState: cellState)
         setUpCellTextColor(view: cell, cellState: cellState)
-        print(cellState.date)
-        getEventsForDate(cellState: cellState)
+        print("CELLSTATE DATE \(cellState.date)")
+        print("DATE \(date)")
+        print(formatter.string(from: date))
+        getEventsForDate(view: cell, cellState: cellState)
+        self.tableView.reloadData()
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         setUpCellSelected(view: cell, cellState: cellState)
         setUpCellTextColor(view: cell, cellState: cellState)
+        eventsForDate.removeAll()
+        self.tableView.reloadData()
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         setUpCalendar(from: visibleDates)
+        self.tableView.reloadData()
     }
-}
 
-//MARK: TableView
-extension MyEventsViewController: UITableViewDataSource, UITableViewDelegate {
+    //MARK: TableView
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -146,9 +158,13 @@ extension MyEventsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rsvpCell", for: indexPath) as! MyEventsTableViewCell
         let event = eventsForDate[indexPath.row]
+        formatter.dateFormat = "MM/dd/YYY h:mm aa"
         cell.eventName.text = event.eventName
-        cell.eventDate.text = event.eventDate.dateComponent()
-        tableView.reloadData()
+        print("EVENT NAME: \(event.eventName)")
+        let start = formatter.string(from: event.eventStart)
+        let end = formatter.string(from: event.eventEnd)
+        cell.eventDate.text = ("\(start) to \(end)")
+        print("EVENT DATE: \(event.eventDate.dateComponent())")
         return cell
     }
     

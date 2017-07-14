@@ -12,18 +12,37 @@ import Firebase
 class EditProfileTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var firstnameField: UITextField!
     @IBOutlet weak var lastnameField: UITextField!
-    @IBOutlet weak var locationField: UITextField?
+    @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var telephoneField: UITextField?
-    @IBOutlet weak var dateOfBirthField: UITextField?
+    @IBOutlet weak var telephoneField: UITextField!
+    @IBOutlet weak var dateOfBirthField: UITextField!
+    @IBOutlet weak var occupationField: UITextField!
     @IBOutlet weak var managePasswordButton: UIButton!
+    let selectDatePicker = UIDatePicker()
     // Database connection
     var ref: DatabaseReference!
     var handle: AuthStateDidChangeListenerHandle? = nil
     var currentUser = User.sharedInstance
     var userUID = String()
     
+    @IBAction func uploadButton(_ sender: UIButton) {
+    }
+    
     @IBAction func saveUserProfile(_ sender: UIBarButtonItem) {
+        if !(firstnameField.text!.isEmpty) {
+            guard (firstnameField.text!.characters.count > 2) else {
+            presentAlert(message: "Firstname must contain at least 2 characters")
+            return
+            }
+        }
+        
+        if !(lastnameField.text!.isEmpty) {
+            guard (lastnameField.text!.characters.count > 2) else {
+                presentAlert(message: "Lastname must contain at least 2 characters")
+                return
+            }
+        }
+
         // Validation for email format.
         if !(emailField.text!.isEmpty) {
             guard (emailField.text!.contains("@")) else {
@@ -43,49 +62,91 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
             }
         }
         
-        /* Validation for numbers in telephone field.
-        if !((telephoneField?.text!.isEmpty)!) {
-            guard (Int((telephoneField?.text!)!) != nil) else {
+        // Validation for numbers in telephone field.
+        if !((telephoneField.text!.isEmpty)) {
+            guard (Int((telephoneField.text!)) != nil) else {
                 presentAlert(message: "Please enter a valid phone number.")
                 return
-                
             }
-        } */
-        
-        // Update user object properties
-        if currentUser.userFirstName != firstnameField.text! && !(firstnameField.text!.isEmpty) {
-            currentUser.userFirstName = firstnameField.text!
-        }
-        if currentUser.userLastName != lastnameField.text! && !(lastnameField.text!.isEmpty) {
-            currentUser.userLastName = lastnameField.text!
-        }
-        if currentUser.userLocation != (locationField?.text!)! && !((locationField?.text?.isEmpty)!) {
-            currentUser.userLocation = (locationField?.text!)!
-        }
-        if currentUser.userDOB != (dateOfBirthField?.text!)! && !((dateOfBirthField?.text?.isEmpty)!) {
-            currentUser.userDOB = (dateOfBirthField?.text!)!
-        }
-        if currentUser.userPhoneNumber != (telephoneField?.text!)! && !((telephoneField?.text?.isEmpty)!) {
-            currentUser.userPhoneNumber = (telephoneField?.text!)!
         }
         
-        /* Database update
-        ref = Database.database().reference()
-        let key = ref.child("users").childByAutoId().key
-        let post = [
-            "Firstname": firstnameField.text!,
-            "Lastname": lastnameField.text!,
-            "DOB": dateOfBirthField?.text!,
-            "Location": locationField?.text!,
-            "Phone": telephoneField?.text!
-        ]
-        let childUpdates = ["/posts/\(key)": post,
-                            "/user-posts/\(userUID)/\(key)/": post]
-        ref.updateChildValues(childUpdates) */
+        // Update Information
+        if !(currentUser.userFirstName == firstnameField.text) && !((firstnameField.text!.isEmpty)) {
+            currentUser.setUserFirstName(First: firstnameField.text!)
+        }
+        if !(currentUser.userLastName == lastnameField.text) && !((lastnameField.text!.isEmpty)) {
+            currentUser.setUserLastName(Last: lastnameField.text!)
+        }
+        
+        if !(currentUser.userLocation == locationField.text) && !((locationField.text!.isEmpty)) {
+            currentUser.setUserLocation(Location: locationField.text!)
+        }
+        
+        if !(currentUser.userDOB == dateOfBirthField.text) && !((dateOfBirthField.text!.isEmpty)) {
+           currentUser.setUserDateOfBirth(Birth: dateOfBirthField.text!)
+        }
+        
+        if !(currentUser.userPhoneNumber == telephoneField.text) && !((telephoneField.text!.isEmpty)) {
+            currentUser.setUserPhoneNumber(Phone: telephoneField.text!)
+        }
+        
+        if !(currentUser.userOccupation == occupationField.text) && !((occupationField.text!.isEmpty)) {
+            currentUser.setUserOccupation(Occupation: occupationField.text!)
+        }
+        
+        print("CHANGED FIELDS: \(firstnameField.text) \(lastnameField.text) \(locationField.text) \(dateOfBirthField.text) \(telephoneField.text) \(occupationField.text)")
+        
+        print("CURRENT USER PROPERTIES: \(currentUser.userFirstName) \(currentUser.userLastName) \(currentUser.userLocation) \(currentUser.userDOB) \(currentUser.userPhoneNumber) \(currentUser.userOccupation)")
         
         self.navigationController?.popViewController(animated: true)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //hide the keyboard
+        textField.resignFirstResponder()
+        return true
+    }
+
+
+    // Date picker for user date of birth.
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        selectDatePicker.datePickerMode = UIDatePickerMode.date
+        selectDatePicker.backgroundColor = UIColor.white
+        dateOfBirthField?.inputView = selectDatePicker
+        selectDatePicker.addTarget(self, action: #selector(UserSignUpController.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = false
+        toolBar.sizeToFit()
+        toolBar.tintColor = UIColor.black
+        
+        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(UserSignUpController.saveDob))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(UserSignUpController.cancelSearch))
+        toolBar.setItems([cancelButton, spaceButton, saveButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        textField.inputAccessoryView = toolBar
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/YYYY"
+        dateOfBirthField.text =  formatter.string(from: selectDatePicker.date)
+    }
+    
+    func datePickerValueChanged (sender: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/YYYY"
+        dateOfBirthField.text =  formatter.string(from: sender.date)
+        print(selectDatePicker.date)
+    }
+    
+    func saveDob() {
+        dateOfBirthField.resignFirstResponder()
+    }
+    
+    func cancelSearch() {
+        dateOfBirthField.text = ""
+        dateOfBirthField.resignFirstResponder()
+    }
     
     // Get user information
     func getUser() {
@@ -95,80 +156,10 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         }
     }
     
-    // Textfield formatting for dob and phone number.
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == dateOfBirthField {
-            if (dateOfBirthField?.text?.characters.count == 2) || (dateOfBirthField?.text?.characters.count == 5) {
-                if !(string == "") {
-                    dateOfBirthField?.text = (dateOfBirthField?.text)! + "-"
-                }
-            }
-            return !(textField.text!.characters.count > 9 && (string.characters.count ) > range.length)
-        } else if textField == telephoneField {
-            if (telephoneField?.text?.characters.count == 3) || (telephoneField?.text?.characters.count == 7) {
-                if !(string == "") {
-                    telephoneField?.text = (telephoneField?.text)! + "-"
-                }
-            }
-            return !(textField.text!.characters.count > 11 && (string.characters.count ) > range.length)
-        } else {
-            return true
-        }
-    }
-    
-    func getData() {
-        print(userUID)
-        ref = Database.database().reference()
-        let userRef = ref.child("users").child(userUID)
-            userRef.observeSingleEvent(of: .value, with: { snapshot in
-                if !snapshot.exists() { return }
-                print(snapshot.value as Any)
-                let value = snapshot.value as? NSDictionary
-                
-                let firstname = value?["Firstname"] as? String ?? ""
-                let lastname = value?["Lastname"] as? String ?? ""
-                let dob = value?["DOB"] as? String ?? ""
-                let phone = value?["Phone"] as? String ?? ""
-                let location = value?["Location"] as? String ?? ""
-                print("\(firstname) \(lastname) \(dob) \(phone) \(location)")
-                
-                // Update user object properties
-                self.currentUser.userFirstName = firstname
-                self.currentUser.userLastName = lastname
-                self.currentUser.userLocation = location
-                self.currentUser.userDOB = dob
-                self.currentUser.userPhoneNumber = phone
-            })
-        /*
-    rootRef.child("users").child(userUID).observe(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            print(snapshot.value)
-            
-            let firstname = value?["Firstname"] as? String ?? ""
-            let lastname = value?["Lastname"] as? String ?? ""
-            let dob = value?["DOB"] as? String ?? ""
-            let phone = value?["Phone"] as? String ?? ""
-            let location = value?["Location"] as? String ?? ""
-            print("\(firstname) \(lastname) \(dob) \(phone) \(location)")
-            
-            // Update user object properties
-            self.currentUser.userFirstName = firstname
-            self.currentUser.userLastName = lastname
-            self.currentUser.userLocation = location
-            self.currentUser.userDOB = dob
-            self.currentUser.userPhoneNumber = phone
-        }) } (error) in
-            print(error.localizedDescription)
-        }
-    } */
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUser()
         dateOfBirthField?.delegate = self
-        telephoneField?.delegate = self
-        // getData()
+        getUser()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
