@@ -20,14 +20,25 @@ class DetailedViewController: UITableViewController {
     @IBOutlet var eventDetailsView: UITableView!
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventContactName: UILabel!
-    @IBOutlet weak var eventContactEmail: UILabel!
-    @IBOutlet weak var eventFlyer: UILabel!
+    @IBOutlet weak var eventContactEmail: UIButton!
+    @IBOutlet weak var eventFlyer: UIButton!
     @IBOutlet weak var eventStartDate: UILabel!
     @IBOutlet weak var eventEndDate: UILabel!
     @IBOutlet weak var eventDescription: UITextView!
     @IBOutlet weak var eventAttendees: UITextView!
     @IBOutlet weak var rsvpButton: UIButton!
     @IBOutlet weak var eventAddress: UITextView!
+    
+    @IBAction func eventFlyerPressed(_ sender: UIButton) {
+        if let url = URL(string: eventFlyer.currentTitle!), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+    }
+    @IBAction func contactEmailPressed(_ sender: UIButton) {
+        if let url = URL(string: "mailto:\(eventContactEmail.currentTitle)") {
+            UIApplication.shared.open(url)
+        }
+    }
     
     @IBAction func rsvpButtonPressed(sender: UIButton) {
         ref = Database.database().reference(withPath: "rsvp-list")
@@ -103,10 +114,26 @@ class DetailedViewController: UITableViewController {
         for item in userRsvpList {
             if item.key == event.eventDate {
                 newRsvpList = item.value
+                print("BEG LIST COUNT: \(newRsvpList.count)")
+                for item in newRsvpList {
+                    print("EACH EVENT: \(item.eventName)")
+                }
                 if let index = newRsvpList.index(of: event) {
                     newRsvpList.remove(at: index)
+                    for item in newRsvpList {
+                        print("EACH EVENT: \(item.eventName)")
+                    }
+                    print("END LIST COUNT: \(newRsvpList.count)")
                 }
                 userRsvpList.updateValue(newRsvpList, forKey: item.key)
+                for each in userRsvpList {
+                    if each.key == event.eventDate {
+                        for thing in each.value {
+                            print("EACH EVENT: \(thing.eventName)")
+                        }
+                        print("FIN LIST COUNT: \(each.value.count)")
+                    }
+                }
             } else { return }
         }
         // Remove from event attendees array.
@@ -168,7 +195,6 @@ class DetailedViewController: UITableViewController {
         }
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -179,8 +205,8 @@ class DetailedViewController: UITableViewController {
         checkIfUserRsvp(event: detailedEvent!)
         eventName.text = detailedEvent?.eventName
         eventContactName.text = detailedEvent?.eventContactName
-        eventContactEmail.text = detailedEvent?.eventContactEmail
-        eventFlyer.text = detailedEvent?.eventFlyerURL
+        eventFlyer.setTitle(detailedEvent?.eventFlyerURL, for: .normal)
+        eventContactEmail.setTitle(detailedEvent?.eventContactEmail, for: .normal)
         eventStartDate.text = formatter.string(from: (detailedEvent?.eventStart)!)
         eventEndDate.text = formatter.string(from: (detailedEvent?.eventEnd)!)
         eventDescription.text = detailedEvent?.eventDescription
@@ -189,9 +215,6 @@ class DetailedViewController: UITableViewController {
             eventAttendees.text = "\(element)\n"
         }
         
-        /*if let url = URL(string: ""), NSWorkspace.shared().open(url) {
-            print("default browser was successfully opened")
-        }*/
         // Do any additional setup after loading the view.
     }
     

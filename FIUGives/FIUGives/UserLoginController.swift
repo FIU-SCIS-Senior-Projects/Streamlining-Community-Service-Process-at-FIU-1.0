@@ -15,7 +15,10 @@ class UserLoginController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
-    
+    var ref: DatabaseReference!
+    var handle: AuthStateDidChangeListenerHandle? = nil
+    var currentUser = User.sharedInstance
+    var userUID = String()
     
     @IBAction func signupButtonPressed(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "Signup")
@@ -40,9 +43,42 @@ class UserLoginController: UIViewController {
                 return
             } else {
                 print("Successful Login")
+                
+                // Get current user
+                self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+                    self.userUID = Auth.auth().currentUser!.uid
+                }
+                
+                // Get user database information.
+                let ref = Database.database().reference()
+                ref.child("users").child(Auth.auth().currentUser!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let value = snapshot.value as? [String:AnyObject]
+                    if let first = value?["Firstname"] as? String {
+                        self.currentUser.userFirstName = first
+                    }
+                    if let last = value?["Lastname"] as? String {
+                        self.currentUser.userLastName = last
+                    }
+                    if let loc = value?["Location"] as? String {
+                        self.currentUser.userLocation = loc
+                    }
+                    if let phone = value?["Phone"] as? String {
+                        self.currentUser.userPhoneNumber = phone
+                    }
+                    if let dob = value?["DOB"] as? String {
+                        self.currentUser.userDOB = dob
+                    }
+                    if let occupation = value?["Occupation"] as? String {
+                        self.currentUser.userOccupation = occupation
+                    }
+                        
+                    }) { (error) in
+                        print(error.localizedDescription)
+                    }
+                }
+                
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "Main")
                 self.present(vc!, animated: true, completion: nil)
-            }
         }
     }
     

@@ -85,7 +85,8 @@ class User {
             "Lastname": userLastName,
             "DOB": userDOB,
             "Location": userLocation,
-            "Phone": userPhoneNumber
+            "Phone": userPhoneNumber,
+            "Occupation": userOccupation
         ]
     }
     

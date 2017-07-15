@@ -22,7 +22,7 @@ class UserSignUpController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     let selectDatePicker = UIDatePicker()
-    var rootRef = Database.database().reference()
+    var ref = Database.database().reference()
     var handle: AuthStateDidChangeListenerHandle? = nil
     var currentUser = User.sharedInstance
     var userUID = String()
@@ -86,19 +86,31 @@ class UserSignUpController: UIViewController, UITextFieldDelegate {
                 return
             } else {
                 print("Successful Login")
+                
+                // Update user object properties
+                self.currentUser.userFirstName = self.userFirstName.text!
+                self.currentUser.userLastName = self.userLastName.text!
+                self.currentUser.userDOB = (self.userDOB?.text)!
+                self.currentUser.userPhoneNumber = (self.userPhoneNumber?.text)!
+                self.currentUser.userLocation = (self.userLocation?.text)!
+                self.currentUser.userOccupation = (self.userOccupation.text)!
+                
+                // Get current user
+                self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+                    self.userUID = Auth.auth().currentUser!.uid
+                }
+                
+                // Update database
+                self.ref = Database.database().reference()
+                let userRef = self.ref.child("users")
+                let newUserRef = userRef.child(Auth.auth().currentUser!.uid)
+                print("The Uid: \(Auth.auth().currentUser!.uid)")
+                newUserRef.setValue(self.currentUser.dictionaryObject())
+                
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "Main")
                 self.present(vc!, animated: true, completion: nil)
             }
         }
-        
-        // Update user object properties
-        currentUser.userFirstName = userFirstName.text!
-        currentUser.userLastName = userLastName.text!
-        currentUser.userDOB = (userDOB?.text)!
-        currentUser.userPhoneNumber = (userPhoneNumber?.text)!
-        currentUser.userLocation = (userLocation?.text)!
-        currentUser.userOccupation = (userOccupation.text)!
-        print("THE CURRENT USER OBJECT: \(currentUser.userFirstName) \(currentUser.userLastName) \(currentUser.userPhoneNumber) \(currentUser.userDOB) \(currentUser.userLocation) \(currentUser.userOccupation)")
     }
     
     // Date picker for user date of birth.
