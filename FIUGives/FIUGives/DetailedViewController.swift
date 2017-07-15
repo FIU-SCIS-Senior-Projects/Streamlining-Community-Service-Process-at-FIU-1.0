@@ -73,7 +73,7 @@ class DetailedViewController: UITableViewController {
     func getTimeDifference(firstEvent: Date, secondEvent: Date) -> Int {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.hour], from: firstEvent, to: secondEvent)
-        // print("THE TIME DIFFERENCE: \(components.hour)")
+        print("THE TIME DIFFERENCE: \(components.hour)")
         return components.hour!
     }
     
@@ -82,12 +82,17 @@ class DetailedViewController: UITableViewController {
         // capacity?
         if userRsvpList.isEmpty {
             User.sharedInstance.addRsvpEvent(newEvent: detailedEvent!)
+            for item in User.sharedInstance.userRsvpEvents {
+                for thing in item.value {
+                    print("Events in the RSVP array: \(thing.eventName)")
+                }
+            }
             noConflict = true
         } else {
             for item in userRsvpList {
                 if item.key == event.eventDate {
                     for thing in item.value {
-                        if (getTimeDifference(firstEvent: event.eventEnd, secondEvent: thing.eventStart)) > 1   {
+                        if (getTimeDifference(firstEvent: thing.eventEnd, secondEvent: event.eventStart)) > 1   {
                             User.sharedInstance.addRsvpEvent(newEvent: detailedEvent!)
                             noConflict = true
                         } else {
@@ -95,6 +100,9 @@ class DetailedViewController: UITableViewController {
                             noConflict = false
                         }
                     }
+                } else {
+                    User.sharedInstance.addRsvpEvent(newEvent: detailedEvent!)
+                    noConflict = true
                 }
             }
         }
@@ -182,8 +190,13 @@ class DetailedViewController: UITableViewController {
                         rsvpState = false
                     }
                 } else {
-                    rsvpButton.setTitle("RSVP", for: .normal)
-                    rsvpState = false
+                    if item.value.index(of: event) != nil {
+                        rsvpButton.setTitle("Cancel", for: .normal)
+                        rsvpState = true
+                    } else {
+                        rsvpButton.setTitle("RSVP", for: .normal)
+                        rsvpState = false
+                    }
                 }
             }
         }
