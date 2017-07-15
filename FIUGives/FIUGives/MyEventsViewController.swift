@@ -13,11 +13,13 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var tableView: UITableView!
     let formatter = DateFormatter()
+    let aFormatter = DateFormatter()
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
     var rsvpEvents = User.sharedInstance.userRsvpEvents
     var eventsForDate = [Event]()
     var noEvents = [Any]()
+    var headerTitle = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,19 +46,11 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
         if !(rsvpEvents.isEmpty) {
             for item in rsvpEvents {
                 if item.key == EventDate.init(myEventDate: cellState.date) {
-                    print("THE CELL DATE IS: \(cellState.date)")
                     eventsForDate = item.value
-                    for index in eventsForDate {
-                        print("EVENTS! \(index.eventName)")
-                    }
                 } else {return}
             }
         } else {
-            print("NO EVENT CELL DATE: \(cellState.date)")
             eventsForDate = noEvents as! [Event]
-            for index in eventsForDate {
-                print("NO EVENTS! \(index.eventName)")
-            }
  }
     }
     
@@ -81,6 +75,13 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
     
     func setUpCellTextColor(view: JTAppleCell?, cellState: CellState) {
         guard let trueCell = view as? CalendarCell else { return }
+        
+        for item in eventsForDate {
+            if item.eventDate == EventDate.init(myEventDate: cellState.date) {
+                trueCell.eventView.isHidden = false
+            }
+        }
+        
         // Logic for color of days
         if cellState.dateBelongsTo == .thisMonth {
             if cellState.isSelected {
@@ -126,10 +127,9 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         setUpCellSelected(view: cell, cellState: cellState)
         setUpCellTextColor(view: cell, cellState: cellState)
-        print("CELLSTATE DATE \(cellState.date)")
-        print("DATE \(date)")
         print(formatter.string(from: date))
         getEventsForDate(view: cell, cellState: cellState)
+        headerTitle = aFormatter.string(from: cellState.date)
         self.tableView.reloadData()
     }
     
@@ -158,13 +158,13 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rsvpCell", for: indexPath) as! MyEventsTableViewCell
         let event = eventsForDate[indexPath.row]
-        formatter.dateFormat = "MM/dd/YYY h:mm aa"
+        formatter.dateFormat = "hh:mm aa"
+        aFormatter.dateFormat = "MMMM dd, YYYY"
         cell.eventName.text = event.eventName
-        print("EVENT NAME: \(event.eventName)")
         let start = formatter.string(from: event.eventStart)
         let end = formatter.string(from: event.eventEnd)
-        cell.eventDate.text = ("\(start) to \(end)")
-        print("EVENT DATE: \(event.eventDate.dateComponent())")
+        cell.eventDate.text = ("\(start) - \(end)")
+        headerTitle = aFormatter.string(from: Date())
         return cell
     }
     
@@ -172,6 +172,10 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
         let event = eventsForDate[indexPath.row]
         performSegue(withIdentifier: "eventDetailsSegue", sender: event)
         
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return headerTitle
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

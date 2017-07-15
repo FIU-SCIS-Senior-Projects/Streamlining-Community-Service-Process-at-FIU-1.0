@@ -26,6 +26,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     var userUID = String()
     
     @IBAction func uploadButton(_ sender: UIButton) {
+        // for later
     }
     
     @IBAction func saveUserProfile(_ sender: UIBarButtonItem) {
@@ -70,7 +71,13 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
             }
         }
         
-        // Update Information
+        self.updateUserObject()
+        self.updateDatabase()
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    // Check if user fields are different/not empty before updating the database.
+    func updateUserObject() {
         if !(currentUser.userFirstName == firstnameField.text) && !((firstnameField.text!.isEmpty)) {
             currentUser.setUserFirstName(First: firstnameField.text!)
         }
@@ -83,7 +90,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         }
         
         if !(currentUser.userDOB == dateOfBirthField.text) && !((dateOfBirthField.text!.isEmpty)) {
-           currentUser.setUserDateOfBirth(Birth: dateOfBirthField.text!)
+            currentUser.setUserDateOfBirth(Birth: dateOfBirthField.text!)
         }
         
         if !(currentUser.userPhoneNumber == telephoneField.text) && !((telephoneField.text!.isEmpty)) {
@@ -93,12 +100,19 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         if !(currentUser.userOccupation == occupationField.text) && !((occupationField.text!.isEmpty)) {
             currentUser.setUserOccupation(Occupation: occupationField.text!)
         }
+    }
+
+    // Database update
+    func updateDatabase() {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            self.userUID = Auth.auth().currentUser!.uid
+            print("MY UID: \(self.userUID)")
         
-        print("CHANGED FIELDS: \(firstnameField.text) \(lastnameField.text) \(locationField.text) \(dateOfBirthField.text) \(telephoneField.text) \(occupationField.text)")
-        
-        print("CURRENT USER PROPERTIES: \(currentUser.userFirstName) \(currentUser.userLastName) \(currentUser.userLocation) \(currentUser.userDOB) \(currentUser.userPhoneNumber) \(currentUser.userOccupation)")
-        
-        self.navigationController?.popViewController(animated: true)
+            self.ref = Database.database().reference()
+            let userRef = self.ref.child("users")
+            let newUserRef = userRef.child(Auth.auth().currentUser!.uid)
+            newUserRef.setValue(self.currentUser.dictionaryObject())
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -152,14 +166,23 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     func getUser() {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             self.userUID = Auth.auth().currentUser!.uid
-            print("CURRENT USER UID: \(self.userUID)")
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getUser()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateOfBirthField?.delegate = self
-        getUser()
+        dateOfBirthField.delegate = self
+        firstnameField.delegate = self
+        lastnameField.delegate = self
+        locationField.delegate = self
+        emailField.delegate = self
+        telephoneField.delegate = self
+        dateOfBirthField.delegate = self
+        occupationField.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
