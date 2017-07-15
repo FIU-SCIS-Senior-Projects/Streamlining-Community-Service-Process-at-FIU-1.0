@@ -14,7 +14,6 @@ class MyProfileViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var userPhone: UILabel!
     @IBOutlet weak var userDob: UILabel!
     @IBOutlet weak var userLocation: UILabel!
-    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userOccupation: UILabel!
     var ref: DatabaseReference!
     var handle: AuthStateDidChangeListenerHandle? = nil

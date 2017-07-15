@@ -129,20 +129,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
             newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text, eventStart: eventStartDate.date, eventEnd: eventEndDate.date, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!)
         }
         
-        //forward geocoding to set latitude & longitude properties of newly created event using GLGeocoder/check network connection prior
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString((eventAddress?.fullAddress())!, completionHandler: {(placemarks, error) -> Void in
-            if ((error) != nil) {
-                print("Error")
-            }
-            if let placemark = placemarks?.first{
-                let coordinates: CLLocationCoordinate2D = placemark.location!.coordinate
-                self.newEvent?.setLatitude(eventLatitude: coordinates.latitude)
-                self.newEvent?.setLongitude(eventLongitude: coordinates.longitude)
-            }
-        })
-        
-        
         User.sharedInstance.addToUserEventCreated(Event: newEvent!)
         EventCalendar.shared.addEvent(newEvent: newEvent!)
         self.navigationController?.popViewController(animated: true)

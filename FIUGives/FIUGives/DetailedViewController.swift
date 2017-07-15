@@ -81,7 +81,7 @@ class DetailedViewController: UITableViewController {
         var noConflict = true
         // capacity?
         if userRsvpList.isEmpty {
-            User.sharedInstance.addRsvpEvent(newEvent: detailedEvent!)
+            User.sharedInstance.addRsvpEvent(newEvent: event)
             for item in User.sharedInstance.userRsvpEvents {
                 for thing in item.value {
                     print("Events in the RSVP array: \(thing.eventName)")
@@ -91,9 +91,11 @@ class DetailedViewController: UITableViewController {
         } else {
             for item in userRsvpList {
                 if item.key == event.eventDate {
+                    print("item key: \(item.key)")
+                    print("event date: \(event.eventDate)")
                     for thing in item.value {
                         if (getTimeDifference(firstEvent: thing.eventEnd, secondEvent: event.eventStart)) > 1   {
-                            User.sharedInstance.addRsvpEvent(newEvent: detailedEvent!)
+                            User.sharedInstance.addRsvpEvent(newEvent: event)
                             noConflict = true
                         } else {
                             self.presentAlert(message: "Cannot RSVP. There is a time conflict.")
@@ -101,8 +103,13 @@ class DetailedViewController: UITableViewController {
                         }
                     }
                 } else {
-                    User.sharedInstance.addRsvpEvent(newEvent: detailedEvent!)
+                    User.sharedInstance.addRsvpEvent(newEvent: event)
                     noConflict = true
+                    for item in User.sharedInstance.userRsvpEvents {
+                        for thing in item.value {
+                            print("Events that dont equal date: \(thing.eventName)")
+                        }
+                    }
                 }
             }
         }
