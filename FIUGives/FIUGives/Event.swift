@@ -203,9 +203,35 @@ class Event: Comparable {
     func deactivateEvent() {
         self.active = false
     }
-    
-    
-    
+    func returnKey() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMdyyyy"
+        let start = formatter.string(from: self.eventStart)
+        return self.eventName+start
+    }
+    func stringFromDate (dateToString: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        return formatter.string(from: dateToString)
+    }
+    func dateFromString (stringToDate: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        formatter.timeZone = NSTimeZone.default
+        return formatter.date(from: stringToDate)!
+    }
+    func setStartDateFromString (stringToDate: String) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        formatter.timeZone = NSTimeZone.default
+        self.eventStart = formatter.date(from: stringToDate)!
+    }
+    func setEndDateFromString (stringToDate: String) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        formatter.timeZone = NSTimeZone.default
+        self.eventEnd = formatter.date(from: stringToDate)!
+    }
     
     
     
@@ -215,9 +241,19 @@ class Event: Comparable {
     
     func dictionaryObject() -> Any {
         return [
-            "eventName": eventName,
-            "eventStart": returnStartDate(),
-            "eventEnd": returnEndDate()
+            "eventName": self.eventName,
+            "eventCategory": self.eventCategory,
+            "eventFlyerURL": self.eventFlyerURL,
+            "eventDescription": self.eventDescription,
+            "eventStart": self.stringFromDate(dateToString: self.eventStart),
+            "eventEnd": self.stringFromDate(dateToString: self.eventEnd),
+            "eventStreet": self.eventAddress.street,
+            "eventCity": self.eventAddress.city,
+            "eventState": self.eventAddress.state,
+            "eventZip": self.eventAddress.zip,
+            "eventContactName": self.eventContactName,
+            "eventContactEmail": self.eventContactEmail,
+            "eventCapacity": self.eventCapacity
         ]
     }
     

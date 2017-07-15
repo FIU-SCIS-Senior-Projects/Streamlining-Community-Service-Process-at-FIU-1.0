@@ -10,9 +10,12 @@
 
 import UIKit
 import CoreLocation
+import Firebase
+
 
 class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    let dataBaseReference = Database.database().reference()
 
     //MARK: properties
     
@@ -131,6 +134,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         
         User.sharedInstance.addToUserEventCreated(Event: newEvent!)
         EventCalendar.shared.addEvent(newEvent: newEvent!)
+        self.dataBaseReference.child("eventCalendar").child((newEvent?.returnKey())!).setValue(newEvent?.dictionaryObject())
         self.navigationController?.popViewController(animated: true)
     }
     

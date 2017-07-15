@@ -31,5 +31,10 @@ class EventDate: Hashable, Comparable {
         formatter.dateFormat = "EEEE MMM d, yyyy"
         return formatter.string(from: self.myEventDate)
     }
+    func returnKey() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMdyyyy"
+        return formatter.string(from: self.myEventDate)
+    }
     
 }

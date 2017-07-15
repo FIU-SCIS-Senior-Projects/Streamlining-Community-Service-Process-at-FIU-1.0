@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import Firebase
+
 
 class EventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    //test
+    
+    
+    let dataBaseReference = Database.database().reference(withPath: "eventCalendar")
+    var eventCapacity: Int?
+    var eventAddress: Address?
+    var newEvent: Event?
+    
     //MARK: IBOutlets
     @IBOutlet weak var eventsTable: UITableView!
     //get the keys from the EventCalendar dictionary & sort them
@@ -18,6 +26,31 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     
    override func viewDidLoad() {
    super.viewDidLoad()
+    /*
+     refHandle = postRef.observe(DataEventType.value, with: { (snapshot) in
+     let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+     // ...
+     })
+     */
+    
+    
+    
+    
+       /* dataBaseReference.child("eventCalendar").observe(.value, with: { (snapshot) in
+            if snapshot.hasChildren() {
+                print("yes")
+            }
+            else {
+                print("no")
+            }
+            
+        })*/
+    
+        
+        
+        //let a = snapshot.value!["eventName"] as! String
+        
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
