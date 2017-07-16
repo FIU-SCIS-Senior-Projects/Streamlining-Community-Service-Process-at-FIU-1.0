@@ -18,6 +18,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet weak var dateOfBirthField: UITextField!
     @IBOutlet weak var occupationField: UITextField!
     @IBOutlet weak var managePasswordButton: UIButton!
+    @IBOutlet weak var passwordField: UITextField!
     let selectDatePicker = UIDatePicker()
     // Database connection
     var ref: DatabaseReference!
@@ -51,16 +52,32 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
                 return
             }
             
-            // Update email
+            /* Update email
             Auth.auth().currentUser?.updateEmail(to: emailField.text!) { (error) in
                 if let error = error {
                     self.presentAlert(message: error.localizedDescription)
                     return
                 } else {
                     print("Successful Email Change")
-                    // Add email confirmation
+                    let alert = UIAlertController(title: "Message", message: "Enter Password", preferredStyle: .alert)
+                    alert.addTextField { (textField) in textField.text = "Default" }
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+                        let textField = alert?.textFields![0]
+                        self.passwordField.text = textField?.text
+                        print("Password printed: \(self.passwordField?.text)")
+                        }))
+                    self.present(alert, animated: true, completion: nil)
+                    let credential = EmailAuthProvider.credential(withEmail: self.emailField.text!, password: passwordField.text!)
+                    Auth.auth().currentUser?.reauthenticate(with: credential) { error in
+                        if error != nil {
+                            self.presentAlert(message: (error?.localizedDescription)!)
+                        } else {
+                            print("Successfully reauthenticated.")
+                            self.presentAlert(message: "Email was successfully changed.")
+                        }
+                    }
                 }
-            }
+            }*/
         }
         
         // Validation for numbers in telephone field.
@@ -70,6 +87,15 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
                 return
             }
         }
+        
+        self.firstnameField.resignFirstResponder()
+        self.lastnameField.resignFirstResponder()
+        self.dateOfBirthField.resignFirstResponder()
+        self.locationField.resignFirstResponder()
+        self.telephoneField.resignFirstResponder()
+        self.emailField.resignFirstResponder()
+        self.occupationField.resignFirstResponder()
+
         
         self.updateUserObject()
         self.updateDatabase()
@@ -121,6 +147,10 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         return true
     }
 
+    // Hide keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
     // Date picker for user date of birth.
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -147,6 +177,13 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     }
     
     func datePickerValueChanged (sender: UIDatePicker) {
+        let cal = Calendar.current
+        var min = DateComponents()
+        var max = DateComponents()
+        min.year = -100
+        max.year = -10
+        selectDatePicker.minimumDate = cal.date(byAdding: min, to: cal.startOfDay(for: Date()))
+        selectDatePicker.maximumDate = cal.date(byAdding: max, to: cal.startOfDay(for: Date()))
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/YYYY"
         dateOfBirthField.text =  formatter.string(from: sender.date)

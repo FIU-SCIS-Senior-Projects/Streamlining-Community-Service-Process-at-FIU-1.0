@@ -12,6 +12,7 @@ target 'FIUGives' do
   pod 'Firebase/Crash'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'FacebookShare'
   
   target 'FIUGivesTests' do
     inherit! :search_paths

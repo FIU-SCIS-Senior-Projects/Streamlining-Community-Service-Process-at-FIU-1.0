@@ -138,12 +138,13 @@ class UserSignUpController: UIViewController, UITextFieldDelegate {
     }
     
     func datePickerValueChanged (sender: UIDatePicker) {
-        var components = DateComponents()
-        components.year = -100
-        let min = Calendar.current.date(byAdding: components, to: Date())
-        let max = Date()
-        sender.minimumDate = min
-        sender.maximumDate = max
+        let cal = Calendar.current
+        var min = DateComponents()
+        var max = DateComponents()
+        min.year = -100
+        max.year = -10
+        selectDatePicker.minimumDate = cal.date(byAdding: min, to: cal.startOfDay(for: Date()))
+        selectDatePicker.maximumDate = cal.date(byAdding: max, to: cal.startOfDay(for: Date()))
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/YYYY"
         userDOB?.text =  formatter.string(from: sender.date)
@@ -161,7 +162,7 @@ class UserSignUpController: UIViewController, UITextFieldDelegate {
     
     // Alert controller
     func presentAlert(message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .destructive)
         alertController.addAction(okAction)
         self.present(alertController, animated: true)
