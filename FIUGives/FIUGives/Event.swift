@@ -31,19 +31,20 @@ class Event: Comparable {
     var eventAttendants = [String]()
     
     //MARK: initialization
-    init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: Date, eventEnd: Date, eventAddress: Address, eventContactName: String, eventContactEmail: String) {
+    
+    
+    init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventAddress: Address, eventContactName: String, eventContactEmail: String) {
         
         //initialize properties
         self.eventName = eventName
         self.eventCategory = eventCategory
         self.eventFlyerURL = eventFlyerURL
         self.eventDescription = eventDescription
-        self.eventStart = eventStart
-        self.eventEnd = eventEnd
+        self.eventStart = Date()
+        self.eventEnd = Date()
         self.eventAddress = eventAddress
         self.eventContactName = eventContactName
         self.eventContactEmail = eventContactEmail
-        self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart))
         self.eventDate = EventDate.init(myEventDate: eventStart)
         //forward geocoding to set latitude & longitude properties of newly created event using GLGeocoder/check network connection prior
         let geocoder = CLGeocoder()
@@ -57,10 +58,14 @@ class Event: Comparable {
                 self.eventLongitude = coordinates.longitude
             }
         })
-        
-        
-        
-        
+    }
+    convenience init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: Date, eventEnd: Date, eventAddress: Address, eventContactName: String, eventContactEmail: String) {
+        self.init(eventName: eventName, eventCategory: eventCategory, eventFlyerURL: eventFlyerURL, eventDescription: eventDescription, eventAddress: eventAddress, eventContactName: eventContactName, eventContactEmail: eventContactEmail)
+        //initialize properties
+        self.eventStart = eventStart
+        self.eventEnd = eventEnd
+        self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart))
+        self.eventDate = EventDate.init(myEventDate: eventStart)
     }
      //init with capacity
     convenience init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: Date, eventEnd: Date, eventAddress: Address, eventContactName: String, eventContactEmail: String, eventCapacity: Int) {
@@ -68,6 +73,18 @@ class Event: Comparable {
         self.init(eventName: eventName, eventCategory: eventCategory, eventFlyerURL: eventFlyerURL, eventDescription: eventDescription, eventStart: eventStart, eventEnd: eventEnd, eventAddress:eventAddress, eventContactName: eventContactName, eventContactEmail: eventContactEmail)
     self.eventCapacity = eventCapacity
     }
+    
+    //init from Firebase
+    convenience init (eventName: String, eventCategory: String, eventFlyerURL: String, eventDescription: String, eventStart: String, eventEnd: String, eventAddress: Address, eventContactName: String, eventContactEmail: String, eventCapacity: Int) {
+        self.init(eventName: eventName, eventCategory: eventCategory, eventFlyerURL: eventFlyerURL, eventDescription: eventDescription, eventAddress: eventAddress, eventContactName: eventContactName, eventContactEmail: eventContactEmail)
+        //initialize properties
+        self.eventStart = self.dateFromString(stringToDate: eventStart)
+        self.eventEnd = self.dateFromString(stringToDate: eventEnd)
+        self.eventDuration = (Double)(self.eventEnd.timeIntervalSince(self.eventStart))
+        self.eventDate = EventDate.init(myEventDate: self.eventStart)
+        self.eventCapacity = eventCapacity
+    }
+
 
     static func < (lhs: Event, rhs: Event) -> Bool {
         if (lhs.eventStart.compare(rhs.eventStart) == .orderedAscending) {
@@ -253,7 +270,7 @@ class Event: Comparable {
             "eventZip": self.eventAddress.zip,
             "eventContactName": self.eventContactName,
             "eventContactEmail": self.eventContactEmail,
-            "eventCapacity": self.eventCapacity
+            "eventCapacity": self.eventCapacity.description
         ]
     }
     

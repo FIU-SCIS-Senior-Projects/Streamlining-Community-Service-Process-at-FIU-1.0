@@ -13,7 +13,8 @@ import Firebase
 class EventsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
-    let dataBaseReference = Database.database().reference(withPath: "eventCalendar")
+    //let dataBaseReference = Database.database().reference(withPath: "eventCalendar")
+    let dataBaseReference = Database.database().reference()
     var eventCapacity: Int?
     var eventAddress: Address?
     var newEvent: Event?
@@ -22,41 +23,65 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var eventsTable: UITableView!
     //get the keys from the EventCalendar dictionary & sort them
     var eventDates = Array(EventCalendar.shared.myCalendar.keys)
-
     
    override func viewDidLoad() {
    super.viewDidLoad()
-    /*
-     refHandle = postRef.observe(DataEventType.value, with: { (snapshot) in
-     let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-     // ...
-     })
-     */
-    
-    
-    
-    
-       /* dataBaseReference.child("eventCalendar").observe(.value, with: { (snapshot) in
-            if snapshot.hasChildren() {
-                print("yes")
-            }
-            else {
-                print("no")
-            }
+    dataBaseReference.child("eventCalendar").observe(.value, with: {
+        (snapshot) in
+        
+        guard let allEvents = snapshot.value as? [String:AnyObject] else {return}
+        
+        for (eachEvent) in (allEvents.values) {
             
-        })*/
-    
-        
-        
-        //let a = snapshot.value!["eventName"] as! String
-        
-    
+            let eventDetails = eachEvent as? [String:AnyObject]
+            guard let name = eventDetails!["eventName"] as? String else {return}
+            guard let category = eventDetails!["eventCategory"] as? String else {return}
+            guard let flyerURL = eventDetails!["eventFlyerURL"] as? String else {return}
+            guard let description = eventDetails!["eventDescription"] as? String else {return}
+            guard let capacityString = eventDetails!["eventCapacity"] as? String else {return}
+            let capacity = Int(capacityString)
+            guard let contactName = eventDetails!["eventContactName"] as? String else {return}
+            guard let contactEmail = eventDetails!["eventContactEmail"] as? String else {return}
+            guard let street = eventDetails!["eventStreet"] as? String else {return}
+            guard let city = eventDetails!["eventCity"] as? String else {return}
+            guard let state = eventDetails!["eventState"] as? String else {return}
+            guard let zip = eventDetails!["eventZip"] as? String else {return}
+            guard let start = eventDetails!["eventStart"] as? String else {return}
+            guard let end = eventDetails!["eventEnd"] as? String else {return}
+            let newAddress = Address(street: street, city: city, state: state, zip: zip)
+            let newEvent = Event.init(eventName: name, eventCategory: category, eventFlyerURL: flyerURL, eventDescription: description, eventStart: start, eventEnd: end, eventAddress: newAddress, eventContactName: contactName, eventContactEmail: contactEmail, eventCapacity: capacity!)
+           
+            if EventCalendar.shared.myCalendar.keys.contains(newEvent.eventDate) {
+                if (EventCalendar.shared.myCalendar[newEvent.eventDate]?.contains(newEvent))! {
+                print("Duplicate")
+                }
+                else {
+                    EventCalendar.shared.addEvent(newEvent: newEvent)
+                    self.eventDates = Array(EventCalendar.shared.myCalendar.keys)
+                    self.eventDates.sort()
+                    self.eventsTable.reloadData()
+                }
+            }
+            /*myCondition: if EventCalendar.shared.myCalendar.keys.contains(newEvent.eventDate) && (EventCalendar.shared.myCalendar[newEvent.eventDate]?.contains(newEvent))! {
+                print("Duplicate")
+                break myCondition
+            }*/
+                
+            else {
+                EventCalendar.shared.addEvent(newEvent: newEvent)
+                self.eventDates = Array(EventCalendar.shared.myCalendar.keys)
+                self.eventDates.sort()
+                self.eventsTable.reloadData()
+            }
+        }
+    })
     }
+
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
-        eventDates = Array(EventCalendar.shared.myCalendar.keys)
-        eventDates.sort()
-        self.eventsTable.reloadData()
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {

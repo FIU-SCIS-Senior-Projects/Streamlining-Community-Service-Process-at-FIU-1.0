@@ -119,6 +119,18 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         
         eventAddress = Address(street: eventStreet.text!, city: eventCity.text!, state: eventState.text!, zip: eventZip.text!)
         
+        
+        if (EventCalendar.shared.myCalendar.keys.contains(EventDate(myEventDate: eventStartDate.date))){
+            
+            for eachEvent in EventCalendar.shared.myCalendar[(EventDate(myEventDate: eventStartDate.date))]! {
+                
+                if (eventNameTextField.text == eachEvent.eventName) {
+                    self.presentAlert(alertMessage: "Consider changing the name. Event with sunch name on the same date already exists!")
+                    return
+                }
+            }
+        }
+        
         if rsvpSwitch.isOn {
             guard !(eventCapacityTextField.text?.isEmpty)! else {
                 //present alert
@@ -132,10 +144,11 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
             newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text, eventStart: eventStartDate.date, eventEnd: eventEndDate.date, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!)
         }
         
-        User.sharedInstance.addToUserEventCreated(Event: newEvent!)
-        EventCalendar.shared.addEvent(newEvent: newEvent!)
+        //User.sharedInstance.addToUserEventCreated(Event: newEvent!)
+        //EventCalendar.shared.addEvent(newEvent: newEvent!)
         self.dataBaseReference.child("eventCalendar").child((newEvent?.returnKey())!).setValue(newEvent?.dictionaryObject())
         self.navigationController?.popViewController(animated: true)
+        
     }
     
     override func viewDidLoad() {
