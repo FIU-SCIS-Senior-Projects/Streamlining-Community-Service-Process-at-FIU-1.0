@@ -59,15 +59,22 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
                     return
                 } else {
                     print("Successful Email Change")
-                    let alert = UIAlertController(title: "Message", message: "Enter Password", preferredStyle: .alert)
-                    alert.addTextField { (textField) in textField.text = "Default" }
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-                        let textField = alert?.textFields![0]
-                        self.passwordField.text = textField?.text
-                        print("Password printed: \(self.passwordField?.text)")
-                        }))
-                    self.present(alert, animated: true, completion: nil)
-                    let credential = EmailAuthProvider.credential(withEmail: self.emailField.text!, password: passwordField.text!)
+                    let alertController = UIAlertController(title: "Message", message: "Please input your password", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "Confirm", style: .default) { (_) in
+                        if let pw = alertController.textFields?[0] {
+                            self.passwordField.text = pw.text
+                        } else {
+                            // user did not fill field
+                        }
+                    }
+                    let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+                    alertController.addTextField { (textField) in
+                        textField.placeholder = "Password"
+                    }
+                    alertController.addAction(confirm)
+                    alertController.addAction(cancel)
+                    let credential = EmailAuthProvider.credential(withEmail: self.emailField.text!, password: self.passwordField.text!)
+                    print("The email: \(self.emailField.text) The Password: \(self.passwordField.text)")
                     Auth.auth().currentUser?.reauthenticate(with: credential) { error in
                         if error != nil {
                             self.presentAlert(message: (error?.localizedDescription)!)

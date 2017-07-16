@@ -39,6 +39,7 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
         calendarView.selectDates([Date()])
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
+        headerTitle = aFormatter.string(from: Date())
     }
     
     // Fetch Events from eventDates array
@@ -121,6 +122,7 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
         cell.dateLabel.text = cellState.text
         setUpCellSelected(view: cell, cellState: cellState)
         setUpCellTextColor(view: cell, cellState: cellState)
+        headerTitle = aFormatter.string(from: Date())
         return cell
     }
     
@@ -129,7 +131,6 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
         setUpCellTextColor(view: cell, cellState: cellState)
         print(formatter.string(from: date))
         getEventsForDate(view: cell, cellState: cellState)
-        headerTitle = aFormatter.string(from: cellState.date)
         self.tableView.reloadData()
     }
     
@@ -143,6 +144,7 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         setUpCalendar(from: visibleDates)
         self.tableView.reloadData()
+        headerTitle = aFormatter.string(from: Date())
     }
 
     //MARK: TableView
