@@ -52,29 +52,15 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
                 return
             }
             
-            /* Update email
+            // Update email
             Auth.auth().currentUser?.updateEmail(to: emailField.text!) { (error) in
                 if let error = error {
                     self.presentAlert(message: error.localizedDescription)
                     return
                 } else {
                     print("Successful Email Change")
-                    let alertController = UIAlertController(title: "Message", message: "Please input your password", preferredStyle: .alert)
-                    let confirm = UIAlertAction(title: "Confirm", style: .default) { (_) in
-                        if let pw = alertController.textFields?[0] {
-                            self.passwordField.text = pw.text
-                        } else {
-                            // user did not fill field
-                        }
-                    }
-                    let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
-                    alertController.addTextField { (textField) in
-                        textField.placeholder = "Password"
-                    }
-                    alertController.addAction(confirm)
-                    alertController.addAction(cancel)
+                    self.getPassword(message: "Please input your password")
                     let credential = EmailAuthProvider.credential(withEmail: self.emailField.text!, password: self.passwordField.text!)
-                    print("The email: \(self.emailField.text) The Password: \(self.passwordField.text)")
                     Auth.auth().currentUser?.reauthenticate(with: credential) { error in
                         if error != nil {
                             self.presentAlert(message: (error?.localizedDescription)!)
@@ -84,7 +70,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
                         }
                     }
                 }
-            }*/
+            }
         }
         
         // Validation for numbers in telephone field.
@@ -177,7 +163,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(UserSignUpController.cancelSearch))
         toolBar.setItems([cancelButton, spaceButton, saveButton], animated: false)
         toolBar.isUserInteractionEnabled = true
-        textField.inputAccessoryView = toolBar
+        dateOfBirthField.inputAccessoryView = toolBar
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/YYYY"
         dateOfBirthField.text =  formatter.string(from: selectDatePicker.date)
@@ -237,10 +223,13 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     
     // Alert controller
     func presentAlert(message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .destructive)
         alertController.addAction(okAction)
         self.present(alertController, animated: true)
+    }
+    
+    func getPassword(message: String) {
     }
     
     override func didReceiveMemoryWarning() {
