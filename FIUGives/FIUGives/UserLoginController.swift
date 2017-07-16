@@ -20,6 +20,12 @@ class UserLoginController: UIViewController {
     var currentUser = User.sharedInstance
     var userUID = String()
     
+    @IBAction func forgotPasswordPressed(_ sender: UIButton) {
+        Auth.auth().sendPasswordReset(withEmail: (Auth.auth().currentUser?.email)!) { (error) in
+            self.presentAlert(message: "You should receive a reset password email shortly.")
+        }
+    }
+    
     @IBAction func signupButtonPressed(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "Signup")
         self.present(vc!, animated: true, completion: nil)
@@ -88,7 +94,7 @@ class UserLoginController: UIViewController {
     
     // Alert controller
     func presentAlert(message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .destructive)
         alertController.addAction(okAction)
         self.present(alertController, animated: true)

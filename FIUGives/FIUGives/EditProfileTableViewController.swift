@@ -18,6 +18,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet weak var dateOfBirthField: UITextField!
     @IBOutlet weak var occupationField: UITextField!
     @IBOutlet weak var managePasswordButton: UIButton!
+    @IBOutlet weak var passwordField: UITextField!
     let selectDatePicker = UIDatePicker()
     // Database connection
     var ref: DatabaseReference!
@@ -51,16 +52,39 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
                 return
             }
             
-            // Update email
+            /* Update email
             Auth.auth().currentUser?.updateEmail(to: emailField.text!) { (error) in
                 if let error = error {
                     self.presentAlert(message: error.localizedDescription)
                     return
                 } else {
                     print("Successful Email Change")
-                    // Add email confirmation
+                    let alertController = UIAlertController(title: "Message", message: "Please input your password", preferredStyle: .alert)
+                    let confirm = UIAlertAction(title: "Confirm", style: .default) { (_) in
+                        if let pw = alertController.textFields?[0] {
+                            self.passwordField.text = pw.text
+                        } else {
+                            // user did not fill field
+                        }
+                    }
+                    let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+                    alertController.addTextField { (textField) in
+                        textField.placeholder = "Password"
+                    }
+                    alertController.addAction(confirm)
+                    alertController.addAction(cancel)
+                    let credential = EmailAuthProvider.credential(withEmail: self.emailField.text!, password: self.passwordField.text!)
+                    print("The email: \(self.emailField.text) The Password: \(self.passwordField.text)")
+                    Auth.auth().currentUser?.reauthenticate(with: credential) { error in
+                        if error != nil {
+                            self.presentAlert(message: (error?.localizedDescription)!)
+                        } else {
+                            print("Successfully reauthenticated.")
+                            self.presentAlert(message: "Email was successfully changed.")
+                        }
+                    }
                 }
-            }
+            }*/
         }
         
         // Validation for numbers in telephone field.
@@ -70,6 +94,15 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
                 return
             }
         }
+        
+        self.firstnameField.resignFirstResponder()
+        self.lastnameField.resignFirstResponder()
+        self.dateOfBirthField.resignFirstResponder()
+        self.locationField.resignFirstResponder()
+        self.telephoneField.resignFirstResponder()
+        self.emailField.resignFirstResponder()
+        self.occupationField.resignFirstResponder()
+
         
         self.updateUserObject()
         self.updateDatabase()
@@ -121,6 +154,10 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         return true
     }
 
+    // Hide keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
     // Date picker for user date of birth.
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -147,6 +184,13 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     }
     
     func datePickerValueChanged (sender: UIDatePicker) {
+        let cal = Calendar.current
+        var min = DateComponents()
+        var max = DateComponents()
+        min.year = -100
+        max.year = -10
+        selectDatePicker.minimumDate = cal.date(byAdding: min, to: cal.startOfDay(for: Date()))
+        selectDatePicker.maximumDate = cal.date(byAdding: max, to: cal.startOfDay(for: Date()))
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/YYYY"
         dateOfBirthField.text =  formatter.string(from: sender.date)

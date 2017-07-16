@@ -15,6 +15,7 @@ class MyProfileViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var userDob: UILabel!
     @IBOutlet weak var userLocation: UILabel!
     @IBOutlet weak var userOccupation: UILabel!
+    @IBOutlet weak var userEmail: UIButton!
     var ref: DatabaseReference!
     var handle: AuthStateDidChangeListenerHandle? = nil
     var currentUser = User.sharedInstance
@@ -24,6 +25,7 @@ class MyProfileViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: .zero)
         self.userName.text! = self.currentUser.getUserFullName().capitalized
+        self.userEmail.setTitle((Auth.auth().currentUser?.email)!, for: .normal)
         self.userPhone.text! = self.currentUser.userPhoneNumber
         self.userDob.text! = self.currentUser.userDOB
         self.userLocation.text! = self.currentUser.userLocation.capitalized
@@ -36,6 +38,11 @@ class MyProfileViewController: UITableViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func contactEmailPressed(_ sender: UIButton) {
+        if let url = URL(string: "mailto:\(userEmail.currentTitle)") {
+            UIApplication.shared.open(url)
+        }
+    }
 
     /*
     // MARK: - Navigation

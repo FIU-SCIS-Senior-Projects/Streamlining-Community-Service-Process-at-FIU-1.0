@@ -35,6 +35,7 @@
 		E1A09C4F1F0F30EC0012598D /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A09C4E1F0F30EC0012598D /* EditProfileTableViewController.swift */; };
 		E1B5C6A61F0C05A700A43A47 /* UserSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B5C6A51F0C05A700A43A47 /* UserSignUpController.swift */; };
 		E1B5C6A81F0C05BF00A43A47 /* UserLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B5C6A71F0C05BF00A43A47 /* UserLoginController.swift */; };
+		E1DD8B071F1AEDE300E9A396 /* ManagePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DD8B061F1AEDE300E9A396 /* ManagePasswordController.swift */; };
 		E1E108841F0C4440004EC012 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1E108831F0C4440004EC012 /* GoogleService-Info.plist */; };
 		E244C3952C3196031C4B772A /* Pods_FIUGives.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F21434323CCCB7A555A7C3 /* Pods_FIUGives.framework */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,7 @@
 		E1A09C4E1F0F30EC0012598D /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		E1B5C6A51F0C05A700A43A47 /* UserSignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignUpController.swift; sourceTree = "<group>"; };
 		E1B5C6A71F0C05BF00A43A47 /* UserLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginController.swift; sourceTree = "<group>"; };
+		E1DD8B061F1AEDE300E9A396 /* ManagePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagePasswordController.swift; sourceTree = "<group>"; };
 		E1E108831F0C4440004EC012 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -271,6 +273,7 @@
 			children = (
 				E1B5C6A71F0C05BF00A43A47 /* UserLoginController.swift */,
 				E1B5C6A51F0C05A700A43A47 /* UserSignUpController.swift */,
+				E1DD8B061F1AEDE300E9A396 /* ManagePasswordController.swift */,
 			);
 			name = UserLoginControllers;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1B5C6A61F0C05A700A43A47 /* UserSignUpController.swift in Sources */,
+				E1DD8B071F1AEDE300E9A396 /* ManagePasswordController.swift in Sources */,
 				E1077F251F059A3B000FF85B /* MyEventsViewController.swift in Sources */,
 				BB9677381F0988A30089CA82 /* DetailedViewController.swift in Sources */,
 				E11307A51EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift in Sources */,

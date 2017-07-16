@@ -9,6 +9,7 @@
 import UIKit
 import EventKit
 import Firebase
+import FacebookShare
 
 class DetailedViewController: UITableViewController {
     var detailedEvent:Event?
@@ -28,6 +29,18 @@ class DetailedViewController: UITableViewController {
     @IBOutlet weak var eventAttendees: UITextView!
     @IBOutlet weak var rsvpButton: UIButton!
     @IBOutlet weak var eventAddress: UITextView!
+    @IBOutlet weak var facebookButton: UIButton!
+    
+    
+    @IBAction func facebookButtonPressed(_ sender: UIButton) {
+        let eventFlyer = URL(string: (detailedEvent?.eventFlyerURL)!)
+        let content = LinkShareContent(url: eventFlyer!, title: detailedEvent?.eventName, description: detailedEvent?.eventDescription, imageURL: eventFlyer!)
+        do {
+            try ShareDialog.show(from: self, content: content)
+        } catch {
+            print("Error")
+        }
+    }
     
     @IBAction func eventFlyerPressed(_ sender: UIButton) {
         if let url = URL(string: eventFlyer.currentTitle!), UIApplication.shared.canOpenURL(url) {
