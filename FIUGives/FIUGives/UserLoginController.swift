@@ -57,7 +57,7 @@ class UserLoginController: UIViewController {
                 
                 // Get user database information.
                 let ref = Database.database().reference()
-                ref.child("users").child(Auth.auth().currentUser!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                ref.child("users").child(Auth.auth().currentUser!.uid).observe(.value, with: { (snapshot) in
                     let value = snapshot.value as? [String:AnyObject]
                     if let first = value?["Firstname"] as? String {
                         self.currentUser.userFirstName = first
