@@ -93,23 +93,8 @@ class UserSignUpController: UIViewController, UITextFieldDelegate {
                 self.currentUser.userPhoneNumber = (self.userPhoneNumber?.text)!
                 self.currentUser.userLocation = (self.userLocation?.text)!
                 self.currentUser.userOccupation = (self.userOccupation.text)!
-                
-                // Get current user
-                self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-                    print(Auth.auth().currentUser!.uid)
-                }
-                
-                // Update database
-                self.ref = Database.database().reference()
-                let userRef = self.ref.child("users")
-                let newUserRef = userRef.child(Auth.auth().currentUser!.uid).child("user-info")
-                let rsvpRef = userRef.child(Auth.auth().currentUser!.uid).child("rsvp-list")
-                let createdRef = userRef.child(Auth.auth().currentUser!.uid).child("created-list")
-                rsvpRef.setValue("")
-                createdRef.setValue("")
-                print("The Uid: \(Auth.auth().currentUser!.uid)")
-                newUserRef.setValue(self.currentUser.dictionaryObject())
-                
+
+                UserDatabase.sharedInstance.signUp()
                 UserDatabase.sharedInstance.getRsvpList()
                 
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "Main")

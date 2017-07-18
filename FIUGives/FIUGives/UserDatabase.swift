@@ -23,6 +23,53 @@ class UserDatabase {
         }
     }
     
+    // Get user information from database.
+    func login() {
+        ref.child("users").child("user-info").child(Auth.auth().currentUser!.uid).observe(.value, with: { (snapshot) in
+            let value = snapshot.value as? [String:AnyObject]
+            if let first = value?["Firstname"] as? String {
+                self.currentUser.userFirstName = first
+            }
+            if let last = value?["Lastname"] as? String {
+                self.currentUser.userLastName = last
+            }
+            if let loc = value?["Location"] as? String {
+                self.currentUser.userLocation = loc
+            }
+            if let phone = value?["Phone"] as? String {
+                self.currentUser.userPhoneNumber = phone
+            }
+            if let dob = value?["DOB"] as? String {
+                self.currentUser.userDOB = dob
+            }
+            if let occupation = value?["Occupation"] as? String {
+                self.currentUser.userOccupation = occupation
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    // Set user profile in database.
+    func signUp() {
+        self.ref = Database.database().reference()
+        let userRef = self.ref.child("users")
+        let newUserRef = userRef.child(Auth.auth().currentUser!.uid).child("user-info")
+        let rsvpRef = userRef.child(Auth.auth().currentUser!.uid).child("rsvp-list")
+        let createdRef = userRef.child(Auth.auth().currentUser!.uid).child("created-list")
+        rsvpRef.setValue("")
+        createdRef.setValue("")
+        print("The Uid: \(Auth.auth().currentUser!.uid)")
+        newUserRef.setValue(self.currentUser.dictionaryObject())
+    }
+    
+    func updateDatabase() {
+        let userRef = self.ref.child("users")
+        let newUserRef = userRef.child(Auth.auth().currentUser!.uid).child("user-info")
+        newUserRef.setValue(self.currentUser.dictionaryObject())
+    }
+    
     // Get rsvp list from the database.
     func getRsvpList() {
         let ref = Database.database().reference()

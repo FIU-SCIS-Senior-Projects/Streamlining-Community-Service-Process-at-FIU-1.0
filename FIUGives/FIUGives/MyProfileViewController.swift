@@ -16,47 +16,9 @@ class MyProfileViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var userLocation: UILabel!
     @IBOutlet weak var userOccupation: UILabel!
     @IBOutlet weak var userEmail: UIButton!
-    var ref: DatabaseReference!
-    var handle: AuthStateDidChangeListenerHandle? = nil
     var currentUser = User.sharedInstance
-    var userUID = String()
     
-    func getUser() {
-        // Get current user
-        self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            self.userUID = Auth.auth().currentUser!.uid
-        }
-    
-        // Get user database information.
-        let ref = Database.database().reference()
-        ref.child("users").child(Auth.auth().currentUser!.uid).child("user-info").observe(.value, with: { (snapshot) in
-            let value = snapshot.value as? [String:AnyObject]
-            if let first = value?["Firstname"] as? String {
-                self.currentUser.userFirstName = first
-            }
-            if let last = value?["Lastname"] as? String {
-                self.currentUser.userLastName = last
-            }
-            if let loc = value?["Location"] as? String {
-                self.currentUser.userLocation = loc
-            }
-            if let phone = value?["Phone"] as? String {
-                self.currentUser.userPhoneNumber = phone
-            }
-            if let dob = value?["DOB"] as? String {
-                self.currentUser.userDOB = dob
-            }
-            if let occupation = value?["Occupation"] as? String {
-                self.currentUser.userOccupation = occupation
-            }
-    
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
         tableView.tableFooterView = UIView(frame: .zero)
         self.userName.text! = self.currentUser.getUserFullName().capitalized
         self.userEmail.setTitle((Auth.auth().currentUser?.email)!, for: .normal)
@@ -65,6 +27,10 @@ class MyProfileViewController: UITableViewController, UITextFieldDelegate {
         self.userLocation.text! = self.currentUser.userLocation.capitalized
         self.userOccupation.text! = self.currentUser.userOccupation.capitalized
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 
     override func didReceiveMemoryWarning() {

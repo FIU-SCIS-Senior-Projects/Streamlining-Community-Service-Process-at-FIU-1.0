@@ -20,11 +20,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet weak var managePasswordButton: UIButton!
     @IBOutlet weak var passwordField: UITextField!
     let selectDatePicker = UIDatePicker()
-    // Database connection
-    var ref: DatabaseReference!
-    var handle: AuthStateDidChangeListenerHandle? = nil
     var currentUser = User.sharedInstance
-    var userUID = String()
     
     @IBAction func uploadButton(_ sender: UIButton) {
         // for later
@@ -45,14 +41,14 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
             }
         }
 
-        // Validation for email format.
+        /* Validation for email format.
         if !(emailField.text!.isEmpty) {
             guard (emailField.text!.contains("@")) else {
                 presentAlert(message: "Please enter a valid email address.")
                 return
             }
             
-            // Update email
+       
             Auth.auth().currentUser?.updateEmail(to: emailField.text!) { (error) in
                 if let error = error {
                     self.presentAlert(message: error.localizedDescription)
@@ -71,7 +67,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
                     }
                 }
             }
-        }
+        }*/
         
         // Validation for numbers in telephone field.
         if !((telephoneField.text!.isEmpty)) {
@@ -91,7 +87,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
 
         
         self.updateUserObject()
-        self.updateDatabase()
+        UserDatabase.sharedInstance.updateDatabase()
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -118,19 +114,6 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         
         if !(currentUser.userOccupation == occupationField.text) && !((occupationField.text!.isEmpty)) {
             currentUser.setUserOccupation(Occupation: occupationField.text!)
-        }
-    }
-
-    // Database update
-    func updateDatabase() {
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            self.userUID = Auth.auth().currentUser!.uid
-            print("MY UID: \(self.userUID)")
-        
-            self.ref = Database.database().reference()
-            let userRef = self.ref.child("users")
-            let newUserRef = userRef.child(Auth.auth().currentUser!.uid).child("user-info")
-            newUserRef.setValue(self.currentUser.dictionaryObject())
         }
     }
     
@@ -190,17 +173,6 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     func cancelSearch() {
         dateOfBirthField.text = ""
         dateOfBirthField.resignFirstResponder()
-    }
-    
-    // Get user information
-    func getUser() {
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            self.userUID = Auth.auth().currentUser!.uid
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        getUser()
     }
     
     override func viewDidLoad() {
