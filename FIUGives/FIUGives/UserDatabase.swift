@@ -17,15 +17,16 @@ class UserDatabase {
     var currentUser = User.sharedInstance
     
     private init() {
-        ref = Database.database().reference()
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             print(Auth.auth().currentUser!.uid)
         }
+        
+        ref = Database.database().reference()
     }
     
     // Get user information from database.
     func login() {
-        ref.child("users").child("user-info").child(Auth.auth().currentUser!.uid).observe(.value, with: { (snapshot) in
+        self.ref.child("users").child("user-info").child(Auth.auth().currentUser!.uid).observe(.value, with: { (snapshot) in
             let value = snapshot.value as? [String:AnyObject]
             if let first = value?["Firstname"] as? String {
                 self.currentUser.userFirstName = first
@@ -53,7 +54,6 @@ class UserDatabase {
     
     // Set user profile in database.
     func signUp() {
-        self.ref = Database.database().reference()
         let userRef = self.ref.child("users")
         let newUserRef = userRef.child(Auth.auth().currentUser!.uid).child("user-info")
         let rsvpRef = userRef.child(Auth.auth().currentUser!.uid).child("rsvp-list")
@@ -72,8 +72,7 @@ class UserDatabase {
     
     // Get rsvp list from the database.
     func getRsvpList() {
-        let ref = Database.database().reference()
-        ref.child("users").child(Auth.auth().currentUser!.uid).child("rsvp-list").observe(.value, with: { (snapshot) in
+        self.ref.child("users").child(Auth.auth().currentUser!.uid).child("rsvp-list").observe(.value, with: { (snapshot) in
             guard let rsvpList = snapshot.value as? [String:AnyObject] else {return}
             for (eachKey) in (rsvpList.values) {
                 let eventKey = eachKey as? [String:AnyObject]
@@ -87,8 +86,7 @@ class UserDatabase {
     
     // Get event from the database.
     func getEventFromDB(key: String) {
-        let ref = Database.database().reference()
-        ref.child("eventCalendar").child(key).observe(.value, with: { (snapshot) in
+        self.ref.child("eventCalendar").child(key).observe(.value, with: { (snapshot) in
             guard let event = snapshot.value as? [String:AnyObject] else {return}
             guard let name = event["eventName"] as? String else {return}
             guard let category = event["eventCategory"] as? String else {return}
@@ -120,8 +118,11 @@ class UserDatabase {
     }
     
     func addRsvpDB(event: Event) {
-        ref = Database.database().reference().child("users").child(Auth.auth().currentUser!.uid).child("rsvp-list").child(event.returnKey())
-        ref.setValue(event.keyDictionaryObject())
+        self.ref.child("users").child(Auth.auth().currentUser!.uid).child("rsvp-list").child(event.returnKey()).setValue(event.keyDictionaryObject())
+    }
+    
+    func removeRsvpDB(event: Event) {
+        self.ref.child("users").child(Auth.auth().currentUser!.uid).child("rsvp-list").child(event.returnKey()).removeValue() { (error) in print("Error: \(error)") }
     }
 
 }

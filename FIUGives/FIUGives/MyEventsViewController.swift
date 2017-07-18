@@ -28,6 +28,7 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
     
     override func viewWillAppear(_ animated: Bool) {
         calendarView.reloadData()
+        print("The # of events in the array: \(User.sharedInstance.userRsvpEvents.count)")
     }
 
     // Calendar spacing
@@ -120,6 +121,7 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
         cell.dateLabel.text = cellState.text
         setUpCellSelected(view: cell, cellState: cellState)
         setUpCellTextColor(view: cell, cellState: cellState)
+        getEventsForDate(view: cell, cellState: cellState)
         return cell
     }
     
@@ -127,7 +129,6 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
         setUpCellSelected(view: cell, cellState: cellState)
         setUpCellTextColor(view: cell, cellState: cellState)
         print(formatter.string(from: date))
-        getEventsForDate(view: cell, cellState: cellState)
         self.tableView.reloadData()
     }
     
@@ -156,6 +157,7 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rsvpCell", for: indexPath) as! MyEventsTableViewCell
         let event = eventsForDate[indexPath.row]
+        print("Event Info: \(event.eventName) \(event.eventDate)")
         formatter.dateFormat = "hh:mm aa"
         aFormatter.dateFormat = "MMMM dd, YYYY"
         cell.eventName.text = event.eventName
