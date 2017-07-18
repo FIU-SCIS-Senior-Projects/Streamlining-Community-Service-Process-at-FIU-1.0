@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Firebase
 
 class EditEventDetailsTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     
     var detailedEvent: Event?
 
@@ -26,6 +28,15 @@ class EditEventDetailsTableViewController: UITableViewController, UITextFieldDel
     @IBOutlet weak var eventCategoryTextField: UITextField!
     @IBOutlet weak var eventDescriptionTextView: UITextView!
     
+    
+    
+    
+    var ref: DatabaseReference!
+    var handle: AuthStateDidChangeListenerHandle? = nil
+    var currentUser = User.sharedInstance
+    var userUID = String()
+
+    
     let changeDatePicker = UIDatePicker()
     var startDate: Date?
     var endDate: Date?
@@ -38,6 +49,9 @@ class EditEventDetailsTableViewController: UITableViewController, UITextFieldDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        
+        //print(self.getUser())
         
         //handle text fields' user input through delegate callbacks
         eventNameTextField.delegate = self
@@ -88,7 +102,7 @@ class EditEventDetailsTableViewController: UITableViewController, UITextFieldDel
         toolBar.setItems([cancelButton, spaceButton, changeButton], animated: false)
         eventDescriptionTextView.inputAccessoryView = toolBar
     }
-
+   
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         //present Datepicker for eventStartTextField & eventEndTextField
@@ -105,12 +119,7 @@ class EditEventDetailsTableViewController: UITableViewController, UITextFieldDel
         
         categoryPicker.backgroundColor = UIColor.white
         eventCategoryTextField.inputView = categoryPicker
-        
-        
-        /*  let lineView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:0.2))
-         lineView.backgroundColor=UIColor.white.withAlphaComponent(0.6)*/
-        //let line = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:0.2))
-        //line.backgroundColor = UIColor.black
+
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
         toolBar.isTranslucent = false
@@ -157,10 +166,16 @@ class EditEventDetailsTableViewController: UITableViewController, UITextFieldDel
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == eventNameTextField {
+            self.presentAlert(message: "Name Change Not Allowed!")
+            return false
+        }
+        else {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(EditEventDetailsTableViewController.saveChanges))
         return true
+        }
     }
-    
+
     func textViewDidChange(_ textView: UITextView) {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(EditEventDetailsTableViewController.saveChanges))
     }
@@ -278,6 +293,13 @@ class EditEventDetailsTableViewController: UITableViewController, UITextFieldDel
             detailedEvent?.updateDescription(eventDescription: eventDescriptionTextView.text)
         }
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // Get user information
+    func getUser() {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            self.userUID = Auth.auth().currentUser!.uid
+        }
     }
     
     override func didReceiveMemoryWarning() {

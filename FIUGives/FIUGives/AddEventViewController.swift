@@ -13,9 +13,12 @@ import CoreLocation
 import Firebase
 
 
+
 class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let dataBaseReference = Database.database().reference()
+
+    
 
     //MARK: properties
     
@@ -144,9 +147,9 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
             newEvent = Event.init(eventName: eventNameTextField.text!, eventCategory: eventCategory, eventFlyerURL: eventFlyerURLTextField.text!, eventDescription: eventDescriptionTextView.text, eventStart: eventStartDate.date, eventEnd: eventEndDate.date, eventAddress:eventAddress!, eventContactName: eventContactNameTextField.text!, eventContactEmail: eventContactEmailTextField.text!)
         }
         
-        //User.sharedInstance.addToUserEventCreated(Event: newEvent!)
-        //EventCalendar.shared.addEvent(newEvent: newEvent!)
+        let userID = Auth.auth().currentUser?.uid
         self.dataBaseReference.child("eventCalendar").child((newEvent?.returnKey())!).setValue(newEvent?.dictionaryObject())
+        self.dataBaseReference.child("users").child(userID!).child("created-list").childByAutoId().setValue(newEvent?.returnKey())
         self.navigationController?.popViewController(animated: true)
         
     }
@@ -223,5 +226,6 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
             eventCapacityTextField.text = "UNLIMITED"
         }
     }
+
 
 }

@@ -14,10 +14,12 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     //let dataBaseReference = Database.database().reference(withPath: "eventCalendar")
-    let dataBaseReference = Database.database().reference()
+    var dataBaseReference = Database.database().reference()
     var eventCapacity: Int?
     var eventAddress: Address?
     var newEvent: Event?
+    
+    
     
     //MARK: IBOutlets
     @IBOutlet weak var eventsTable: UITableView!
@@ -26,7 +28,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
     
    override func viewDidLoad() {
    super.viewDidLoad()
-    dataBaseReference.child("eventCalendar").observe(.value, with: {
+   var handle = dataBaseReference.child("eventCalendar").observe(.value, with: {
         (snapshot) in
         
         guard let allEvents = snapshot.value as? [String:AnyObject] else {return}
@@ -70,11 +72,6 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
                     self.eventsTable.reloadData()
                 }
             }
-            /*myCondition: if EventCalendar.shared.myCalendar.keys.contains(newEvent.eventDate) && (EventCalendar.shared.myCalendar[newEvent.eventDate]?.contains(newEvent))! {
-                print("Duplicate")
-                break myCondition
-            }*/
-                
             else {
                 EventCalendar.shared.addEvent(newEvent: newEvent)
                 self.eventDates = Array(EventCalendar.shared.myCalendar.keys)
@@ -83,11 +80,8 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
     })
+    dataBaseReference.removeObserver(withHandle: handle)
     }
-
-    
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -130,6 +124,11 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         let destination = segue.destination as! DetailedViewController
         destination.detailedEvent = sender as? Event
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+        
     }
 
     
