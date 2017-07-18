@@ -251,7 +251,11 @@ class Event: Comparable {
     }
     
     
-    
+    func keyDictionaryObject() -> Any {
+        return [
+            "Key": self.returnKey()
+        ]
+    }
     
     
     

@@ -25,7 +25,6 @@ class UserSignUpController: UIViewController, UITextFieldDelegate {
     var ref = Database.database().reference()
     var handle: AuthStateDidChangeListenerHandle? = nil
     var currentUser = User.sharedInstance
-    var userUID = String()
     
     @IBAction func loginButtonPressed(_ sender: AnyObject) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
@@ -94,18 +93,9 @@ class UserSignUpController: UIViewController, UITextFieldDelegate {
                 self.currentUser.userPhoneNumber = (self.userPhoneNumber?.text)!
                 self.currentUser.userLocation = (self.userLocation?.text)!
                 self.currentUser.userOccupation = (self.userOccupation.text)!
-                
-                // Get current user
-                self.handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-                    self.userUID = Auth.auth().currentUser!.uid
-                }
-                
-                // Update database
-                self.ref = Database.database().reference()
-                let userRef = self.ref.child("users")
-                let newUserRef = userRef.child(Auth.auth().currentUser!.uid)
-                print("The Uid: \(Auth.auth().currentUser!.uid)")
-                newUserRef.setValue(self.currentUser.dictionaryObject())
+
+                UserDatabase.sharedInstance.signUp()
+                UserDatabase.sharedInstance.getRsvpList()
                 
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "Main")
                 self.present(vc!, animated: true, completion: nil)
