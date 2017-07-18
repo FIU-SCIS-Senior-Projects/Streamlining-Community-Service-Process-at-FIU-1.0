@@ -50,6 +50,14 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
             guard let end = eventDetails!["eventEnd"] as? String else {return}
             let newAddress = Address(street: street, city: city, state: state, zip: zip)
             let newEvent = Event.init(eventName: name, eventCategory: category, eventFlyerURL: flyerURL, eventDescription: description, eventStart: start, eventEnd: end, eventAddress: newAddress, eventContactName: contactName, eventContactEmail: contactEmail, eventCapacity: capacity!)
+            
+            if let eventAttandants = eventDetails!["eventAttendants"] as? [String:String] {
+                for (eachAttendant) in eventAttandants {
+                    newEvent.eventAttendants.append(eachAttendant.value)
+                }
+            }
+            
+            
            
             if EventCalendar.shared.myCalendar.keys.contains(newEvent.eventDate) {
                 if (EventCalendar.shared.myCalendar[newEvent.eventDate]?.contains(newEvent))! {
