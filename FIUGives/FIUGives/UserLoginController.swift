@@ -57,7 +57,7 @@ class UserLoginController: UIViewController {
                 
                 // Get user database information.
                 let ref = Database.database().reference()
-                ref.child("users").child(Auth.auth().currentUser!.uid).observe(.value, with: { (snapshot) in
+                ref.child("users").child("user-info").child(Auth.auth().currentUser!.uid).observe(.value, with: { (snapshot) in
                     let value = snapshot.value as? [String:AnyObject]
                     if let first = value?["Firstname"] as? String {
                         self.currentUser.userFirstName = first
@@ -81,6 +81,8 @@ class UserLoginController: UIViewController {
                     }) { (error) in
                         print(error.localizedDescription)
                     }
+                
+                UserDatabase.sharedInstance.getRsvpList()
                 }
                 
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "Main")

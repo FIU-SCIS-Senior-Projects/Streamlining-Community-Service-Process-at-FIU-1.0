@@ -129,7 +129,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
         
             self.ref = Database.database().reference()
             let userRef = self.ref.child("users")
-            let newUserRef = userRef.child(Auth.auth().currentUser!.uid)
+            let newUserRef = userRef.child(Auth.auth().currentUser!.uid).child("user-info")
             newUserRef.setValue(self.currentUser.dictionaryObject())
         }
     }

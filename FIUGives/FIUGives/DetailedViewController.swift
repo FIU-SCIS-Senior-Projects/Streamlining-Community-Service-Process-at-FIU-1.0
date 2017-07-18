@@ -13,10 +13,9 @@ import FacebookShare
 
 class DetailedViewController: UITableViewController {
     var detailedEvent:Event?
-    var ref: DatabaseReference!
     let formatter = DateFormatter()
     var rsvpState = true // True = RSVP'd so display Cancel RSVP button. False = not RSVP'd so display RSVP button.
-    var userRsvpList = User.sharedInstance.userRsvpEvents
+    var eventFull = false
     var newRsvpList = [Event]()
     @IBOutlet var eventDetailsView: UITableView!
     @IBOutlet weak var eventName: UILabel!
@@ -54,14 +53,14 @@ class DetailedViewController: UITableViewController {
     }
     
     @IBAction func rsvpButtonPressed(sender: UIButton) {
-        ref = Database.database().reference(withPath: "rsvp-list")
-        // If user is rsvp'd.
+        if !(eventFull) { // Check if the event is full.
         if rsvpState {
             sender.setTitle("RSVP", for: .normal)
             rsvpState = false
             removeRsvp(event: detailedEvent!)
             self.presentAlert(message: "Rsvp cancelled")
         } else {
+            // Check if there are no event date conflicts before addingt to rsvp list.
             if (rsvpToEvent(event: detailedEvent!)) {
                 sender.setTitle("CANCEL", for: .normal)
                 self.presentAlert(message: "Rsvp confirmed")
@@ -77,12 +76,13 @@ class DetailedViewController: UITableViewController {
                 return
             }
             
-            /* Add to database
-             let rsvpEventRef = self.ref.child((detailedEvent?.eventName.lowercased())!)
-             rsvpEventRef.setValue(detailedEvent?.dictionaryObject())*/
+        } }
+        else {
+            self.presentAlert(message: "Rsvp for event is not available.")
         }
     }
-    
+        
+    // Helper function to check if there is a time conflict.
     func getTimeDifference(firstEvent: Date, secondEvent: Date) -> Int {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.hour], from: firstEvent, to: secondEvent)
@@ -90,40 +90,30 @@ class DetailedViewController: UITableViewController {
         return components.hour!
     }
     
+    // Add to Rsvp list if there is no time conflict.
     func rsvpToEvent(event: Event) -> Bool {
         var noConflict = true
         // capacity?
-        if userRsvpList.isEmpty {
+        if User.sharedInstance.userRsvpEvents.isEmpty {
             User.sharedInstance.addRsvpEvent(newEvent: event)
-            for item in User.sharedInstance.userRsvpEvents {
-                for thing in item.value {
-                    print("Events in the RSVP array: \(thing.eventName)")
-                }
-            }
+            UserDatabase.sharedInstance.addRsvpDB(event: event)
             noConflict = true
         } else {
-            for item in userRsvpList {
-                if item.key == event.eventDate {
-                    print("item key: \(item.key)")
-                    print("event date: \(event.eventDate)")
-                    for thing in item.value {
-                        if (getTimeDifference(firstEvent: thing.eventEnd, secondEvent: event.eventStart)) > 1   {
-                            User.sharedInstance.addRsvpEvent(newEvent: event)
-                            noConflict = true
-                        } else {
-                            self.presentAlert(message: "Cannot RSVP. There is a time conflict.")
-                            noConflict = false
-                        }
-                    }
-                } else {
-                    User.sharedInstance.addRsvpEvent(newEvent: event)
-                    noConflict = true
-                    for item in User.sharedInstance.userRsvpEvents {
-                        for thing in item.value {
-                            print("Events that dont equal date: \(thing.eventName)")
-                        }
+            if User.sharedInstance.userRsvpEvents.keys.contains(event.eventDate) {
+                for item in (User.sharedInstance.userRsvpEvents[event.eventDate])! {
+                    if (getTimeDifference(firstEvent: item.eventEnd, secondEvent: event.eventStart)) > 1   {
+                        User.sharedInstance.addRsvpEvent(newEvent: event)
+                        UserDatabase.sharedInstance.addRsvpDB(event: event)
+                        noConflict = true
+                    } else {
+                        self.presentAlert(message: "Cannot RSVP. There is a time conflict.")
+                        noConflict = false
                     }
                 }
+            } else {
+                User.sharedInstance.addRsvpEvent(newEvent: event)
+                UserDatabase.sharedInstance.addRsvpDB(event: event)
+                noConflict = true
             }
         }
         return noConflict
@@ -139,7 +129,7 @@ class DetailedViewController: UITableViewController {
     
     // Remove from rsvp dictionary.
     func removeRsvp(event: Event) {
-        for item in userRsvpList {
+        for item in User.sharedInstance.userRsvpEvents {
             if item.key == event.eventDate {
                 newRsvpList = item.value
                 print("BEG LIST COUNT: \(newRsvpList.count)")
@@ -153,15 +143,7 @@ class DetailedViewController: UITableViewController {
                     }
                     print("END LIST COUNT: \(newRsvpList.count)")
                 }
-                userRsvpList.updateValue(newRsvpList, forKey: item.key)
-                for each in userRsvpList {
-                    if each.key == event.eventDate {
-                        for thing in each.value {
-                            print("EACH EVENT: \(thing.eventName)")
-                        }
-                        print("FIN LIST COUNT: \(each.value.count)")
-                    }
-                }
+                User.sharedInstance.userRsvpEvents.updateValue(newRsvpList, forKey: item.key)
             } else { return }
         }
         // Remove from event attendees array.
@@ -169,7 +151,7 @@ class DetailedViewController: UITableViewController {
         tableView.reloadData()
     }
 
-    // Testing adding event to phone calendar.
+    // Add event to phone calendar.
     func addEventToPhoneCalendar(title: String, description: String?, startDate: Date, endDate: Date, completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
         let eventStore = EKEventStore()
         eventStore.requestAccess(to: .event, completion: { (granted, error) in
@@ -194,37 +176,32 @@ class DetailedViewController: UITableViewController {
     }
     
     // Check if user has rsvp'd to event.
-    func checkIfUserRsvp(event: Event) {
-        if userRsvpList.isEmpty {
-            rsvpButton.setTitle("RSVP", for: .normal)
-            rsvpState = false
+    func setUpRsvpButton(event: Event) {
+        if checkIfEventFull(event: detailedEvent!) {
+            eventFull = true
+            rsvpButton.setTitle("FULL", for: .normal)
         } else {
-            for item in userRsvpList {
-                if item.key == event.eventDate {
-                    // If event is found in rsvp list, then rsvpState = true.
-                    if item.value.index(of: event) != nil {
-                        rsvpButton.setTitle("Cancel", for: .normal)
-                        rsvpState = true
-                    } else {
-                        rsvpButton.setTitle("RSVP", for: .normal)
-                        rsvpState = false
-                    }
+            if User.sharedInstance.userRsvpEvents.keys.contains(event.eventDate) {
+                if (User.sharedInstance.userRsvpEvents[event.eventDate]?.contains(event))! {
+                    rsvpButton.setTitle("Cancel", for: .normal)
+                    rsvpState = true
                 } else {
-                    if item.value.index(of: event) != nil {
-                        rsvpButton.setTitle("Cancel", for: .normal)
-                        rsvpState = true
-                    } else {
-                        rsvpButton.setTitle("RSVP", for: .normal)
-                        rsvpState = false
-                    }
+                    rsvpButton.setTitle("RSVP", for: .normal)
+                    rsvpState = false
                 }
+            } else {
+                rsvpButton.setTitle("RSVP", for: .normal)
+                rsvpState = false
             }
         }
     }
-    
-    func checkIfEventFull(event: Event) {
-        if event.eventAttendants.count == event.eventCapacity {
-            
+
+    // Check if the event is full before anything.
+    func checkIfEventFull(event: Event) -> Bool {
+        if (event.eventCapacity != 0) && (event.eventAttendants.count == event.eventCapacity) {
+            return true
+        } else {
+            return false
         }
     }
 
@@ -233,9 +210,8 @@ class DetailedViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
+        setUpRsvpButton(event: detailedEvent!)
         formatter.dateFormat = "EEEE, MMM dd YYYY, h:mm a"
-        checkIfEventFull(event: detailedEvent!)
-        checkIfUserRsvp(event: detailedEvent!)
         eventName.text = detailedEvent?.eventName
         eventContactName.text = detailedEvent?.eventContactName
         eventFlyer.setTitle(detailedEvent?.eventFlyerURL, for: .normal)

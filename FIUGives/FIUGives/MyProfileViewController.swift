@@ -29,7 +29,7 @@ class MyProfileViewController: UITableViewController, UITextFieldDelegate {
     
         // Get user database information.
         let ref = Database.database().reference()
-        ref.child("users").child(Auth.auth().currentUser!.uid).observe(.value, with: { (snapshot) in
+        ref.child("users").child(Auth.auth().currentUser!.uid).child("user-info").observe(.value, with: { (snapshot) in
             let value = snapshot.value as? [String:AnyObject]
             if let first = value?["Firstname"] as? String {
                 self.currentUser.userFirstName = first
@@ -54,7 +54,7 @@ class MyProfileViewController: UITableViewController, UITextFieldDelegate {
             print(error.localizedDescription)
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: .zero)
