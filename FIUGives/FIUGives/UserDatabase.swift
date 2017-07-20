@@ -26,7 +26,7 @@ class UserDatabase {
     
     // Get user information from database.
     func login() {
-        self.ref.child("users").child("user-info").child(Auth.auth().currentUser!.uid).observe(.value, with: { (snapshot) in
+        let handle = self.ref.child("users").child("user-info").child(Auth.auth().currentUser!.uid).observe(.value, with: { (snapshot) in
             let value = snapshot.value as? [String:AnyObject]
             if let first = value?["Firstname"] as? String {
                 self.currentUser.userFirstName = first
@@ -50,6 +50,7 @@ class UserDatabase {
         }) { (error) in
             print(error.localizedDescription)
         }
+        ref.removeObserver(withHandle: handle)
     }
     
     // Set user profile in database.
@@ -72,7 +73,7 @@ class UserDatabase {
     
     // Get rsvp list from the database.
     func getRsvpList() {
-        self.ref.child("users").child(Auth.auth().currentUser!.uid).child("rsvp-list").observe(.value, with: { (snapshot) in
+        let handle = self.ref.child("users").child(Auth.auth().currentUser!.uid).child("rsvp-list").observe(.value, with: { (snapshot) in
             guard let rsvpList = snapshot.value as? [String:AnyObject] else {return}
             for (eachKey) in (rsvpList.values) {
                 let eventKey = eachKey as? [String:AnyObject]
@@ -82,11 +83,12 @@ class UserDatabase {
         }) { (error) in
             print(error.localizedDescription)
         }
+        ref.removeObserver(withHandle: handle)
     }
     
     // Get event from the database.
     func getEventFromDB(key: String) {
-        self.ref.child("eventCalendar").child(key).observe(.value, with: { (snapshot) in
+        let handle = self.ref.child("eventCalendar").child(key).observe(.value, with: { (snapshot) in
             guard let event = snapshot.value as? [String:AnyObject] else {return}
             guard let name = event["eventName"] as? String else {return}
             guard let category = event["eventCategory"] as? String else {return}
@@ -115,6 +117,7 @@ class UserDatabase {
             print("The # of events in the array: \(User.sharedInstance.userRsvpEvents.count)")
             
         }) { (error) in print(error.localizedDescription) }
+        ref.removeObserver(withHandle: handle)
     }
     
     func addRsvpDB(event: Event) {
