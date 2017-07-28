@@ -15,7 +15,11 @@
 //
 
 import XCTest
+
+
 @testable import FIUGives
+
+//@testable import Firebase
 
 class FIUgivesTests: XCTestCase {
     
@@ -41,17 +45,7 @@ class FIUgivesTests: XCTestCase {
     //        }
     //    }
     
-    //MARK: Event Class tests
-    //Confirm that the Event initializer returns an Event object when passed valid parameters
-    func testEventInitializerSucceeds() {
-        let newEventOne = Event.init(eventName: "Hospital event", eventCategory: "Hospitals", eventFlyerURL: "", eventDescription: "", eventStart: NSDate(), eventEnd: NSDate(), eventLocationName: "Aventura hospital", eventClubs:"", eventContactName: "Allen", eventContactEmail: "allen@email", eventRSVPEnabled: true)
-        XCTAssertNotNil(newEventOne)
-    }
-    //Confirm that the Event initializer returns nil when passed an empty eventName
-    func testEventInitializerFails() {
-        let emptyNameEvent = Event.init(eventName: "", eventCategory: "", eventFlyerURL: "", eventDescription: "", eventStart: NSDate(), eventEnd: NSDate(), eventLocationName: "Aventura hospital", eventClubs: "", eventContactName: "Allen", eventContactEmail: "allen@email", eventRSVPEnabled: true)
-        XCTAssertNil(emptyNameEvent)
-    }
+
     
 
 }

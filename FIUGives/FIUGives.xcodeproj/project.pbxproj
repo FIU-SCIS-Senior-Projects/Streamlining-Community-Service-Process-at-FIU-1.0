@@ -7,17 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A29FDB0FA0068FBCA1825BB2 /* Pods_FIUGivesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB71F858A0B81C08C6A25CE7 /* Pods_FIUGivesTests.framework */; };
+		AEA6865F9AC7F309FEDD0A3D /* Pods_FIUGivesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347DAF7C451B713646892CAB /* Pods_FIUGivesUITests.framework */; };
+		BB9677361F0880B60089CA82 /* EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9677351F0880B60089CA82 /* EventDate.swift */; };
+		BB9677381F0988A30089CA82 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9677371F0988A30089CA82 /* DetailedViewController.swift */; };
+		BBAA37B01F02109200D3B853 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAA37AF1F02109200D3B853 /* Address.swift */; };
+		BBCBBAE71F0DC29E0083A8A2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBCBBAE61F0DC29E0083A8A2 /* MapKit.framework */; };
+		BBCBBAE91F0DC2FD0083A8A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBCBBAE81F0DC2FD0083A8A2 /* CoreLocation.framework */; };
+		BBD111691F1705050073896A /* EditEventDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD111681F1705050073896A /* EditEventDetailsTableViewController.swift */; };
 		BBD529541EE48F6E00D45B6B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529531EE48F6E00D45B6B /* Event.swift */; };
 		BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529551EEA304E00D45B6B /* EventCalendar.swift */; };
+		BBD529D41EEDC25B00D45B6B /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */; };
+		BBD529DA1EEDCB8400D45B6B /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529D91EEDCB8400D45B6B /* MyProfileViewController.swift */; };
+		BBD529DC1EEDCB9E00D45B6B /* EventsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DB1EEDCB9E00D45B6B /* EventsMapViewController.swift */; };
+		BBD529DE1EEDE2BF00D45B6B /* EditEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DD1EEDE2BF00D45B6B /* EditEventsViewController.swift */; };
+		BBD529E01EEDE32A00D45B6B /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */; };
+		E1077F251F059A3B000FF85B /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1077F241F059A3B000FF85B /* MyEventsViewController.swift */; };
+		E11307A51EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11307A41EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift */; };
+		E11CD2DB1F05A6500071D001 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11CD2DA1F05A6500071D001 /* CalendarCell.swift */; };
 		E149CC1F1EDFA7BB002A3256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */; };
-		E149CC211EDFA7BB002A3256 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC201EDFA7BB002A3256 /* FirstViewController.swift */; };
-		E149CC231EDFA7BB002A3256 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC221EDFA7BB002A3256 /* SecondViewController.swift */; };
-		E149CC261EDFA7BB002A3256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E149CC241EDFA7BB002A3256 /* Main.storyboard */; };
 		E149CC281EDFA7BB002A3256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E149CC271EDFA7BB002A3256 /* Assets.xcassets */; };
 		E149CC2B1EDFA7BB002A3256 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E149CC291EDFA7BB002A3256 /* LaunchScreen.storyboard */; };
 		E149CC361EDFA7BB002A3256 /* FIUGivesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC351EDFA7BB002A3256 /* FIUGivesTests.swift */; };
 		E149CC411EDFA7BB002A3256 /* FIUGivesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149CC401EDFA7BB002A3256 /* FIUGivesUITests.swift */; };
+		E15D6E611EF63C65006135E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E15D6E5F1EF63C65006135E3 /* Main.storyboard */; };
 		E1629BD81EEB55E400B8926A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1629BD71EEB55E400B8926A /* User.swift */; };
+		E168A0FA1F1DC4D000E66392 /* UserDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E168A0F91F1DC4D000E66392 /* UserDatabase.swift */; };
+		E1A09C4F1F0F30EC0012598D /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A09C4E1F0F30EC0012598D /* EditProfileTableViewController.swift */; };
+		E1B5C6A61F0C05A700A43A47 /* UserSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B5C6A51F0C05A700A43A47 /* UserSignUpController.swift */; };
+		E1B5C6A81F0C05BF00A43A47 /* UserLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B5C6A71F0C05BF00A43A47 /* UserLoginController.swift */; };
+		E1DD8B071F1AEDE300E9A396 /* ManagePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DD8B061F1AEDE300E9A396 /* ManagePasswordController.swift */; };
+		E1E108841F0C4440004EC012 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1E108831F0C4440004EC012 /* GoogleService-Info.plist */; };
+		E244C3952C3196031C4B772A /* Pods_FIUGives.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F21434323CCCB7A555A7C3 /* Pods_FIUGives.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,13 +59,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		025CA91FB90A0A3EED2240F3 /* Pods-FIUGivesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIUGivesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FIUGivesUITests/Pods-FIUGivesUITests.release.xcconfig"; sourceTree = "<group>"; };
+		08BFA682B315D24F100B7876 /* Pods-FIUGivesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIUGivesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FIUGivesTests/Pods-FIUGivesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		14F21434323CCCB7A555A7C3 /* Pods_FIUGives.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FIUGives.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		347DAF7C451B713646892CAB /* Pods_FIUGivesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FIUGivesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3945871BA27F1EC7FA1EF87C /* Pods-FIUGivesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIUGivesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FIUGivesTests/Pods-FIUGivesTests.release.xcconfig"; sourceTree = "<group>"; };
+		4F5F9962E3047988E66408D4 /* Pods-FIUGives.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIUGives.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FIUGives/Pods-FIUGives.debug.xcconfig"; sourceTree = "<group>"; };
+		6229D8352D4B8EB0C48F0EC7 /* Pods-FIUGivesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIUGivesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FIUGivesUITests/Pods-FIUGivesUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A12576441EFEB0779218271F /* Pods-FIUGives.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIUGives.release.xcconfig"; path = "Pods/Target Support Files/Pods-FIUGives/Pods-FIUGives.release.xcconfig"; sourceTree = "<group>"; };
+		AB71F858A0B81C08C6A25CE7 /* Pods_FIUGivesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FIUGivesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB9677351F0880B60089CA82 /* EventDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDate.swift; sourceTree = "<group>"; };
+		BB9677371F0988A30089CA82 /* DetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
+		BBAA37AF1F02109200D3B853 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		BBCBBAE61F0DC29E0083A8A2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BBCBBAE81F0DC2FD0083A8A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BBD111681F1705050073896A /* EditEventDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventDetailsTableViewController.swift; sourceTree = "<group>"; };
 		BBD529531EE48F6E00D45B6B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		BBD529551EEA304E00D45B6B /* EventCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCalendar.swift; sourceTree = "<group>"; };
+		BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		BBD529D91EEDCB8400D45B6B /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		BBD529DB1EEDCB9E00D45B6B /* EventsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsMapViewController.swift; sourceTree = "<group>"; };
+		BBD529DD1EEDE2BF00D45B6B /* EditEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditEventsViewController.swift; sourceTree = "<group>"; };
+		BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		E1077F241F059A3B000FF85B /* MyEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
+		E11307A41EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsTableViewCell.swift; sourceTree = "<group>"; };
+		E11CD2DA1F05A6500071D001 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		E149CC1B1EDFA7BB002A3256 /* FIUGives.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FIUGives.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E149CC201EDFA7BB002A3256 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		E149CC221EDFA7BB002A3256 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		E149CC251EDFA7BB002A3256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E149CC271EDFA7BB002A3256 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E149CC2A1EDFA7BB002A3256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E149CC2C1EDFA7BB002A3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,7 +95,14 @@
 		E149CC3C1EDFA7BB002A3256 /* FIUGivesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FIUGivesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E149CC401EDFA7BB002A3256 /* FIUGivesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIUGivesUITests.swift; sourceTree = "<group>"; };
 		E149CC421EDFA7BB002A3256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E15D6E601EF63C65006135E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1629BD71EEB55E400B8926A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E168A0F91F1DC4D000E66392 /* UserDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDatabase.swift; sourceTree = "<group>"; };
+		E1A09C4E1F0F30EC0012598D /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
+		E1B5C6A51F0C05A700A43A47 /* UserSignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignUpController.swift; sourceTree = "<group>"; };
+		E1B5C6A71F0C05BF00A43A47 /* UserLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginController.swift; sourceTree = "<group>"; };
+		E1DD8B061F1AEDE300E9A396 /* ManagePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagePasswordController.swift; sourceTree = "<group>"; };
+		E1E108831F0C4440004EC012 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +110,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBCBBAE91F0DC2FD0083A8A2 /* CoreLocation.framework in Frameworks */,
+				BBCBBAE71F0DC29E0083A8A2 /* MapKit.framework in Frameworks */,
+				E244C3952C3196031C4B772A /* Pods_FIUGives.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A29FDB0FA0068FBCA1825BB2 /* Pods_FIUGivesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,12 +128,90 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA6865F9AC7F309FEDD0A3D /* Pods_FIUGivesUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DD70656A3AFC5E4A62FC8D2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F5F9962E3047988E66408D4 /* Pods-FIUGives.debug.xcconfig */,
+				A12576441EFEB0779218271F /* Pods-FIUGives.release.xcconfig */,
+				08BFA682B315D24F100B7876 /* Pods-FIUGivesTests.debug.xcconfig */,
+				3945871BA27F1EC7FA1EF87C /* Pods-FIUGivesTests.release.xcconfig */,
+				6229D8352D4B8EB0C48F0EC7 /* Pods-FIUGivesUITests.debug.xcconfig */,
+				025CA91FB90A0A3EED2240F3 /* Pods-FIUGivesUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6454505809B18B7856593859 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBCBBAE81F0DC2FD0083A8A2 /* CoreLocation.framework */,
+				BBCBBAE61F0DC29E0083A8A2 /* MapKit.framework */,
+				14F21434323CCCB7A555A7C3 /* Pods_FIUGives.framework */,
+				AB71F858A0B81C08C6A25CE7 /* Pods_FIUGivesTests.framework */,
+				347DAF7C451B713646892CAB /* Pods_FIUGivesUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BBD529E51EEF869400D45B6B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1629BD71EEB55E400B8926A /* User.swift */,
+				BBD529551EEA304E00D45B6B /* EventCalendar.swift */,
+				BB9677351F0880B60089CA82 /* EventDate.swift */,
+				BBD529531EE48F6E00D45B6B /* Event.swift */,
+				BBAA37AF1F02109200D3B853 /* Address.swift */,
+				E168A0F91F1DC4D000E66392 /* UserDatabase.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		BBD529E61EEF86DE00D45B6B /* EventsController */ = {
+			isa = PBXGroup;
+			children = (
+				BBD111681F1705050073896A /* EditEventDetailsTableViewController.swift */,
+				BBD529D31EEDC25B00D45B6B /* EventsViewController.swift */,
+				BB9677371F0988A30089CA82 /* DetailedViewController.swift */,
+				BBD529DD1EEDE2BF00D45B6B /* EditEventsViewController.swift */,
+				BBD529DF1EEDE32A00D45B6B /* AddEventViewController.swift */,
+			);
+			name = EventsController;
+			sourceTree = "<group>";
+		};
+		BBD529E71EEF870000D45B6B /* MyEventsController */ = {
+			isa = PBXGroup;
+			children = (
+				E1077F241F059A3B000FF85B /* MyEventsViewController.swift */,
+				E11307A41EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift */,
+				E11CD2DA1F05A6500071D001 /* CalendarCell.swift */,
+			);
+			name = MyEventsController;
+			sourceTree = "<group>";
+		};
+		BBD529E81EEF871D00D45B6B /* ProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				BBD529D91EEDCB8400D45B6B /* MyProfileViewController.swift */,
+				E1A09C4E1F0F30EC0012598D /* EditProfileTableViewController.swift */,
+			);
+			name = ProfileController;
+			sourceTree = "<group>";
+		};
+		BBD529E91EEF874D00D45B6B /* EventsMapController */ = {
+			isa = PBXGroup;
+			children = (
+				BBD529DB1EEDCB9E00D45B6B /* EventsMapViewController.swift */,
+			);
+			name = EventsMapController;
+			sourceTree = "<group>";
+		};
 		E149CC121EDFA7BB002A3256 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +219,8 @@
 				E149CC341EDFA7BB002A3256 /* FIUGivesTests */,
 				E149CC3F1EDFA7BB002A3256 /* FIUGivesUITests */,
 				E149CC1C1EDFA7BB002A3256 /* Products */,
+				2DD70656A3AFC5E4A62FC8D2 /* Pods */,
+				6454505809B18B7856593859 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,15 +238,17 @@
 			isa = PBXGroup;
 			children = (
 				E149CC1E1EDFA7BB002A3256 /* AppDelegate.swift */,
-				E149CC201EDFA7BB002A3256 /* FirstViewController.swift */,
-				E149CC221EDFA7BB002A3256 /* SecondViewController.swift */,
-				E1629BD71EEB55E400B8926A /* User.swift */,
-				BBD529531EE48F6E00D45B6B /* Event.swift */,
-				BBD529551EEA304E00D45B6B /* EventCalendar.swift */,
-				E149CC241EDFA7BB002A3256 /* Main.storyboard */,
+				BBD529E81EEF871D00D45B6B /* ProfileController */,
+				BBD529E61EEF86DE00D45B6B /* EventsController */,
+				E1B5C6A91F0C05C900A43A47 /* UserLoginControllers */,
+				BBD529E71EEF870000D45B6B /* MyEventsController */,
+				BBD529E91EEF874D00D45B6B /* EventsMapController */,
+				BBD529E51EEF869400D45B6B /* Model */,
 				E149CC271EDFA7BB002A3256 /* Assets.xcassets */,
+				E15D6E5F1EF63C65006135E3 /* Main.storyboard */,
 				E149CC291EDFA7BB002A3256 /* LaunchScreen.storyboard */,
 				E149CC2C1EDFA7BB002A3256 /* Info.plist */,
+				E1E108831F0C4440004EC012 /* GoogleService-Info.plist */,
 			);
 			path = FIUGives;
 			sourceTree = "<group>";
@@ -137,6 +271,16 @@
 			path = FIUGivesUITests;
 			sourceTree = "<group>";
 		};
+		E1B5C6A91F0C05C900A43A47 /* UserLoginControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1B5C6A71F0C05BF00A43A47 /* UserLoginController.swift */,
+				E1B5C6A51F0C05A700A43A47 /* UserSignUpController.swift */,
+				E1DD8B061F1AEDE300E9A396 /* ManagePasswordController.swift */,
+			);
+			name = UserLoginControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,9 +288,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E149CC451EDFA7BB002A3256 /* Build configuration list for PBXNativeTarget "FIUGives" */;
 			buildPhases = (
+				5ADEE751BBEBAE33AF3F67A8 /* [CP] Check Pods Manifest.lock */,
 				E149CC171EDFA7BB002A3256 /* Sources */,
 				E149CC181EDFA7BB002A3256 /* Frameworks */,
 				E149CC191EDFA7BB002A3256 /* Resources */,
+				BF62C9C60421189DAA885FAA /* [CP] Embed Pods Frameworks */,
+				C411ABB932832631F8B385B5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -161,9 +308,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E149CC481EDFA7BB002A3256 /* Build configuration list for PBXNativeTarget "FIUGivesTests" */;
 			buildPhases = (
+				058255770CCAB31535E6C2A1 /* [CP] Check Pods Manifest.lock */,
 				E149CC2D1EDFA7BB002A3256 /* Sources */,
 				E149CC2E1EDFA7BB002A3256 /* Frameworks */,
 				E149CC2F1EDFA7BB002A3256 /* Resources */,
+				95FF4F70D09C63528644FD4C /* [CP] Embed Pods Frameworks */,
+				C1C493CE2AF3C5F3884722E5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,9 +329,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E149CC4B1EDFA7BB002A3256 /* Build configuration list for PBXNativeTarget "FIUGivesUITests" */;
 			buildPhases = (
+				5BE7442D695427B9089F919E /* [CP] Check Pods Manifest.lock */,
 				E149CC381EDFA7BB002A3256 /* Sources */,
 				E149CC391EDFA7BB002A3256 /* Frameworks */,
 				E149CC3A1EDFA7BB002A3256 /* Resources */,
+				7B6189EBB6369BE536D2830F /* [CP] Embed Pods Frameworks */,
+				6074DBDEB7F57D45A8738E24 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,15 +358,23 @@
 				TargetAttributes = {
 					E149CC1A1EDFA7BB002A3256 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = RSA5D4R88M;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					E149CC301EDFA7BB002A3256 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = RSA5D4R88M;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E149CC1A1EDFA7BB002A3256;
 					};
 					E149CC3B1EDFA7BB002A3256 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = RSA5D4R88M;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E149CC1A1EDFA7BB002A3256;
 					};
@@ -244,9 +405,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15D6E611EF63C65006135E3 /* Main.storyboard in Resources */,
+				E1E108841F0C4440004EC012 /* GoogleService-Info.plist in Resources */,
 				E149CC2B1EDFA7BB002A3256 /* LaunchScreen.storyboard in Resources */,
 				E149CC281EDFA7BB002A3256 /* Assets.xcassets in Resources */,
-				E149CC261EDFA7BB002A3256 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,17 +428,170 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		058255770CCAB31535E6C2A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5ADEE751BBEBAE33AF3F67A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5BE7442D695427B9089F919E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6074DBDEB7F57D45A8738E24 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FIUGivesUITests/Pods-FIUGivesUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B6189EBB6369BE536D2830F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FIUGivesUITests/Pods-FIUGivesUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95FF4F70D09C63528644FD4C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FIUGivesTests/Pods-FIUGivesTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF62C9C60421189DAA885FAA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FIUGives/Pods-FIUGives-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1C493CE2AF3C5F3884722E5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FIUGivesTests/Pods-FIUGivesTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C411ABB932832631F8B385B5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FIUGives/Pods-FIUGives-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E149CC171EDFA7BB002A3256 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1B5C6A61F0C05A700A43A47 /* UserSignUpController.swift in Sources */,
+				E1DD8B071F1AEDE300E9A396 /* ManagePasswordController.swift in Sources */,
+				E1077F251F059A3B000FF85B /* MyEventsViewController.swift in Sources */,
+				BB9677381F0988A30089CA82 /* DetailedViewController.swift in Sources */,
+				E11307A51EF5CF8800C7A5F5 /* MyEventsTableViewCell.swift in Sources */,
+				BB9677361F0880B60089CA82 /* EventDate.swift in Sources */,
+				E1A09C4F1F0F30EC0012598D /* EditProfileTableViewController.swift in Sources */,
+				E168A0FA1F1DC4D000E66392 /* UserDatabase.swift in Sources */,
+				E1B5C6A81F0C05BF00A43A47 /* UserLoginController.swift in Sources */,
 				BBD529541EE48F6E00D45B6B /* Event.swift in Sources */,
+				BBD529E01EEDE32A00D45B6B /* AddEventViewController.swift in Sources */,
+				BBD529DE1EEDE2BF00D45B6B /* EditEventsViewController.swift in Sources */,
+				E11CD2DB1F05A6500071D001 /* CalendarCell.swift in Sources */,
 				BBD529561EEA304E00D45B6B /* EventCalendar.swift in Sources */,
+				BBD529DA1EEDCB8400D45B6B /* MyProfileViewController.swift in Sources */,
+				BBAA37B01F02109200D3B853 /* Address.swift in Sources */,
+				BBD529DC1EEDCB9E00D45B6B /* EventsMapViewController.swift in Sources */,
 				E1629BD81EEB55E400B8926A /* User.swift in Sources */,
-				E149CC231EDFA7BB002A3256 /* SecondViewController.swift in Sources */,
+				BBD529D41EEDC25B00D45B6B /* EventsViewController.swift in Sources */,
 				E149CC1F1EDFA7BB002A3256 /* AppDelegate.swift in Sources */,
-				E149CC211EDFA7BB002A3256 /* FirstViewController.swift in Sources */,
+				BBD111691F1705050073896A /* EditEventDetailsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,20 +627,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E149CC241EDFA7BB002A3256 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E149CC251EDFA7BB002A3256 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E149CC291EDFA7BB002A3256 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E149CC2A1EDFA7BB002A3256 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E15D6E5F1EF63C65006135E3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E15D6E601EF63C65006135E3 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -426,33 +741,41 @@
 		};
 		E149CC461EDFA7BB002A3256 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F5F9962E3047988E66408D4 /* Pods-FIUGives.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = RSA5D4R88M;
 				INFOPLIST_FILE = FIUGives/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Senior-Project.FIUGives";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		E149CC471EDFA7BB002A3256 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A12576441EFEB0779218271F /* Pods-FIUGives.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = RSA5D4R88M;
 				INFOPLIST_FILE = FIUGives/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Senior-Project.FIUGives";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		E149CC491EDFA7BB002A3256 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08BFA682B315D24F100B7876 /* Pods-FIUGivesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = RSA5D4R88M;
 				INFOPLIST_FILE = FIUGivesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Senior-Project.FIUGivesTests";
@@ -464,9 +787,11 @@
 		};
 		E149CC4A1EDFA7BB002A3256 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3945871BA27F1EC7FA1EF87C /* Pods-FIUGivesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = RSA5D4R88M;
 				INFOPLIST_FILE = FIUGivesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Senior-Project.FIUGivesTests";
@@ -478,8 +803,10 @@
 		};
 		E149CC4C1EDFA7BB002A3256 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6229D8352D4B8EB0C48F0EC7 /* Pods-FIUGivesUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = RSA5D4R88M;
 				INFOPLIST_FILE = FIUGivesUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Senior-Project.FIUGivesUITests";
@@ -491,8 +818,10 @@
 		};
 		E149CC4D1EDFA7BB002A3256 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 025CA91FB90A0A3EED2240F3 /* Pods-FIUGivesUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = RSA5D4R88M;
 				INFOPLIST_FILE = FIUGivesUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Senior-Project.FIUGivesUITests";

@@ -6,25 +6,46 @@
 //  Copyright © 2017 FIUGives. All rights reserved.
 //
 
-import UIKit
+import UIKit 
 
 class EventCalendar {
     
-    //MARL: properties
-    var myCalendar: Array<Event>
-    var size: Int
+    
+    //MARK: properties
+    static let shared = EventCalendar()
+    var myCalendar: [EventDate:[Event]]
+    
     
     //MARK: initialization
-    init?() {
-        self.myCalendar = Array()
-        self.size = 0
+    private init() {
+        self.myCalendar = [EventDate:[Event]]()
+        
     }
     
-    //
+    //MARK: methods
     func addEvent(newEvent: Event) {
-        self.myCalendar.append(newEvent)
-        self.size += 1
+        if self.myCalendar.keys.contains(newEvent.eventDate) {
+            self.myCalendar[newEvent.eventDate]?.append(newEvent)
+            self.myCalendar[newEvent.eventDate]?.sort()
+        }
+        else {
+            self.myCalendar[newEvent.eventDate] = [newEvent]
+        }
     }
+    
+    func sortValueForKey(key: EventDate) {
+        self.myCalendar[key]?.sort()
+    }
+    
+    func totalEvents() -> Int {
+        return self.myCalendar.count
+    }
+    
+
+    
+  
+    
+    
     
     
 }
