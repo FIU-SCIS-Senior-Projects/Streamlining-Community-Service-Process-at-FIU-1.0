@@ -85,7 +85,7 @@ class UserSignUpController: UIViewController, UITextFieldDelegate {
                 return
             } else {
                 print("Successful Login")
-                
+                self.presentAlert(message: "Account was successfully created")
                 // Update user object properties
                 self.currentUser.userFirstName = self.userFirstName.text!
                 self.currentUser.userLastName = self.userLastName.text!

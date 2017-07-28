@@ -129,22 +129,15 @@ class DetailedViewController: UITableViewController {
     
     // Remove from rsvp dictionary.
     func removeRsvp(event: Event) {
-        for item in User.sharedInstance.userRsvpEvents {
-            if item.key == event.eventDate {
-                newRsvpList = item.value
-                print("BEG LIST COUNT: \(newRsvpList.count)")
-                for item in newRsvpList {
-                    print("EACH EVENT: \(item.eventName)")
-                }
-                if let index = newRsvpList.index(of: event) {
-                    newRsvpList.remove(at: index)
-                    for item in newRsvpList {
-                        print("EACH EVENT: \(item.eventName)")
-                    }
-                    print("END LIST COUNT: \(newRsvpList.count)")
-                }
-                User.sharedInstance.userRsvpEvents.updateValue(newRsvpList, forKey: item.key)
-            } else { return }
+        if User.sharedInstance.userRsvpEvents.keys.contains(event.eventDate) {
+            if (User.sharedInstance.userRsvpEvents[event.eventDate]?.contains(event))! {
+                UserDatabase.sharedInstance.removeRsvpDB(event: event)
+                let index = User.sharedInstance.userRsvpEvents[event.eventDate]?.index(of: event)
+                User.sharedInstance.userRsvpEvents[event.eventDate]?.remove(at: index!)
+            } else {
+                print("no event found in rsvp list")
+                return
+            }
         }
         // Remove from event attendees array.
         event.removeEventAttendant(Attendant: User.sharedInstance.getUserFullName())
@@ -204,9 +197,10 @@ class DetailedViewController: UITableViewController {
             return false
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDatabase.sharedInstance.getRsvpList()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()

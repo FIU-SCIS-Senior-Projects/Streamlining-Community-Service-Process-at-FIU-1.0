@@ -18,6 +18,7 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
     @IBOutlet weak var month: UILabel!
     var noEvents = [Any]()
     var eventsForDate = [Event]()
+    var rsvpEvents = User.sharedInstance.userRsvpEvents
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
     
     override func viewWillAppear(_ animated: Bool) {
         calendarView.reloadData()
+        rsvpEvents = User.sharedInstance.userRsvpEvents
     }
 
     // Calendar spacing
@@ -38,12 +40,16 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
         calendarView.minimumInteritemSpacing = 0
     }
     
-    // Fetch Events from eventDates array
+    // Fetch Events from user rsvp dictionary
     func getEventsForDate(view: JTAppleCell?, cellState: CellState) {
-        if !(User.sharedInstance.userRsvpEvents.isEmpty) {
-            if User.sharedInstance.userRsvpEvents.keys.contains(EventDate.init(myEventDate: cellState.date)) {
-                for item in User.sharedInstance.userRsvpEvents[EventDate.init(myEventDate: cellState.date)]! {
-                    eventsForDate.append(item)
+        if !(rsvpEvents.isEmpty) {
+            if rsvpEvents.keys.contains(EventDate.init(myEventDate: cellState.date)) {
+                for item in rsvpEvents[EventDate.init(myEventDate: cellState.date)]! {
+                    if eventsForDate.contains(item) {
+                        return
+                    } else {
+                        eventsForDate.append(item)
+                    }
                 }
             } else {
                 eventsForDate = noEvents as! [Event]
@@ -126,7 +132,6 @@ class MyEventsViewController: UIViewController, JTAppleCalendarViewDataSource, J
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         setUpCellSelected(view: cell, cellState: cellState)
         setUpCellTextColor(view: cell, cellState: cellState)
-        print(formatter.string(from: date))
         getEventsForDate(view: cell, cellState: cellState)
         self.tableView.reloadData()
     }
