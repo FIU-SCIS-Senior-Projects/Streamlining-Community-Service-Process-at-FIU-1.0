@@ -53,6 +53,7 @@ class User {
     
     func addToUserEventCreated(Event: Event) {
         userEventCreated.append(Event)
+        userEventCreated.sort()
     }
     
     func setUserFirstName(First: String) {

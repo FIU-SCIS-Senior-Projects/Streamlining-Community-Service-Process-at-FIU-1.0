@@ -128,7 +128,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
             for eachEvent in EventCalendar.shared.myCalendar[(EventDate(myEventDate: eventStartDate.date))]! {
                 
                 if (eventNameTextField.text == eachEvent.eventName) {
-                    self.presentAlert(alertMessage: "Consider changing the name. Event with sunch name on the same date already exists!")
+                    self.presentAlert(alertMessage: "Consider changing the name. Event with such name on the same date already exists!")
                     return
                 }
             }

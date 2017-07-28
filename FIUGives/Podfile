@@ -17,11 +17,21 @@ target 'FIUGives' do
   target 'FIUGivesTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Firebase'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Crash'
+    pod 'Firebase/Database'
+    pod 'Firebase/Storage'
   end
 
   target 'FIUGivesUITests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Firebase'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Crash'
+    pod 'Firebase/Database'
+    pod 'Firebase/Storage'
   end
 
 end

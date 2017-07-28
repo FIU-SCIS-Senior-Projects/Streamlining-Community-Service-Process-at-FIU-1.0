@@ -55,11 +55,18 @@ class EditEventsViewController: UIViewController, UITableViewDataSource, UITable
                 guard let end = eventDetails["eventEnd"] as? String else {return}
                 let newAddress = Address(street: street, city: city, state: state, zip: zip)
                 let newEvent = Event.init(eventName: name, eventCategory: category, eventFlyerURL: flyerURL, eventDescription: description, eventStart: start, eventEnd: end, eventAddress: newAddress, eventContactName: contactName, eventContactEmail: contactEmail, eventCapacity: capacity!)
-                User.sharedInstance.addToUserEventCreated(Event: newEvent)
+                
+                //chcek if the event from the database was already added to the User model
+                if User.sharedInstance.userEventCreated.contains(newEvent) {
+                    print("Duplicate")
+                }
+                else {
+                    User.sharedInstance.addToUserEventCreated(Event: newEvent)
+                    User.sharedInstance.userEventCreated.sort()
+                }
+               
                 self.userEventsCreatedTable.reloadData()
-                //self.eventsCreated.append(newEvent)
-                //self.eventsCreated.sort()
-                //print(self.eventsCreated[0].eventName)
+                
             }
         })
         

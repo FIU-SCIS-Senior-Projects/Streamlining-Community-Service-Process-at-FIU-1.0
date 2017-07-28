@@ -60,7 +60,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
             
-           
+           //check if the event from the database was already entered to the EventsCalendar model
             if EventCalendar.shared.myCalendar.keys.contains(newEvent.eventDate) {
                 if (EventCalendar.shared.myCalendar[newEvent.eventDate]?.contains(newEvent))! {
                 print("Duplicate")

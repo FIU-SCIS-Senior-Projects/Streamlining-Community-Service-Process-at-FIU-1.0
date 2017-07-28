@@ -255,9 +255,9 @@ class EditEventDetailsTableViewController: UITableViewController, UITextFieldDel
     }
     
     func saveChanges() {
-        if detailedEvent?.eventName != eventNameTextField.text {
+        /*if detailedEvent?.eventName != eventNameTextField.text {
             detailedEvent?.updateName(eventName: eventNameTextField.text!)
-        }
+        }*/
         if detailedEvent?.eventFlyerURL != eventFlyerURLTextField.text {
             detailedEvent?.updateFlyerURL(eventFlyerURL: eventFlyerURLTextField.text!)
         }
@@ -295,12 +295,7 @@ class EditEventDetailsTableViewController: UITableViewController, UITextFieldDel
         self.navigationController?.popViewController(animated: true)
     }
     
-    // Get user information
-    func getUser() {
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            self.userUID = Auth.auth().currentUser!.uid
-        }
-    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
