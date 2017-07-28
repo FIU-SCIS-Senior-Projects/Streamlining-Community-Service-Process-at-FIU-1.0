@@ -4,7 +4,7 @@ This project is the first version of the Streamlining Community Service Process 
 
 # Directory Structure
 1. Code - All the code for this project
-2. Documents - Final Project Documentation and Meeting Minutes (Daily Scrum, Sprint Planning, Sprint Retrospective, and Sprint Review)
+2. Documents - Final Project Documentation and Daily Scrum Meeting Minutes
 3. Posters – Contains project posters for each team member  
 4. PresentationSlides – This directory contains a powerpoint presentation for the whole project
-5. Videos- Contains a file, index.html with links to the four videos (Introduction, User Guide, Installation Guide, and Shortcomings/Wishlist) published on YouTube
+5. Videos- Contains a file, index.html, with links to the four videos (Introduction, User Guide, Installation Guide, and Shortcomings/Wishlist) published on YouTube
